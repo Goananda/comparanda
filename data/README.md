@@ -1,28 +1,29 @@
-# Данные / Data
+# Data
 
-Все таблицы в кодировке UTF-8. Названия традиций и мотивов оставлены на английском, как в исходных файлах.
 All tables are UTF-8. Tradition and motif names are in English, as in the source files.
 
-## `source/`: исходные файлы / source files
+Русская версия: [README.ru.md](README.ru.md)
 
-Скачаны 16 ноября 2026 года с https://twopoints.blog/datasets/folklore/ и не изменены. Это версия каталога Ю. Е. Берёзкина и Е. Н. Дувакина из репликационного пакета Michalopoulos и Xue (2021; Harvard Dataverse, [doi:10.7910/DVN/IXOHKB](https://doi.org/10.7910/DVN/IXOHKB), CC0 1.0), очищенная Kenneth S. Reyes для записи [«The tales we tell»](https://twopoints.blog/posts/2023-04-22-the-tales-we-tell/).
+## `source/`: source files
 
-| Файл | Строк | Столбцы |
+Downloaded on 16 November 2026 from https://twopoints.blog/datasets/folklore/ and left unchanged. This is the version of the catalogue by Yu. E. Berezkin and E. N. Duvakin from the replication package of Michalopoulos and Xue (2021; Harvard Dataverse, [doi:10.7910/DVN/IXOHKB](https://doi.org/10.7910/DVN/IXOHKB), CC0 1.0), cleaned by Kenneth S. Reyes for the post ["The tales we tell"](https://twopoints.blog/posts/2023-04-22-the-tales-we-tell/).
+
+| File | Rows | Columns |
 |---|---|---|
-| `motifs.csv` | 2 564 | `motif_id`: код мотива в каталоге (первая буква обозначает раздел A–N); `title`: название; `description`: определение мотива |
-| `groups_motifs.csv` | 82 046 | первый столбец без имени: номер строки исходной таблицы; `group`: традиция; `motif_id`: мотив, записанный в этой традиции |
-| `coords_clean.json` | 923 | `group`, `longitude`, `latitude`: условная точка традиции на карте |
-| `groups_concepts.csv` | 5 538 | `group`, `longitude`, `latitude`, `concept` (coldness, earthquakes, farming, fishing, hunting, pastoral), `share`: расчёт автора блога, см. его запись |
-| `regressions.csv` | 199 | показатели по странам, взятые автором блога из репликационного пакета: `cntry`, `lntrust_wvsavg`, `tricksters_punish`, `risktaking`, `challenge_competition`, `fem19`, `malebias` |
+| `motifs.csv` | 2,564 | `motif_id`: motif code in the catalogue (the first letter is the section, A–N); `title`: motif title; `description`: motif definition |
+| `groups_motifs.csv` | 82,046 | unnamed first column: row number of the original table; `group`: tradition; `motif_id`: a motif recorded in that tradition |
+| `coords_clean.json` | 923 | `group`, `longitude`, `latitude`: a nominal point for the tradition on the map |
+| `groups_concepts.csv` | 5,538 | `group`, `longitude`, `latitude`, `concept` (coldness, earthquakes, farming, fishing, hunting, pastoral), `share`: computed by the blog author, see his post |
+| `regressions.csv` | 199 | country-level indicators taken by the blog author from the replication package: `cntry`, `lntrust_wvsavg`, `tricksters_punish`, `risktaking`, `challenge_competition`, `fem19`, `malebias` |
 
-Что стоит знать:
+Things to know:
 
-- В `groups_motifs.csv` восемь кодов мотивов оканчиваются на знак подчёркивания (`b28e_`, `d4aa_`, `e15_`, `e15a_`, `e15b_`, `e18_`, `h36g1_`, `m81_`). В расчётах они приведены к кодам из `motifs.csv`.
-- Мотив `c41` есть в справочнике, но не записан ни у одной традиции.
-- Координаты попали в очищенные файлы из репозитория [macleginn/mythology-queries](https://github.com/macleginn/mythology-queries) и основаны на более старой версии каталога.
-- Последние две таблицы в этом анализе не используются. Они приложены, чтобы набор исходных файлов был полным.
+- In `groups_motifs.csv` eight motif codes end with an underscore (`b28e_`, `d4aa_`, `e15_`, `e15a_`, `e15b_`, `e18_`, `h36g1_`, `m81_`). In the calculations they are mapped to the codes in `motifs.csv`.
+- Motif `c41` is in the motif list but is not recorded in any tradition.
+- The coordinates reached the cleaned files from the repository [macleginn/mythology-queries](https://github.com/macleginn/mythology-queries) and are based on an older version of the catalogue.
+- The last two tables are not used in this analysis. They are included so that the set of source files is complete.
 
-Контрольные суммы SHA-256:
+SHA-256 checksums:
 
 ```
 f77c4d08846856b486c460620a6762228591658597b7016212132423111945a5  motifs.csv
@@ -32,68 +33,60 @@ ff51abda4896a7c423e69b9fc8de1d68f1487843e7c1e58afcf0dbdda6de5118  coords_clean.j
 93bf24d0a0cdfd9238d303caabd2e7ab916677b94eb4e70c0d30a14b52170b6e  regressions.csv
 ```
 
-## `derived/`: результаты анализа / analysis outputs
+## `derived/`: analysis outputs
 
-Все файлы создаёт `analysis/run_all.sh`. All files are produced by `analysis/run_all.sh`.
+All files are produced by `analysis/run_all.sh`.
 
 ### `matrix_traditions_x_motifs.csv`
 
-923 строки, 2 564 столбца мотивов. В ячейке 1, если мотив записан в традиции, иначе 0.
-Binary matrix: one row per tradition, one column per motif; 1 = the motif is recorded in the tradition.
+923 rows and 2,564 motif columns. A cell holds 1 if the motif is recorded in the tradition and 0 otherwise.
 
-### `traditions.csv` (923 строки / rows)
+### `traditions.csv` (923 rows)
 
-| Столбец / Column | Значение / Meaning |
+| Column | Meaning |
 |---|---|
-| `tradition` | название традиции / tradition name |
-| `longitude`, `latitude` | координаты / coordinates |
-| `n_motifs` | число записанных мотивов / number of recorded motifs |
-| `n_motifs_cosmology`, `n_motifs_adventure` | то же отдельно для разделов A–I и J–N / the same for sections A–I and J–N |
-| `in_analysis` | 1, если у традиции 15 и более мотивов и она вошла в кластеры и комплексы / 1 if the tradition has 15+ motifs and enters clustering and NMF |
-| `cluster_k2` … `cluster_k12` | номер кластера при делении на k кластеров, расшифровка в `clusters.csv` / cluster id at k clusters, see `clusters.csv` |
-| `umap_x`, `umap_y` | положение в проекции UMAP, от 0 до 1 / UMAP coordinates scaled to 0–1 |
-| `nmf_01` … `nmf_12` | вес комплекса мотивов, от 0 до 100 (100 соответствует 99-му процентилю), расшифровка в `nmf_components.csv` / NMF loading, 0–100 |
-| `axis_A1` … `axis_A4` | положение на главных осях космологических мотивов, от −100 до +100 (±100 соответствует 97-му процентилю модуля); пусто, если у традиции меньше 15 таких мотивов / scores on the principal axes of A–I motifs |
-| `axis_B1` … `axis_B4` | то же для приключенческих и трикстерских мотивов / the same for J–N motifs |
+| `tradition` | tradition name |
+| `longitude`, `latitude` | coordinates |
+| `n_motifs` | number of recorded motifs |
+| `n_motifs_cosmology`, `n_motifs_adventure` | the same, separately for sections A–I and J–N |
+| `in_analysis` | 1 if the tradition has 15 or more motifs and enters the clusters and complexes |
+| `cluster_k2` … `cluster_k12` | cluster id when the traditions are divided into k clusters; see `clusters.csv` |
+| `umap_x`, `umap_y` | position in the UMAP projection, from 0 to 1 |
+| `nmf_01` … `nmf_12` | weight of a motif complex, from 0 to 100 (100 is the 99th percentile); see `nmf_components.csv` |
+| `axis_A1` … `axis_A4` | position on the principal axes of cosmological motifs, from −100 to +100 (±100 is the 97th percentile of the absolute value); empty if the tradition has fewer than 15 such motifs |
+| `axis_B1` … `axis_B4` | the same for adventure and trickster motifs |
 
-### `clusters.csv` (22 строки / rows)
+### `clusters.csv` (22 rows)
 
-Узлы иерархии кластеров. `cluster_id`; `name_ru`, `name_en`: название, данное по составу кластера; `created_at_k`: на каком шаге кластер появился; `parent_id`: кластер, из которого он выделился (0 означает все традиции); `n_traditions`; `median_share_cosmology`: медианная доля космологических мотивов; `indicator_motifs`: характерные мотивы с долей традиций в кластере и вне его; `core_traditions`: традиции, ближайшие к центру кластера.
-
-Nodes of the cluster hierarchy with hand-given names, parent, size, indicator motifs (share of traditions inside / outside the cluster) and core traditions.
+Nodes of the cluster hierarchy. `cluster_id`; `name_ru`, `name_en`: a name given by the membership of the cluster; `created_at_k`: the step at which the cluster appears; `parent_id`: the cluster it split from (0 means all traditions); `n_traditions`; `median_share_cosmology`: median share of cosmological motifs; `indicator_motifs`: characteristic motifs with the share of traditions inside and outside the cluster; `core_traditions`: the traditions closest to the centre of the cluster.
 
 ### `cluster_membership.csv`
 
-Та же принадлежность к кластерам в длинном виде: `tradition`, `k`, `cluster_id`, `cluster_name_ru`, `cluster_name_en`.
-Cluster membership in long format.
+The same cluster membership in long format: `tradition`, `k`, `cluster_id`, `cluster_name_ru`, `cluster_name_en`.
 
-### `motif_summary.csv` (2 564 строки / rows)
+### `motif_summary.csv` (2,564 rows)
 
-| Столбец / Column | Значение / Meaning |
+| Column | Meaning |
 |---|---|
-| `motif_id`, `title` | код и название мотива / motif code and title |
-| `section` | раздел каталога, буква A–N / catalogue section letter |
-| `category` | `cosmology_etiology` для разделов A–I, `adventure_trickster` для J–N |
-| `n_traditions` | число традиций с мотивом из 923 / number of traditions with the motif |
-| `in_analysis` | 1, если мотив записан хотя бы у пяти из 831 традиции / 1 if recorded in at least 5 of the 831 traditions |
-| `atlas_x`, `atlas_y` | положение мотива в проекции UMAP по сходству ареалов, от 0 до 1 / UMAP of motifs by similarity of ranges |
-| `home_region` | область, где мотив записан заметно чаще, или `widespread` / macro-area where the motif is clearly more frequent, or `widespread` |
-| `share_west_central_eurasia`, `share_africa_south_asia_oceania`, `share_americas_siberia` | доля встречаемости мотива, приходящаяся на каждую из трёх областей, с поправкой на среднюю частоту мотивов этой категории в области; мотив отнесён к области при доле от 0,6 / share of the motif's prevalence falling to each macro-area after normalising by the area's average prevalence |
+| `motif_id`, `title` | motif code and title |
+| `section` | catalogue section, a letter from A to N |
+| `category` | `cosmology_etiology` for sections A–I, `adventure_trickster` for J–N |
+| `n_traditions` | number of traditions with the motif, out of 923 |
+| `in_analysis` | 1 if the motif is recorded in at least five of the 831 traditions |
+| `atlas_x`, `atlas_y` | position of the motif in the UMAP projection by similarity of ranges, from 0 to 1 |
+| `home_region` | the macro-area where the motif is recorded markedly more often, or `widespread` |
+| `share_west_central_eurasia`, `share_africa_south_asia_oceania`, `share_americas_siberia` | share of the motif's occurrence falling to each of the three macro-areas, adjusted for the average frequency of motifs of the same category in the area; a motif is assigned to an area when the share is 0.6 or more |
 
-### `nmf_components.csv` (12 строк / rows)
+### `nmf_components.csv` (12 rows)
 
-Комплексы мотивов: `component` (соответствует столбцам `nmf_01` … `nmf_12`), `name_ru`, `name_en`, `n_traditions_weight_ge_15`, `top_motifs`, `top_traditions`.
-The twelve NMF motif complexes with their most specific motifs and strongest traditions.
+Motif complexes: `component` (matches the columns `nmf_01` … `nmf_12`), `name_ru`, `name_en`, `n_traditions_weight_ge_15`, `top_motifs`, `top_traditions`.
 
-### `axes.csv` (16 строк / rows)
+### `axes.csv` (16 rows)
 
-По две строки на ось (отрицательный и положительный полюс): `axis`, `motif_set`, `variance_explained_pct`, `corr_with_log_n_motifs` (связь оси с изученностью традиции), `pole`, `top_motifs`, `top_traditions`.
-Two rows per principal axis (negative and positive pole).
+Two rows per axis (the negative and the positive pole): `axis`, `motif_set`, `variance_explained_pct`, `corr_with_log_n_motifs` (how strongly the axis is tied to how well a tradition is documented), `pole`, `top_motifs`, `top_traditions`.
 
-### `distance_decay.csv` (15 строк / rows)
+### `distance_decay.csv` (15 rows)
 
-Среднее сходство пар традиций по интервалам расстояния: `km_from`, `km_to`, `mean_similarity_all`, `mean_similarity_cosmology`, `mean_similarity_adventure` и число пар в каждом интервале.
+Mean similarity of pairs of traditions by distance band: `km_from`, `km_to`, `mean_similarity_all`, `mean_similarity_cosmology`, `mean_similarity_adventure`, and the number of pairs in each band (`n_pairs_all`, `n_pairs_cosmology`, `n_pairs_adventure`).
 
-Сходство двух традиций считается как косинус между векторами мотивов, где вес мотива равен ln(N / число традиций с мотивом). В расчёт входят традиции, у которых записано не меньше 10 мотивов соответствующей группы. Расстояние считается по дуге большого круга.
-
-Mean cosine similarity of IDF-weighted motif vectors by great-circle distance bin, for all motifs, sections A–I and sections J–N.
+The similarity of two traditions is the cosine between their motif vectors, where a motif's weight is ln(N / number of traditions with the motif). Only traditions with at least 10 recorded motifs of the group in question are included. Distance is measured along the great circle.

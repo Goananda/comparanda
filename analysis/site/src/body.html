@@ -1,23 +1,34 @@
 <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false"><defs id="geo-defs"></defs></svg>
 
-<header class="mast wrap">
-  <p class="kicker">Каталог Ю. Е. Берёзкина · разведочный анализ</p>
-  <h1>Мифы помнят географию</h1>
-  <p class="lede">Если сгруппировать традиции только по наборам фольклорных мотивов, на карте появляются континенты, Берингия и неожиданная близость Южной Америки к югу Азии и Океании. Ниже пять способов это увидеть.</p>
-  <div class="facts">
-    <span><b id="fG"></b> традиции</span>
-    <span><b id="fM"></b> мотива</span>
-    <span><b id="fP"></b> пар «традиция, мотив»</span>
-    <span>медиана <b id="fMed"></b> мотива на традицию</span>
+<div class="topbar wrap" id="top">
+  <div class="brandline">
+    <span class="brand">Comparanda</span>
+    <span class="tagline"><span lang="en">comparing elements of culture across the world’s traditions</span><span lang="ru">сравнение элементов культуры в традициях мира</span></span>
   </div>
-  <nav aria-label="Разделы">
+  <div class="seg" id="langSeg" role="group" data-t-aria="langLabel">
+    <button type="button" data-v="en" aria-pressed="true">English</button>
+    <button type="button" data-v="ru" aria-pressed="false">Русский</button>
+  </div>
+</div>
+
+<header class="mast wrap">
+  <p class="kicker"><span lang="en">Folklore and mythology · the Berezkin and Duvakin catalogue</span><span lang="ru">Фольклор и мифология · каталог Берёзкина и Дувакина</span></p>
+  <h1><span lang="en">Myths remember geography</span><span lang="ru">Мифы помнят географию</span></h1>
+  <p class="lede"><span lang="en">Group the world’s traditions by their folklore motifs alone and the map redraws itself: continents appear, Beringia holds together, and South America turns out unexpectedly close to southern Asia and Oceania. Below are five ways to see it.</span><span lang="ru">Если сгруппировать традиции только по наборам фольклорных мотивов, на карте появляются континенты, Берингия и неожиданная близость Южной Америки к югу Азии и Океании. Ниже пять способов это увидеть.</span></p>
+  <div class="facts">
+    <span><b id="fG"></b> <span lang="en">traditions</span><span lang="ru">традиции</span></span>
+    <span><b id="fM"></b> <span lang="en">motifs</span><span lang="ru">мотива</span></span>
+    <span><b id="fP"></b> <span lang="en">tradition–motif pairs</span><span lang="ru">пар «традиция, мотив»</span></span>
+    <span><span lang="en">median of</span><span lang="ru">медиана</span> <b id="fMed"></b> <span lang="en">motifs per tradition</span><span lang="ru">мотива на традицию</span></span>
+  </div>
+  <nav data-t-aria="navLabel">
     <ul class="toc">
-      <li><a href="#clusters"><span class="num">1</span>Кластеры культур</a></li>
-      <li><a href="#complexes"><span class="num">2</span>Комплексы мотивов</a></li>
-      <li><a href="#axes"><span class="num">3</span>Главные оси</a></li>
-      <li><a href="#relatives"><span class="num">4</span>Сходство и расстояние</a></li>
-      <li><a href="#motifs"><span class="num">5</span>Атлас мотивов</a></li>
-      <li><a href="#method"><span class="num">6</span>Метод и оговорки</a></li>
+      <li><a href="#clusters"><span class="num">1</span><span lang="en">Culture clusters</span><span lang="ru">Кластеры культур</span></a></li>
+      <li><a href="#complexes"><span class="num">2</span><span lang="en">Motif complexes</span><span lang="ru">Комплексы мотивов</span></a></li>
+      <li><a href="#axes"><span class="num">3</span><span lang="en">Principal axes</span><span lang="ru">Главные оси</span></a></li>
+      <li><a href="#relatives"><span class="num">4</span><span lang="en">Similarity and distance</span><span lang="ru">Сходство и расстояние</span></a></li>
+      <li><a href="#motifs"><span class="num">5</span><span lang="en">Motif atlas</span><span lang="ru">Атлас мотивов</span></a></li>
+      <li><a href="#method"><span class="num">6</span><span lang="en">Method and caveats</span><span lang="ru">Метод и оговорки</span></a></li>
     </ul>
   </nav>
 </header>
@@ -26,72 +37,75 @@
 
 <section id="clusters">
   <div class="sec-head">
-    <span class="sec-num">1 / кластеры культур</span>
-    <h2>Алгоритм не знал координат и всё равно нарисовал континенты</h2>
-    <p class="lede">Традиции с похожими наборами мотивов объединяются в кластеры шаг за шагом. Координаты в расчёт не входили. Двигайте ползунок и смотрите, в каком порядке мир делится на части.</p>
+    <span class="sec-num"><span lang="en">1 / culture clusters</span><span lang="ru">1 / кластеры культур</span></span>
+    <h2><span lang="en">The algorithm never saw coordinates, yet it drew the continents</span><span lang="ru">Алгоритм не знал координат и всё равно нарисовал континенты</span></h2>
+    <p class="lede"><span lang="en">Traditions with similar sets of motifs are merged into clusters step by step. Coordinates were not part of the calculation. Move the slider to watch the order in which the world divides.</span><span lang="ru">Традиции с похожими наборами мотивов объединяются в кластеры шаг за шагом. Координаты в расчёт не входили. Двигайте ползунок и смотрите, в каком порядке мир делится на части.</span></p>
   </div>
   <div class="controls">
     <div class="ctl">
-      <label for="kRange">Число кластеров</label>
-      <button class="btn sq" type="button" id="kMinus" aria-label="На один кластер меньше">−</button>
+      <label for="kRange"><span lang="en">Number of clusters</span><span lang="ru">Число кластеров</span></label>
+      <button class="btn sq" type="button" id="kMinus" data-t-aria="kLess">−</button>
       <input type="range" id="kRange" min="2" max="12" step="1" value="8">
-      <button class="btn sq" type="button" id="kPlus" aria-label="На один кластер больше">+</button>
+      <button class="btn sq" type="button" id="kPlus" data-t-aria="kMore">+</button>
       <output class="kout" id="kOut" for="kRange">8</output>
     </div>
-    <button class="btn" type="button" id="kPlay">▶ Показать по шагам</button>
+    <button class="btn" type="button" id="kPlay"></button>
   </div>
   <p class="note" id="splitNote"></p>
   <p class="note" id="cohNote" style="margin-top:4px;margin-bottom:12px"></p>
   <figure class="plate">
     <div id="clMap"></div>
-    <figcaption>Карта центрирована на Тихом океане, чтобы Берингия не разрывалась краем листа. Пустые кружки обозначают традиции, у которых записано меньше 15 мотивов: в кластеризацию они не входили. Форма значка различает кластеры одного цвета. Ctrl + колесо мыши или кнопки справа приближают карту.</figcaption>
+    <figcaption><span lang="en">The map is centred on the Pacific so that Beringia is not cut by the edge of the sheet. Hollow circles are traditions with fewer than 15 recorded motifs; they were left out of the clustering. Ctrl + mouse wheel or the buttons on the right zoom the map.</span><span lang="ru">Карта центрирована на Тихом океане, чтобы Берингия не разрывалась краем листа. Пустые кружки обозначают традиции, у которых записано меньше 15 мотивов: в кластеризацию они не входили. Ctrl + колесо мыши или кнопки справа приближают карту.</span></figcaption>
   </figure>
   <div class="row2">
     <figure class="plate">
       <div id="clUmap"></div>
-      <figcaption>Те же традиции в пространстве сходства: чем ближе точки, тем больше у традиций общих мотивов. Это проекция UMAP, сами оси ничего не значат.</figcaption>
+      <figcaption><span lang="en">The same traditions in similarity space: the closer two dots, the more motifs the traditions share. This is a UMAP projection; the axes themselves mean nothing.</span><span lang="ru">Те же традиции в пространстве сходства: чем ближе точки, тем больше у традиций общих мотивов. Это проекция UMAP, сами оси ничего не значат.</span></figcaption>
     </figure>
     <div class="panel">
-      <h3>Кластеры <span class="sub" id="clLegSub"></span></h3>
+      <h3><span lang="en">Clusters</span><span lang="ru">Кластеры</span> <span class="sub" id="clLegSub"></span></h3>
       <ul class="legend" id="clLegend"></ul>
       <div class="info" id="clInfo"></div>
     </div>
   </div>
   <div style="margin-top:22px">
-    <p class="prose"><b>Что видно по шагам.</b> Первым отделяется блок от Европы и Магриба до Индии и Монголии. Его выделяют приключенческие и сказочные мотивы: на космологию там приходится около 22% записанных мотивов, в остальном мире около 54%.</p>
-    <p class="prose">Латинская Америка и Африка обособляются раньше, чем Сибирь и Арктика отходят от Северной Америки: это происходит только на шестом шаге. Чукчи, коряки, ительмены и кереки до двенадцатого шага остаются в одном кластере с Аляской и эскимосами.</p>
-    <p class="prose">Древние письменные традиции (Шумер, Аккад, Угарит, Египет, Древняя Греция) попали в кластер юга и востока Азии. Космологических мотивов в них от 52 до 93%, а евразийский блок держится на сказочном слое.</p>
+    <p class="prose" lang="en"><b>What the steps show.</b> The first block to split off runs from Europe and the Maghreb to India and Mongolia. It is held together by adventure and fairy-tale motifs: cosmology makes up about 22% of the motifs recorded there, against about 54% in the rest of the world.</p>
+    <p class="prose" lang="en">Latin America and Africa separate before Siberia and the Arctic part from North America, which happens only at the sixth step. Chukchi, Koryak, Itelmen and Kerek stay in one cluster with Alaska and the Eskimo traditions up to the twelfth step.</p>
+    <p class="prose" lang="en">Ancient written traditions (Sumer, Akkad, Ugarit, Egypt, Ancient Greece) fall into the cluster of southern and eastern Asia. Cosmological motifs make up 52% to 93% of what is recorded for them, while the Eurasian block rests on its fairy-tale layer.</p>
+    <p class="prose" lang="ru"><b>Что видно по шагам.</b> Первым отделяется блок от Европы и Магриба до Индии и Монголии. Его выделяют приключенческие и сказочные мотивы: на космологию там приходится около 22% записанных мотивов, в остальном мире около 54%.</p>
+    <p class="prose" lang="ru">Латинская Америка и Африка обособляются раньше, чем Сибирь и Арктика отходят от Северной Америки: это происходит только на шестом шаге. Чукчи, коряки, ительмены и кереки до двенадцатого шага остаются в одном кластере с Аляской и эскимосами.</p>
+    <p class="prose" lang="ru">Древние письменные традиции (Шумер, Аккад, Угарит, Египет, Древняя Греция) попали в кластер юга и востока Азии. Космологических мотивов в них от 52 до 93%, а евразийский блок держится на сказочном слое.</p>
   </div>
 </section>
 
 <section id="complexes">
   <div class="sec-head">
-    <span class="sec-num">2 / комплексы мотивов</span>
-    <h2>Двенадцать наборов мотивов, которые встречаются вместе</h2>
-    <p class="lede">Матрица «традиция × мотив» разложена на 12 неотрицательных компонент (метод NMF). Компонента объединяет мотивы с общим ареалом и традиции, где этот набор выражен. Нажмите на мотив, чтобы открыть его карту в атласе.</p>
+    <span class="sec-num"><span lang="en">2 / motif complexes</span><span lang="ru">2 / комплексы мотивов</span></span>
+    <h2><span lang="en">Twelve sets of motifs that travel together</span><span lang="ru">Двенадцать наборов мотивов, которые встречаются вместе</span></h2>
+    <p class="lede"><span lang="en">The tradition-by-motif matrix is factorised into 12 non-negative components (NMF). A component groups motifs that share a range with the traditions where that set is present. Click a motif to open its map in the atlas.</span><span lang="ru">Матрица «традиция × мотив» разложена на 12 неотрицательных компонент (метод NMF). Компонента объединяет мотивы с общим ареалом и традиции, где этот набор выражен. Нажмите на мотив, чтобы открыть его карту в атласе.</span></p>
   </div>
   <div class="hleg">
-    <span class="scale"><span>набор выражен слабее</span><span class="steps" id="nmfScale"></span><span>сильнее</span></span>
-    <span>Размер точки растёт вместе с весом. Традиции с весом меньше 5% от максимума не показаны.</span>
+    <span class="scale"><span lang="en">set is weaker</span><span lang="ru">набор выражен слабее</span><span class="steps" id="nmfScale"></span><span lang="en">stronger</span><span lang="ru">сильнее</span></span>
+    <span><span lang="en">Dot size grows with the weight. Traditions with a weight below 5% of the maximum are not shown.</span><span lang="ru">Размер точки растёт вместе с весом. Традиции с весом меньше 5% от максимума не показаны.</span></span>
   </div>
   <div class="grid3" id="nmfGrid"></div>
-  <p class="fine" style="margin-top:12px">В шести запусках со случайной инициализацией от 10 до 12 компонент из 12 воспроизвелись почти точно (косинус с основным решением не ниже 0,95). Названия компонент даны по региону, где набор выражен сильнее всего.</p>
+  <p class="fine" style="margin-top:12px"><span lang="en">In six runs from random starting points, 10 to 12 of the 12 components were reproduced almost exactly (cosine with the main solution of at least 0.95). Components are named after the region where the set is strongest.</span><span lang="ru">В шести запусках со случайной инициализацией от 10 до 12 компонент из 12 воспроизвелись почти точно (косинус с основным решением не ниже 0,95). Названия компонент даны по региону, где набор выражен сильнее всего.</span></p>
 </section>
 
 <section id="axes">
   <div class="sec-head">
-    <span class="sec-num">3 / главные оси</span>
-    <h2>У космологических мотивов вторая ось делит мир на север и юг</h2>
-    <p class="lede">Метод главных компонент ищет направления, вдоль которых традиции различаются сильнее всего. Космологические и этиологические мотивы (разделы A–I каталога) и приключенческие с трикстерскими (J–N) посчитаны отдельно. Цвет показывает положение традиции на выбранной оси.</p>
+    <span class="sec-num"><span lang="en">3 / principal axes</span><span lang="ru">3 / главные оси</span></span>
+    <h2><span lang="en">For cosmological motifs, the second axis divides the world into north and south</span><span lang="ru">У космологических мотивов вторая ось делит мир на север и юг</span></h2>
+    <p class="lede"><span lang="en">Principal component analysis looks for the directions along which traditions differ most. Cosmological and etiological motifs (catalogue sections A–I) and adventure and trickster motifs (J–N) are analysed separately. Colour shows where a tradition sits on the chosen axis.</span><span lang="ru">Метод главных компонент ищет направления, вдоль которых традиции различаются сильнее всего. Космологические и этиологические мотивы (разделы A–I каталога) и приключенческие с трикстерскими (J–N) посчитаны отдельно. Цвет показывает положение традиции на выбранной оси.</span></p>
   </div>
   <div class="controls">
-    <div class="ctl"><span class="lab" id="axSetLab">Мотивы</span>
+    <div class="ctl"><span class="lab" id="axSetLab"><span lang="en">Motifs</span><span lang="ru">Мотивы</span></span>
       <div class="seg" role="group" aria-labelledby="axSetLab" id="axSet">
-        <button type="button" data-v="A" aria-pressed="true">Космология и этиология (A–I)</button>
-        <button type="button" data-v="B" aria-pressed="false">Приключения и трикстеры (J–N)</button>
+        <button type="button" data-v="A" aria-pressed="true"><span lang="en">Cosmology and etiology (A–I)</span><span lang="ru">Космология и этиология (A–I)</span></button>
+        <button type="button" data-v="B" aria-pressed="false"><span lang="en">Adventure and tricksters (J–N)</span><span lang="ru">Приключения и трикстеры (J–N)</span></button>
       </div>
     </div>
-    <div class="ctl"><span class="lab" id="axNumLab">Ось</span>
+    <div class="ctl"><span class="lab" id="axNumLab"><span lang="en">Axis</span><span lang="ru">Ось</span></span>
       <div class="seg" role="group" aria-labelledby="axNumLab" id="axNum">
         <button type="button" data-v="0" aria-pressed="false">1</button>
         <button type="button" data-v="1" aria-pressed="true">2</button>
@@ -112,58 +126,60 @@
     <div class="pole" id="axNeg"></div>
     <div class="pole" id="axPos"></div>
   </div>
-  <p class="fine" style="margin-top:14px;max-width:92ch">Каждая ось объясняет от 1,4 до 5,2% разброса. Для разреженных данных вида «мотив есть или нет» это обычный порядок величины, поэтому оси показывают тенденции, жёстких границ за ними нет.</p>
+  <p class="fine" style="margin-top:14px;max-width:92ch"><span lang="en">Each axis explains between 1.4% and 5.2% of the variance. That is the usual order of magnitude for sparse presence-or-absence data, so the axes show tendencies; there are no sharp boundaries behind them.</span><span lang="ru">Каждая ось объясняет от 1,4 до 5,2% разброса. Для разреженных данных вида «мотив есть или нет» это обычный порядок величины, поэтому оси показывают тенденции, жёстких границ за ними нет.</span></p>
 </section>
 
 <section id="relatives">
   <div class="sec-head">
-    <span class="sec-num">4 / сходство и расстояние</span>
-    <h2>Сходство падает с расстоянием, а у космологических мотивов снова растёт у антиподов</h2>
-    <p class="lede">Нажмите на любую традицию на карте. Остальные окрасятся по сходству с ней. Сходство считается по общим мотивам, редкие мотивы весят больше частых.</p>
+    <span class="sec-num"><span lang="en">4 / similarity and distance</span><span lang="ru">4 / сходство и расстояние</span></span>
+    <h2><span lang="en">Similarity falls with distance, and for cosmological motifs it rises again at the antipodes</span><span lang="ru">Сходство падает с расстоянием, а у космологических мотивов снова растёт у антиподов</span></h2>
+    <p class="lede"><span lang="en">Click any tradition on the map. The others are coloured by their similarity to it. Similarity is computed from shared motifs, with rare motifs weighing more than common ones.</span><span lang="ru">Нажмите на любую традицию на карте. Остальные окрасятся по сходству с ней. Сходство считается по общим мотивам, редкие мотивы весят больше частых.</span></p>
   </div>
   <div class="controls">
-    <div class="ctl"><span class="lab" id="relSetLab">Мотивы</span>
+    <div class="ctl"><span class="lab" id="relSetLab"><span lang="en">Motifs</span><span lang="ru">Мотивы</span></span>
       <div class="seg" role="group" aria-labelledby="relSetLab" id="relSet">
-        <button type="button" data-v="all" aria-pressed="true">Все</button>
-        <button type="button" data-v="A" aria-pressed="false">Космология (A–I)</button>
-        <button type="button" data-v="B" aria-pressed="false">Приключения и трикстеры (J–N)</button>
+        <button type="button" data-v="all" aria-pressed="true"><span lang="en">All</span><span lang="ru">Все</span></button>
+        <button type="button" data-v="A" aria-pressed="false"><span lang="en">Cosmology (A–I)</span><span lang="ru">Космология (A–I)</span></button>
+        <button type="button" data-v="B" aria-pressed="false"><span lang="en">Adventure and tricksters (J–N)</span><span lang="ru">Приключения и трикстеры (J–N)</span></button>
       </div>
     </div>
-    <div class="ctl"><label for="relSearch">Традиция</label>
-      <input type="search" id="relSearch" list="relNames" placeholder="Начните вводить название" autocomplete="off">
+    <div class="ctl"><label for="relSearch"><span lang="en">Tradition</span><span lang="ru">Традиция</span></label>
+      <input type="search" id="relSearch" list="relNames" data-t-ph="relPh" autocomplete="off">
       <datalist id="relNames"></datalist>
     </div>
   </div>
   <p class="note" id="relNote" style="margin-bottom:12px"></p>
   <figure class="plate">
     <div class="hleg" style="padding:2px 4px 0">
-      <span class="scale"><span>сходство</span><span class="steps" id="relScale"></span></span>
-      <span class="it"><svg class="sw" viewBox="-8 -8 16 16"><circle r="5" class="mk foc"></circle></svg>выбранная традиция</span>
-      <span class="it"><svg class="sw" viewBox="-8 -8 16 16"><circle r="4" class="mk low"></circle></svg>меньше 10 мотивов этой группы</span>
+      <span class="scale"><span lang="en">similarity</span><span lang="ru">сходство</span><span class="steps" id="relScale"></span></span>
+      <span class="it"><svg class="sw" viewBox="-8 -8 16 16" aria-hidden="true"><circle r="5" class="mk foc"></circle></svg><span lang="en">selected tradition</span><span lang="ru">выбранная традиция</span></span>
+      <span class="it"><svg class="sw" viewBox="-8 -8 16 16" aria-hidden="true"><circle r="4" class="mk low"></circle></svg><span lang="en">fewer than 10 motifs of this group</span><span lang="ru">меньше 10 мотивов этой группы</span></span>
     </div>
     <div id="relMap"></div>
   </figure>
   <div class="row2 even">
     <figure class="plate">
-      <div class="hleg" style="padding:2px 4px 0"><span class="it"><span class="lk"></span>среднее сходство всех пар традиций на таком расстоянии</span></div>
+      <div class="hleg" style="padding:2px 4px 0"><span class="it"><span class="lk"></span><span lang="en">mean similarity of all pairs of traditions at that distance</span><span lang="ru">среднее сходство всех пар традиций на таком расстоянии</span></span></div>
       <div id="relScatter"></div>
-      <figcaption>Точка показывает одну традицию: расстояние до выбранной и сходство с ней. Точки высоко над линией означают родство сильнее, чем обещает география.</figcaption>
+      <figcaption><span lang="en">Each dot is one tradition: its distance from the selected one and its similarity to it. Dots high above the line are closer kin than geography would predict.</span><span lang="ru">Точка показывает одну традицию: расстояние до выбранной и сходство с ней. Точки высоко над линией означают родство сильнее, чем обещает география.</span></figcaption>
     </figure>
     <div class="panel">
-      <h3>Самые похожие традиции <span class="sub">сходство, расстояние</span></h3>
+      <h3><span lang="en">Most similar traditions</span><span lang="ru">Самые похожие традиции</span> <span class="sub"><span lang="en">similarity, distance</span><span lang="ru">сходство, расстояние</span></span></h3>
       <ol class="rlist" id="relList"></ol>
     </div>
   </div>
   <div class="row2 even" style="margin-top:26px">
    <div>
-    <p class="prose"><b>Что получается в среднем.</b> По всем парам традиций сходство падает с 0,22 у соседей ближе 250 км до 0,024 на расстоянии 12–14 тысяч км. Из пяти самых похожих традиций 82% находятся не дальше 2 000 км, для случайной пары эта доля 7%.</p>
-    <p class="prose">У приключенческих мотивов после 12 тысяч км кривая выходит на плато. У космологических она поднимается: 0,040 на 16–20 тысячах км против 0,032 на 10–14 тысячах (95%-й бутстреп-интервал разницы от 0,005 до 0,011). Больше половины самых дальних пар связывают юг и восток Азии с Южной Америкой, и их космологическое сходство (0,044) примерно вдвое выше, чем у более близких пар «запад Евразии и Южная Америка» (0,020–0,024).</p>
+    <p class="prose" lang="en"><b>On average.</b> Across all pairs of traditions, similarity falls from 0.22 for neighbours within 250 km to 0.024 at 12–14 thousand km. Of each tradition’s five most similar traditions, 82% lie within 2,000 km; for a random pair the figure is 7%.</p>
+    <p class="prose" lang="en">For adventure motifs the curve flattens out beyond 12 thousand km. For cosmological motifs it rises: 0.040 at 16–20 thousand km against 0.032 at 10–14 thousand (95% bootstrap interval of the difference: 0.005 to 0.011). More than half of the most distant pairs link southern and eastern Asia with South America, and their cosmological similarity (0.044) is about twice that of the nearer pairs linking western Eurasia with South America (0.020–0.024).</p>
+    <p class="prose" lang="ru"><b>Что получается в среднем.</b> По всем парам традиций сходство падает с 0,22 у соседей ближе 250 км до 0,024 на расстоянии 12–14 тысяч км. Из пяти самых похожих традиций 82% находятся не дальше 2 000 км, для случайной пары эта доля 7%.</p>
+    <p class="prose" lang="ru">У приключенческих мотивов после 12 тысяч км кривая выходит на плато. У космологических она поднимается: 0,040 на 16–20 тысячах км против 0,032 на 10–14 тысячах (95%-й бутстреп-интервал разницы от 0,005 до 0,011). Больше половины самых дальних пар связывают юг и восток Азии с Южной Америкой, и их космологическое сходство (0,044) примерно вдвое выше, чем у более близких пар «запад Евразии и Южная Америка» (0,020–0,024).</p>
    </div>
    <figure class="plate">
      <div class="hleg" id="decayLegend" style="padding:2px 4px 0"></div>
      <div id="decayPlot"></div>
-     <figcaption>Среднее сходство всех пар традиций по интервалам расстояния. Вертикальная шкала логарифмическая, чтобы был виден дальний конец кривых.
-       <details><summary>Таблица значений</summary><div id="decayTable"></div></details>
+     <figcaption><span lang="en">Mean similarity of all pairs of traditions by distance band. The vertical scale is logarithmic so that the far end of the curves is visible.</span><span lang="ru">Среднее сходство всех пар традиций по интервалам расстояния. Вертикальная шкала логарифмическая, чтобы был виден дальний конец кривых.</span>
+       <details><summary><span lang="en">Table of values</span><span lang="ru">Таблица значений</span></summary><div id="decayTable"></div></details>
      </figcaption>
    </figure>
   </div>
@@ -171,16 +187,16 @@
 
 <section id="motifs">
   <div class="sec-head">
-    <span class="sec-num">5 / атлас мотивов</span>
-    <h2>Карта любого мотива и его соседи по ареалу</h2>
-    <p class="lede">Каждая точка слева обозначает мотив. Чем ближе точки, тем больше совпадают ареалы мотивов. Цвет показывает, в какой из трёх больших областей мотив записан заметно чаще. Выберите точку или найдите мотив по коду или слову из названия.</p>
+    <span class="sec-num"><span lang="en">5 / motif atlas</span><span lang="ru">5 / атлас мотивов</span></span>
+    <h2><span lang="en">A map of any motif and its neighbours by range</span><span lang="ru">Карта любого мотива и его соседи по ареалу</span></h2>
+    <p class="lede"><span lang="en">Each dot on the left is a motif. The closer two dots, the more their ranges coincide. Colour shows in which of three macro-areas a motif is recorded markedly more often. Pick a dot, or search for a motif by its code or a word from its title.</span><span lang="ru">Каждая точка слева обозначает мотив. Чем ближе точки, тем больше совпадают ареалы мотивов. Цвет показывает, в какой из трёх больших областей мотив записан заметно чаще. Выберите точку или найдите мотив по коду или слову из названия.</span></p>
   </div>
   <div class="controls">
-    <div class="ctl"><label for="moSearch">Мотив</label>
-      <input type="search" id="moSearch" placeholder="Код или слово: a36, moon, trickster" autocomplete="off">
+    <div class="ctl"><label for="moSearch"><span lang="en">Motif</span><span lang="ru">Мотив</span></label>
+      <input type="search" id="moSearch" data-t-ph="moPh" autocomplete="off">
     </div>
   </div>
-  <div class="results" id="moResults" role="listbox" aria-label="Найденные мотивы"></div>
+  <div class="results" id="moResults" role="listbox" data-t-aria="moFound"></div>
   <div class="mcard" id="moHead"></div>
   <div class="row2 atlas">
     <figure class="plate">
@@ -200,37 +216,51 @@
 
 <section id="method">
   <div class="sec-head">
-    <span class="sec-num">6 / метод и оговорки</span>
-    <h2>Как это посчитано и чему здесь не стоит верить на слово</h2>
+    <span class="sec-num"><span lang="en">6 / method and caveats</span><span lang="ru">6 / метод и оговорки</span></span>
+    <h2><span lang="en">How this was computed, and what not to take on trust</span><span lang="ru">Как это посчитано и чему здесь не стоит верить на слово</span></h2>
   </div>
   <div class="method">
     <div>
-      <h3>Данные</h3>
+      <h3><span lang="en">Data</span><span lang="ru">Данные</span></h3>
       <ul>
-        <li>Версия каталога из репликационного пакета Michalopoulos и Xue (2021, лицензия CC0), очищенная в блоге Two Points (2023): 923 традиции, 2 563 мотива с хотя бы одной традицией. Координаты взяты из более старой версии каталога.</li>
-        <li>Восемь кодов мотивов в файле пар оканчивались на знак подчёркивания, они приведены к кодам из справочника.</li>
-        <li>В кластеры и компоненты вошла 831 традиция с 15 и более мотивами и 2 423 мотива, записанные хотя бы у пяти из них.</li>
-        <li>Названия мотивов и традиций оставлены на английском, как в файле.</li>
+        <li lang="en">The catalogue as distributed in the replication package of Michalopoulos and Xue (2021, CC0 licence) and cleaned by the Two Points blog (2023): 923 traditions and 2,563 motifs recorded in at least one tradition. Coordinates come from an older version of the catalogue.</li>
+        <li lang="en">Eight motif codes in the pairs file ended with an underscore; they were mapped to the codes in the motif list.</li>
+        <li lang="en">Clusters and complexes use the 831 traditions with 15 or more motifs and the 2,423 motifs recorded in at least five of them.</li>
+        <li lang="en">Motif and tradition names are given in English, as in the source files.</li>
+        <li lang="ru">Версия каталога из репликационного пакета Michalopoulos и Xue (2021, лицензия CC0), очищенная в блоге Two Points (2023): 923 традиции, 2 563 мотива с хотя бы одной традицией. Координаты взяты из более старой версии каталога.</li>
+        <li lang="ru">Восемь кодов мотивов в файле пар оканчивались на знак подчёркивания, они приведены к кодам из справочника.</li>
+        <li lang="ru">В кластеры и компоненты вошла 831 традиция с 15 и более мотивами и 2 423 мотива, записанные хотя бы у пяти из них.</li>
+        <li lang="ru">Названия мотивов и традиций оставлены на английском, как в исходных файлах.</li>
       </ul>
     </div>
     <div>
-      <h3>Расчёты</h3>
+      <h3><span lang="en">Calculations</span><span lang="ru">Расчёты</span></h3>
       <ul>
-        <li>Вес мотива равен ln(N / число традиций с мотивом). Строки нормированы, сходство считается как косинус.</li>
-        <li>Кластеры: 30 скрытых измерений (LSA), затем метод Уорда. При случайной перевыборке мотивов разбиения совпадают с исходным на 0,59–0,81 по скорректированному индексу Рэнда.</li>
-        <li>Комплексы: неотрицательное матричное разложение на 12 компонент.</li>
-        <li>Оси: главные компоненты, отдельно для разделов A–I (698 традиций, 764 мотива) и J–N (640 традиций, 1 110 мотивов).</li>
-        <li>Расстояние считается по дуге большого круга, пути миграций не учитываются.</li>
+        <li lang="en">A motif’s weight is ln(N / number of traditions with the motif). Rows are normalised and similarity is the cosine.</li>
+        <li lang="en">Clusters: 30 latent dimensions (LSA), then Ward’s method. When motifs are resampled at random, the partitions agree with the original at 0.59–0.81 on the adjusted Rand index.</li>
+        <li lang="en">Complexes: non-negative matrix factorisation into 12 components.</li>
+        <li lang="en">Axes: principal components, separately for sections A–I (698 traditions, 764 motifs) and J–N (640 traditions, 1,110 motifs).</li>
+        <li lang="en">Distance is measured along the great circle; migration routes are not taken into account.</li>
+        <li lang="ru">Вес мотива равен ln(N / число традиций с мотивом). Строки нормированы, сходство считается как косинус.</li>
+        <li lang="ru">Кластеры: 30 скрытых измерений (LSA), затем метод Уорда. При случайной перевыборке мотивов разбиения совпадают с исходным на 0,59–0,81 по скорректированному индексу Рэнда.</li>
+        <li lang="ru">Комплексы: неотрицательное матричное разложение на 12 компонент.</li>
+        <li lang="ru">Оси: главные компоненты, отдельно для разделов A–I (698 традиций, 764 мотива) и J–N (640 традиций, 1 110 мотивов).</li>
+        <li lang="ru">Расстояние считается по дуге большого круга, пути миграций не учитываются.</li>
       </ul>
     </div>
     <div>
-      <h3>Оговорки</h3>
+      <h3><span lang="en">Caveats</span><span lang="ru">Оговорки</span></h3>
       <ul>
-        <li>Изученность неравномерна: от 2 до 598 мотивов на традицию. Отсутствие мотива может значить, что его не записали.</li>
-        <li>Жанровый состав разный: в Европе космологических мотивов около 20%, в Мезоамерике около 72%. Часть различий между кластерами отражает то, что именно записывали.</li>
-        <li>Границы кластеров зависят от меры сходства и метода. Соседние кластеры перетекают друг в друга, а несколько традиций попали в кластер другого континента.</li>
-        <li>Названия кластеров и компонент даны по их составу при подготовке этой страницы. В каталоге таких единиц нет.</li>
-        <li>Ось «север и юг» близка к противопоставлению континентально-евразийского и индо-тихоокеанского комплексов у Берёзкина, но получена другим способом и на другой версии данных.</li>
+        <li lang="en">Coverage is uneven: from 2 to 598 motifs per tradition. A missing motif may simply not have been recorded.</li>
+        <li lang="en">The genre mix differs: cosmological motifs make up about 20% of the record in Europe and about 72% in Mesoamerica. Part of the difference between clusters reflects what collectors wrote down.</li>
+        <li lang="en">Cluster boundaries depend on the similarity measure and the method. Neighbouring clusters shade into each other, and a few traditions land in a cluster centred on another continent.</li>
+        <li lang="en">Cluster and component names were given by their membership while preparing this page. The catalogue has no such units.</li>
+        <li lang="en">The north–south axis is close to the contrast between the Continental Eurasian and Indo-Pacific complexes described by Berezkin, but it was obtained by a different method on a different version of the data.</li>
+        <li lang="ru">Изученность неравномерна: от 2 до 598 мотивов на традицию. Отсутствие мотива может значить, что его не записали.</li>
+        <li lang="ru">Жанровый состав разный: в Европе космологических мотивов около 20%, в Мезоамерике около 72%. Часть различий между кластерами отражает то, что именно записывали.</li>
+        <li lang="ru">Границы кластеров зависят от меры сходства и метода. Соседние кластеры перетекают друг в друга, а несколько традиций попали в кластер другого континента.</li>
+        <li lang="ru">Названия кластеров и компонент даны по их составу при подготовке этой страницы. В каталоге таких единиц нет.</li>
+        <li lang="ru">Ось «север и юг» близка к противопоставлению континентально-евразийского и индо-тихоокеанского комплексов у Берёзкина, но получена другим способом и на другой версии данных.</li>
       </ul>
     </div>
   </div>
@@ -239,11 +269,12 @@
 </main>
 
 <footer class="wrap">
-  Источники: <a href="https://www.ruthenia.ru/folklore/berezkin/">каталог Ю. Е. Берёзкина и Е. Н. Дувакина</a> ·
-  <a href="https://twopoints.blog/posts/2023-04-22-the-tales-we-tell/">очищенные данные, Two Points</a> ·
+  <span lang="en">Sources:</span><span lang="ru">Источники:</span>
+  <a href="https://www.ruthenia.ru/folklore/berezkin/"><span lang="en">the catalogue of Yu. E. Berezkin and E. N. Duvakin</span><span lang="ru">каталог Ю. Е. Берёзкина и Е. Н. Дувакина</span></a> ·
+  <a href="https://twopoints.blog/posts/2023-04-22-the-tales-we-tell/"><span lang="en">cleaned data, Two Points</span><span lang="ru">очищенные данные, Two Points</span></a> ·
   <a href="https://doi.org/10.1093/qje/qjab003">Michalopoulos, Xue (2021)</a> ·
   <a href="https://doi.org/10.35562/iris.2020">Berezkin, Sky-Maiden and World Mythology (2021)</a><br>
-  Данные, производные таблицы и код: <a href="https://github.com/Goananda/berezkin-motif-areas">github.com/Goananda/berezkin-motif-areas</a>
+  <span lang="en">Data, derived tables and code:</span><span lang="ru">Данные, производные таблицы и код:</span> <a href="https://github.com/Goananda/comparanda">github.com/Goananda/comparanda</a>
 </footer>
 
 <div id="tip" hidden></div>

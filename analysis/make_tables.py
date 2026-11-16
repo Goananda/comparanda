@@ -15,40 +15,6 @@ D = json.load(open(f'{work}/data.json', encoding='utf-8'))
 nodes = D['nodes']; kept = D['kept']
 isA = np.isin(M.letter.values, list('abcdefghi'))
 
-EN = {
-    'Все традиции': 'All traditions',
-    'Евразия от Европы до Индии и Монголии, Магриб': 'Eurasia from Europe to India and Mongolia, Maghreb',
-    'Остальной мир': 'Rest of the world',
-    'Африка, юг и восток Азии, Австралия, Океания': 'Africa, South and East Asia, Australia, Oceania',
-    'Америка, Сибирь и Арктика': 'Americas, Siberia and the Arctic',
-    'Мезоамерика и Южная Америка': 'Mesoamerica and South America',
-    'Северная Америка, Сибирь и Арктика': 'North America, Siberia and the Arctic',
-    'Африка южнее Сахары': 'Sub-Saharan Africa',
-    'Юг и восток Азии, Австралия, Океания': 'South and East Asia, Australia, Oceania',
-    'Сибирь, Берингия и Арктика': 'Siberia, Beringia and the Arctic',
-    'Северная Америка южнее Субарктики': 'North America south of the Subarctic',
-    'Мезоамерика': 'Mesoamerica',
-    'Южная Америка': 'South America',
-    'Океания': 'Oceania',
-    'Юг и восток Азии, Австралия': 'South and East Asia, Australia',
-    'Равнины и восток Северной Америки': 'Plains and eastern North America',
-    'Запад Северной Америки': 'Western North America',
-    'Европа': 'Europe',
-    'Магриб, Балканы, Кавказ, Центральная и Южная Азия': 'Maghreb, Balkans, Caucasus, Central and South Asia',
-    'Сибирь и Приамурье': 'Siberia and the Amur region',
-    'Берингия и Арктика: от Камчатки до Гренландии': 'Beringia and the Arctic, Kamchatka to Greenland',
-    'Северо-Западное побережье и Плато': 'Northwest Coast and Plateau',
-    'Калифорния, Большой Бассейн, Юго-Запад': 'California, Great Basin, Southwest',
-    # NMF components
-    'Передняя и Центральная Азия, Кавказ': 'Western and Central Asia, Caucasus',
-    'Юго-Восточная Азия и Южный Китай': 'Southeast Asia and South China',
-    'Сибирь': 'Siberia',
-    'Эскимосская Арктика': 'Eskimo (Inuit and Yupik) Arctic',
-    'Северо-Западное побережье и Субарктика': 'Northwest Coast and Subarctic',
-    'Большой Бассейн, Калифорния, Плато': 'Great Basin, California, Plateau',
-    'Равнины и Великие озёра': 'Plains and Great Lakes',
-    'Амазония и Гвиана': 'Amazonia and the Guianas',
-}
 mid = lambda j: M.motif_id[j]
 gname = lambda g: G.group[g]
 
@@ -75,7 +41,7 @@ T.to_csv(f'{out}/traditions.csv', index=False)
 # ---- clusters and long membership
 rows = []
 for n in nodes[1:]:
-    rows.append({'cluster_id': n['id'], 'name_ru': n['name'], 'name_en': EN[n['name']], 'created_at_k': n['k'], 'parent_id': n['parent'],
+    rows.append({'cluster_id': n['id'], 'name_ru': n['name'], 'name_en': n['name_en'], 'created_at_k': n['k'], 'parent_id': n['parent'],
                  'n_traditions': n['n'], 'median_share_cosmology': n['shareA'],
                  'indicator_motifs': '; '.join(f"{mid(j)} ({a:.2f}/{b:.2f})" for j, a, b in n['ind']),
                  'core_traditions': '; '.join(gname(g) for g in n['core'])})
@@ -83,13 +49,13 @@ pd.DataFrame(rows).to_csv(f'{out}/clusters.csv', index=False)
 rows = []
 for k in range(2, 13):
     for g, c in zip(kept, D['labels'][str(k)]):
-        rows.append({'tradition': gname(g), 'k': k, 'cluster_id': c, 'cluster_name_ru': nodes[c]['name'], 'cluster_name_en': EN[nodes[c]['name']]})
+        rows.append({'tradition': gname(g), 'k': k, 'cluster_id': c, 'cluster_name_ru': nodes[c]['name'], 'cluster_name_en': nodes[c]['name_en']})
 pd.DataFrame(rows).to_csv(f'{out}/cluster_membership.csv', index=False)
 
 # ---- motif summary
 S = pd.DataFrame({'motif_id': M.motif_id, 'title': M.title, 'section': M.letter.str.upper(),
                   'category': np.where(isA, 'cosmology_etiology', 'adventure_trickster'), 'n_traditions': X.sum(0)})
-A = D['atlas']; am = A['m']; regs = [EN[nodes[i]['name']] for i in A['regs']]
+A = D['atlas']; am = A['m']; regs = [nodes[i]['name_en'] for i in A['regs']]
 S['in_analysis'] = 0; S.loc[am, 'in_analysis'] = 1
 xy = np.array(A['xy']); sh = np.array(A['share'])
 for i, c in enumerate(['atlas_x', 'atlas_y']):
@@ -102,7 +68,7 @@ S.to_csv(f'{out}/motif_summary.csv', index=False)
 # ---- NMF components
 rows = []
 for i, c in enumerate(D['nmf'], 1):
-    rows.append({'component': f'nmf_{i:02d}', 'name_ru': c['name'], 'name_en': EN[c['name']], 'n_traditions_weight_ge_15': c['active'],
+    rows.append({'component': f'nmf_{i:02d}', 'name_ru': c['name'], 'name_en': c['name_en'], 'n_traditions_weight_ge_15': c['active'],
                  'top_motifs': '; '.join(f"{mid(j)} {M.title[j]}" for j in c['motifs']), 'top_traditions': '; '.join(gname(g) for g in c['trad'])})
 pd.DataFrame(rows).to_csv(f'{out}/nmf_components.csv', index=False)
 

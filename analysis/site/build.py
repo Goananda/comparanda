@@ -13,11 +13,15 @@ data = esc(json.dumps(D, ensure_ascii=False, separators=(',', ':')))
 geo = esc(json.dumps(json.load(open(geo_path, encoding='utf-8')), ensure_ascii=False, separators=(',', ':')))
 assert '</script' not in js.lower()
 html = f'''<!DOCTYPE html>
-<html lang="ru">
+<html lang="en">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Ареалы мотивов Берёзкина</title>
+<title>Comparanda</title>
+<meta name="description" content="Comparanda: myths remember geography. An interactive atlas of 2,563 folklore and mythology motifs across 923 traditions, based on the Berezkin and Duvakin catalogue.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Comparanda: myths remember geography">
+<meta property="og:description" content="Group the world's traditions by their folklore motifs alone and the map redraws itself. Clusters, motif complexes, principal axes, similarity against distance, and a motif atlas.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Golos+Text:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&family=Old+Standard+TT:wght@400&display=swap" rel="stylesheet">

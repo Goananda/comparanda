@@ -23,42 +23,44 @@ D['m'] = {'id': M.motif_id.tolist(), 'title': M.title.tolist(), 'desc': M.descri
 D['inc'] = [np.where(X[:, j] > 0)[0].tolist() for j in range(X.shape[1])]
 D['kept'] = kidx.tolist()
 # ---------- hierarchy nodes
-NAMES = {(2,161): 'Евразия от Европы до Индии и Монголии, Магриб', (2,670): 'Остальной мир',
- (3,268): 'Африка, юг и восток Азии, Австралия, Океания', (3,402): 'Америка, Сибирь и Арктика',
- (4,174): 'Мезоамерика и Южная Америка', (4,228): 'Северная Америка, Сибирь и Арктика',
- (5,101): 'Африка южнее Сахары', (5,167): 'Юг и восток Азии, Австралия, Океания',
- (6,75): 'Сибирь, Берингия и Арктика', (6,153): 'Северная Америка южнее Субарктики',
- (7,34): 'Мезоамерика', (7,140): 'Южная Америка',
- (8,43): 'Океания', (8,124): 'Юг и восток Азии, Австралия',
- (9,62): 'Равнины и восток Северной Америки', (9,91): 'Запад Северной Америки',
- (10,43): 'Европа', (10,118): 'Магриб, Балканы, Кавказ, Центральная и Южная Азия',
- (11,30): 'Сибирь и Приамурье', (11,45): 'Берингия и Арктика: от Камчатки до Гренландии',
- (12,41): 'Северо-Западное побережье и Плато', (12,50): 'Калифорния, Большой Бассейн, Юго-Запад'}
-# style: hue family 0..7 = [WE, AF, SA, OC, SI, NA, MA, SAm]; shape 0 circle, 1 diamond, 2 triangle
-STYLE = {(2,161): (0,0), (2,670): (2,0), (3,268): (2,0), (3,402): (4,0), (4,174): (7,0), (4,228): (4,0), (5,101): (1,0), (5,167): (2,0),
- (6,75): (4,0), (6,153): (5,0), (7,34): (6,0), (7,140): (7,0), (8,43): (3,0), (8,124): (2,0), (9,62): (5,1), (9,91): (5,0),
- (10,43): (0,1), (10,118): (0,0), (11,30): (4,1), (11,45): (4,0), (12,41): (5,2), (12,50): (5,0)}
-SHORT = {'Евразия от Европы до Индии и Монголии, Магриб': 'Запад и центр Евразии', 'Остальной мир': 'Остальной мир',
- 'Африка, юг и восток Азии, Австралия, Океания': 'Африка, юг Азии, Океания', 'Америка, Сибирь и Арктика': 'Америка и Сибирь',
- 'Мезоамерика и Южная Америка': 'Латинская Америка', 'Северная Америка, Сибирь и Арктика': 'Северная Америка и Сибирь',
- 'Африка южнее Сахары': 'Африка', 'Юг и восток Азии, Австралия, Океания': 'Юг Азии и Океания',
- 'Сибирь, Берингия и Арктика': 'Сибирь и Арктика', 'Северная Америка южнее Субарктики': 'Северная Америка',
- 'Мезоамерика': 'Мезоамерика', 'Южная Америка': 'Южная Америка', 'Океания': 'Океания', 'Юг и восток Азии, Австралия': 'Юг и восток Азии',
- 'Равнины и восток Северной Америки': 'Равнины и восток', 'Запад Северной Америки': 'Запад Северной Америки',
- 'Европа': 'Европа', 'Магриб, Балканы, Кавказ, Центральная и Южная Азия': 'От Магриба до Монголии',
- 'Сибирь и Приамурье': 'Сибирь', 'Берингия и Арктика: от Камчатки до Гренландии': 'Берингия и Арктика',
- 'Северо-Западное побережье и Плато': 'Северо-Запад', 'Калифорния, Большой Бассейн, Юго-Запад': 'Калифорния и Юго-Запад', 'Все традиции': 'Все'}
+# Hand-given names (by membership), keyed by (step at which the cluster appears, its size).
+# Each entry: Russian name, English name, short Russian label, short English label, colour slot 0-11.
+# A cluster keeps the colour of its larger child, so colours stay put while the slider moves.
+NAMES = {
+ (2,161): ('Евразия от Европы до Индии и Монголии, Магриб', 'Eurasia from Europe to India and Mongolia, Maghreb', 'Запад и центр Евразии', 'West & Central Eurasia', 1),
+ (2,670): ('Остальной мир', 'Rest of the world', 'Остальной мир', 'Rest of the world', 3),
+ (3,268): ('Африка, юг и восток Азии, Австралия, Океания', 'Africa, South and East Asia, Australia, Oceania', 'Африка, юг Азии, Океания', 'Africa, S Asia, Oceania', 3),
+ (3,402): ('Америка, Сибирь и Арктика', 'Americas, Siberia and the Arctic', 'Америка и Сибирь', 'Americas & Siberia', 6),
+ (4,174): ('Мезоамерика и Южная Америка', 'Mesoamerica and South America', 'Латинская Америка', 'Latin America', 11),
+ (4,228): ('Северная Америка, Сибирь и Арктика', 'North America, Siberia and the Arctic', 'Северная Америка и Сибирь', 'N America & Siberia', 6),
+ (5,101): ('Африка южнее Сахары', 'Sub-Saharan Africa', 'Африка', 'Africa', 2),
+ (5,167): ('Юг и восток Азии, Австралия, Океания', 'South and East Asia, Australia, Oceania', 'Юг Азии и Океания', 'S Asia & Oceania', 3),
+ (6,75): ('Сибирь, Берингия и Арктика', 'Siberia, Beringia and the Arctic', 'Сибирь и Арктика', 'Siberia & Arctic', 6),
+ (6,153): ('Северная Америка южнее Субарктики', 'North America south of the Subarctic', 'Северная Америка', 'North America', 8),
+ (7,34): ('Мезоамерика', 'Mesoamerica', 'Мезоамерика', 'Mesoamerica', 10),
+ (7,140): ('Южная Америка', 'South America', 'Южная Америка', 'South America', 11),
+ (8,43): ('Океания', 'Oceania', 'Океания', 'Oceania', 4),
+ (8,124): ('Юг и восток Азии, Австралия', 'South and East Asia, Australia', 'Юг и восток Азии', 'S & E Asia', 3),
+ (9,62): ('Равнины и восток Северной Америки', 'Plains and eastern North America', 'Равнины и восток', 'Plains & East', 9),
+ (9,91): ('Запад Северной Америки', 'Western North America', 'Запад Северной Америки', 'Western N America', 8),
+ (10,43): ('Европа', 'Europe', 'Европа', 'Europe', 0),
+ (10,118): ('Магриб, Балканы, Кавказ, Центральная и Южная Азия', 'Maghreb, Balkans, Caucasus, Central and South Asia', 'От Магриба до Монголии', 'Maghreb to Mongolia', 1),
+ (11,30): ('Сибирь и Приамурье', 'Siberia and the Amur region', 'Сибирь', 'Siberia', 5),
+ (11,45): ('Берингия и Арктика: от Камчатки до Гренландии', 'Beringia and the Arctic, Kamchatka to Greenland', 'Берингия и Арктика', 'Beringia & Arctic', 6),
+ (12,41): ('Северо-Западное побережье и Плато', 'Northwest Coast and Plateau', 'Северо-Запад', 'Northwest Coast', 7),
+ (12,50): ('Калифорния, Большой Бассейн, Юго-Запад', 'California, Great Basin, Southwest', 'Калифорния и Юго-Запад', 'California & Southwest', 8)}
 def members(k):
     l = lab[f'k{k}'].values
     return [frozenset(np.where(l == c)[0].tolist()) for c in np.unique(l)]
-nodes = [{'id': 0, 'name': 'Все традиции', 'parent': -1, 'k': 1, 'mem': frozenset(range(N))}]
+nodes = [{'id': 0, 'name': 'Все традиции', 'name_en': 'All traditions', 'short': 'Все', 'short_en': 'All', 'parent': -1, 'k': 1, 'mem': frozenset(range(N))}]
 prev = [nodes[0]['mem']]; byset = {nodes[0]['mem']: 0}; splits = {}
 for k in range(2, 13):
     cur = members(k); new = [c for c in cur if c not in prev]; parent = [p for p in prev if p not in cur][0]
     ids = []
     for c in sorted(new, key=len):
         nid = len(nodes); byset[c] = nid; ids.append(nid)
-        nodes.append({'id': nid, 'name': NAMES[(k, len(c))], 'parent': byset[parent], 'k': k, 'mem': c, 'hue': STYLE[(k, len(c))][0], 'shape': STYLE[(k, len(c))][1]})
+        ru, en, sru, sen, col = NAMES[(k, len(c))]
+        nodes.append({'id': nid, 'name': ru, 'name_en': en, 'short': sru, 'short_en': sen, 'col': col, 'parent': byset[parent], 'k': k, 'mem': c})
     splits[k] = {'parent': byset[parent], 'children': ids}
     prev = cur
 # leaf order for legends (geographic tour)
@@ -84,7 +86,6 @@ for k in range(2, 13):
     l = np.zeros(N, int)
     for c in members(k): l[list(c)] = byset[c]
     labels[k] = l.tolist()
-for nd in nodes: nd['short'] = SHORT[nd['name']]
 D['nodes'] = [{kk: v for kk, v in nd.items() if kk != 'mem'} for nd in nodes]
 D['labels'] = labels; D['splits'] = splits
 E = np.load(f'{out}/umap_g_25.npy'); E = (E - E.min(0)) / (E.max(0) - E.min(0))
@@ -98,26 +99,32 @@ for k in range(2, 13):
 D['coh'] = coh
 print('coherence', coh)
 for nd in D['nodes'][1:]:
-    print(nd['id'], nd['k'], nd['n'], nd['name'], '| hue', nd['hue'], 'shape', nd['shape'], '| shareA', nd['shareA'], '|', '; '.join(f"{M.motif_id[j]} {M.title[j]} ({a}/{b})" for j, a, b in nd['ind'][:5]))
+    print(nd['id'], nd['k'], nd['n'], nd['name_en'], '| colour', nd['col'], '| shareA', nd['shareA'], '|', '; '.join(f"{M.motif_id[j]} {M.title[j]} ({a}/{b})" for j, a, b in nd['ind'][:5]))
 # ---------- NMF
 Wn = np.load(f'{out}/nmf_W_12.npy'); H = np.load(f'{out}/nmf_H_12.npy')
-NMF_NAMES = {'Uzbek': 'Передняя и Центральная Азия, Кавказ', 'Germans': 'Европа', 'Muslim Malay': 'Юго-Восточная Азия и Южный Китай', 'Tagish': 'Северо-Западное побережье и Субарктика',
-             'Wayampi, Emerillon': 'Амазония и Гвиана', 'Totonac, Tepehua': 'Мезоамерика', 'Northern Paiute': 'Большой Бассейн, Калифорния, Плато', 'Ngonde,Safwa.Mkulwe,Kinga': 'Африка южнее Сахары',
-             'Western Evenki': 'Сибирь', 'Plains Cree': 'Равнины и Великие озёра', 'Polar Eskimo': 'Эскимосская Арктика', 'Ulithi, Ngulu': 'Океания'}
+NMF_NAMES = {'Uzbek': ('Передняя и Центральная Азия, Кавказ', 'Western and Central Asia, Caucasus'), 'Germans': ('Европа', 'Europe'),
+             'Muslim Malay': ('Юго-Восточная Азия и Южный Китай', 'Southeast Asia and South China'), 'Tagish': ('Северо-Западное побережье и Субарктика', 'Northwest Coast and Subarctic'),
+             'Wayampi, Emerillon': ('Амазония и Гвиана', 'Amazonia and the Guianas'), 'Totonac, Tepehua': ('Мезоамерика', 'Mesoamerica'),
+             'Northern Paiute': ('Большой Бассейн, Калифорния, Плато', 'Great Basin, California, Plateau'), 'Ngonde,Safwa.Mkulwe,Kinga': ('Африка южнее Сахары', 'Sub-Saharan Africa'),
+             'Western Evenki': ('Сибирь', 'Siberia'), 'Plains Cree': ('Равнины и Великие озёра', 'Plains and Great Lakes'),
+             'Polar Eskimo': ('Эскимосская Арктика', 'Eskimo (Inuit and Yupik) Arctic'), 'Ulithi, Ngulu': ('Океания', 'Oceania')}
 NMF_ORDER = ['Европа', 'Передняя и Центральная Азия, Кавказ', 'Африка южнее Сахары', 'Юго-Восточная Азия и Южный Китай', 'Океания', 'Сибирь', 'Эскимосская Арктика',
              'Северо-Западное побережье и Субарктика', 'Большой Бассейн, Калифорния, Плато', 'Равнины и Великие озёра', 'Мезоамерика', 'Амазония и Гвиана']
 comps = []
 for ci in range(12):
     w = Wn[:, ci]; h = H[ci]; spec = h / (H.sum(0) + 1e-12)
     topm = np.argsort(-(h * spec))[:8]; topg = np.argsort(-w)[:8]
-    name = NMF_NAMES[Gk.group[topg[0]]]
+    name, name_en = NMF_NAMES[Gk.group[topg[0]]]
     wq = np.clip(np.round(100 * w / np.percentile(w, 99)), 0, 100).astype(int)
-    comps.append({'name': name, 'w': wq.tolist(), 'motifs': [int(midx[j]) for j in topm], 'trad': [int(kidx[j]) for j in topg], 'active': int((wq >= 15).sum())})
+    comps.append({'name': name, 'name_en': name_en, 'w': wq.tolist(), 'motifs': [int(midx[j]) for j in topm], 'trad': [int(kidx[j]) for j in topg], 'active': int((wq >= 15).sum())})
 comps.sort(key=lambda c: NMF_ORDER.index(c['name']))
 D['nmf'] = comps
-for c in comps: print('NMF', c['name'], '| active', c['active'], '|', '; '.join(M.motif_id[j] + ' ' + M.title[j] for j in c['motifs'][:4]))
+for c in comps: print('NMF', c['name_en'], '| active', c['active'], '|', '; '.join(M.motif_id[j] + ' ' + M.title[j] for j in c['motifs'][:4]))
 # ---------- axes
-fam8 = np.array([nodes[i]['hue'] for i in labels[8]]); FAM = ['WE', 'AF', 'SA', 'OC', 'SI', 'NA', 'MA', 'SAm']
+FAM = ['WE', 'AF', 'SA', 'OC', 'SI', 'NA', 'MA', 'SAm']
+FAM_OF = {'Eurasia from Europe to India and Mongolia, Maghreb': 0, 'Sub-Saharan Africa': 1, 'South and East Asia, Australia': 2, 'Oceania': 3,
+          'Siberia, Beringia and the Arctic': 4, 'North America south of the Subarctic': 5, 'Mesoamerica': 6, 'South America': 7}
+fam8 = np.array([FAM_OF[nodes[i]['name_en']] for i in labels[8]])
 ANCH = {('A',0): 0, ('A',1): 1, ('A',2): 1, ('A',3): 5, ('B',0): 0, ('B',1): 1, ('B',2): 7, ('B',3): 5}
 axes = {}
 for name, ms in [('A', isA), ('B', ~isA)]:

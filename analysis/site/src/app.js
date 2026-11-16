@@ -15,13 +15,117 @@ const h = (tag, props, ...kids) => {
   for (const c of kids) if (c != null) e.append(c);
   return e;
 };
-const nf = new Intl.NumberFormat('ru-RU');
-const f2 = v => v.toFixed(2).replace('.', ',');
-const f3 = v => v.toFixed(3).replace('.', ',');
-const pc = v => Math.round(v * 100) + '%';
-const plural = (n, one, few, many) => { const a = Math.abs(n) % 100, b = a % 10; return a > 10 && a < 20 ? many : b === 1 ? one : b >= 2 && b <= 4 ? few : many; };
 const reduceMotion = matchMedia('(prefers-reduced-motion: reduce)').matches;
 const STATE = {};
+const RERENDER = [];
+let LANG = 'en';
+
+// ---------- language: English is the default, Russian is the alternative. Motif and tradition names stay as in the data.
+const NF = { en: new Intl.NumberFormat('en-US'), ru: new Intl.NumberFormat('ru-RU') };
+const nf = v => NF[LANG].format(v);
+const dec = s => (LANG === 'ru' ? s.replace('.', ',') : s);
+const f2 = v => dec(v.toFixed(2)), f3 = v => dec(v.toFixed(3));
+const pc = v => Math.round(v * 100) + '%';
+const ruPl = (n, one, few, many) => { const a = Math.abs(n) % 100, b = a % 10; return a > 10 && a < 20 ? many : b === 1 ? one : b >= 2 && b <= 4 ? few : many; };
+const nTrad = n => (LANG === 'ru' ? `${nf(n)} ${ruPl(n, 'традиция', 'традиции', 'традиций')}` : `${nf(n)} ${n === 1 ? 'tradition' : 'traditions'}`);
+const nm = o => (LANG === 'ru' ? o.name : o.name_en);
+const sh = o => (LANG === 'ru' ? o.short : o.short_en);
+const TX = {
+  en: {
+    zoomIn: 'Zoom in', zoomOut: 'Zoom out', zoomReset: 'Show the whole world', openMotif: 'Open this motif in the atlas',
+    navLabel: 'Sections', langLabel: 'Language', kLess: 'One cluster fewer', kMore: 'One cluster more',
+    relPh: 'Start typing a name', moPh: 'Code or word: a36, moon, trickster', moFound: 'Motifs found',
+    clMapLabel: 'World map: traditions coloured by cluster of motif similarity', clUmapLabel: 'Traditions in similarity space, UMAP projection',
+    lowData: 'Fewer than 15 motifs; left out of the analysis',
+    motifsRecorded: n => (n === 1 ? 'motif recorded' : 'motifs recorded'),
+    clHint: 'Hover over a cluster in the list to highlight it on the map and see its characteristic motifs. Click to pin it.',
+    clMeta: (n, share) => `${nTrad(n)} · median share of cosmological motifs ${share}`,
+    clInd: 'Characteristic motifs: share of traditions with the motif inside the cluster / outside it',
+    clCore: 'Closest to the cluster centre: ', clAll: n => `All ${nTrad(n)} in the cluster`,
+    step: (a, b) => `Step ${a} → ${b}. `, splitAll: 'All traditions split', splitOne: name => `The cluster “${name}” splits`, splitInto: (a, b) => ` into “${a}” and “${b}”.`,
+    coh1: 'Of the ten geographically nearest neighbours of each tradition, ', coh2: ' fall into its own cluster. A random partition into clusters of the same sizes would give ', coh3: '.',
+    play: '▶ Play the splits', stop: '■ Stop',
+    nmfTop: '90% and above', nmfStrong: 'Strongest in: ', nmfTip: 'of the maximum weight of this set',
+    nmfLabel: name => `Map of the “${name}” complex: traditions where the motif set is present`,
+    axMapLabel: 'World map: position of traditions on the principal axis', axTip: 'position on the axis, from −100 to +100',
+    axis: (i, neg, pos) => `Axis ${i}: ${neg} ↔ ${pos}. `,
+    axCap: (v, ng, nmot) => `The axis explains ${v}% of the variance. It is computed on ${nTrad(ng)} with 15 or more motifs of this group and ${nf(nmot)} motifs. Scores are scaled so that ±100 is the 97th percentile.`,
+    axPole: 'Traditions at this pole: ',
+    relMapLabel: 'World map: similarity of every tradition to the selected one', relScLabel: 'Similarity to the selected tradition against distance from it',
+    relBelow: v => `below ${v}`, relAbove: v => `${v} and above`, relSel: 'selected tradition', relFew: 'fewer than 10 motifs of this group',
+    relSimTo: name => 'similarity to ' + name, relDist: 'distance', km: 'km',
+    relX: 'distance from the selected tradition, km', relY: 'similarity to the selected tradition',
+    relSet: { all: 'All motifs are used', A: 'Cosmological and etiological motifs are used', B: 'Adventure and trickster motifs are used' },
+    relCmp: n => `; compared with ${nTrad(n)}.`,
+    relFar: (name, s, d) => ` Most similar tradition beyond 5,000 km: ${name} (similarity ${s}, ${d} km).`,
+    relNo: 'This tradition has fewer than 10 motifs of the selected group, so similarity is not computed for it. Pick another tradition or another group of motifs.',
+    relPick: 'Make this the selected tradition',
+    decA: 'cosmology and etiology (A–I)', decB: 'adventure and tricksters (J–N)', decAs: 'cosmology and etiology', decBs: 'adventure and tricksters',
+    decLabel: 'Mean similarity of pairs of traditions against the distance between them, separately for cosmological and adventure motifs',
+    decX: 'distance between traditions, km', decY: 'mean similarity of pairs of traditions',
+    decTh: ['Distance', 'Cosmology', 'Adventure', 'All motifs', 'Pairs (all motifs)'],
+    wide: 'widespread', moUmapLabel: 'Motifs in the space of range similarity, UMAP projection', moMapLabel: 'World map: traditions in which the selected motif is recorded',
+    moMostIn: name => 'most frequent in: ' + name,
+    moUmapCap: n => `Shown are ${nf(n)} motifs recorded in at least five traditions. A motif is assigned to an area when that area accounts for at least 60% of its occurrence, adjusted for how much is recorded there. This is a UMAP projection; the axes mean nothing.`,
+    moHas: 'motif recorded', moHasNot: 'motif not recorded', moTotal: n => (n === 1 ? 'motif in total' : 'motifs in total'),
+    moMeta: (letter, isA, n, N) => `Catalogue section ${letter} (${isA ? 'cosmology and etiology' : 'adventure and tricksters'}) · recorded in ${nf(n)} of ${nf(N)} traditions · `,
+    moLink: 'motif list in the catalogue',
+    moMapCap: id => `Blue dots: traditions where motif ${id} is recorded. Grey dots: the other traditions in the catalogue.`,
+    moShare: 'Share of traditions with the motif in three macro-areas', moOf: (p, a, b) => `${p} · ${a} of ${b}`,
+    moAreas: 'The areas come from the three-cluster step. Traditions with 15 or more motifs are counted.',
+    moSimilar: 'Motifs with the most similar range', moJacc: 'The number is the share of traditions the two motifs have in common (Jaccard index).',
+    moAll: n => `All ${nTrad(n)} with this motif`
+  },
+  ru: {
+    zoomIn: 'Приблизить', zoomOut: 'Отдалить', zoomReset: 'Показать весь мир', openMotif: 'Открыть карту мотива в атласе',
+    navLabel: 'Разделы', langLabel: 'Язык', kLess: 'На один кластер меньше', kMore: 'На один кластер больше',
+    relPh: 'Начните вводить название', moPh: 'Код или слово: a36, moon, trickster', moFound: 'Найденные мотивы',
+    clMapLabel: 'Карта мира: традиции окрашены по кластерам сходства мотивов', clUmapLabel: 'Традиции в пространстве сходства, проекция UMAP',
+    lowData: 'Меньше 15 мотивов, в расчёт не входила',
+    motifsRecorded: n => ruPl(n, 'мотив записан', 'мотива записано', 'мотивов записано'),
+    clHint: 'Наведите на кластер в списке, чтобы выделить его на карте и увидеть характерные мотивы. Щелчок закрепляет выбор.',
+    clMeta: (n, share) => `${nTrad(n)} · медианная доля космологических мотивов ${share}`,
+    clInd: 'Характерные мотивы: доля традиций с мотивом в кластере и вне его',
+    clCore: 'Ближе всего к центру кластера: ', clAll: n => `Все ${nTrad(n)} кластера`,
+    step: (a, b) => `Шаг ${a} → ${b}. `, splitAll: 'Все традиции делятся', splitOne: name => `Кластер «${name}» делится`, splitInto: (a, b) => ` на «${a}» и «${b}».`,
+    coh1: 'Из десяти географически ближайших соседей каждой традиции ', coh2: ' попадают в её же кластер. При случайном разбиении на кластеры таких же размеров было бы ', coh3: '.',
+    play: '▶ Показать по шагам', stop: '■ Остановить',
+    nmfTop: '90% и выше', nmfStrong: 'Сильнее всего: ', nmfTip: 'от максимального веса набора',
+    nmfLabel: name => `Карта комплекса «${name}»: традиции, где набор мотивов выражен`,
+    axMapLabel: 'Карта мира: положение традиций на главной оси', axTip: 'положение на оси, от −100 до +100',
+    axis: (i, neg, pos) => `Ось ${i}: ${neg} ↔ ${pos}. `,
+    axCap: (v, ng, nmot) => `Ось объясняет ${v}% разброса. В расчёт вошли ${nTrad(ng)} с 15 и более мотивами этой группы и ${nf(nmot)} ${ruPl(nmot, 'мотив', 'мотива', 'мотивов')}. Значения нормированы так, что ±100 соответствует 97-му процентилю.`,
+    axPole: 'Традиции у полюса: ',
+    relMapLabel: 'Карта мира: сходство традиций с выбранной', relScLabel: 'Сходство с выбранной традицией в зависимости от расстояния',
+    relBelow: v => `ниже ${v}`, relAbove: v => `${v} и выше`, relSel: 'выбранная традиция', relFew: 'меньше 10 мотивов этой группы',
+    relSimTo: name => 'сходство с ' + name, relDist: 'расстояние', km: 'км',
+    relX: 'расстояние до выбранной традиции, км', relY: 'сходство с выбранной традицией',
+    relSet: { all: 'Учитываются все мотивы', A: 'Учитываются космологические и этиологические мотивы', B: 'Учитываются приключенческие и трикстерские мотивы' },
+    relCmp: n => `; сравнение с ${nf(n)} ${ruPl(n, 'традицией', 'традициями', 'традициями')}.`,
+    relFar: (name, s, d) => ` Самая похожая традиция дальше 5 000 км: ${name} (сходство ${s}, ${d} км).`,
+    relNo: 'У этой традиции меньше 10 мотивов выбранной группы, сходство для неё не считается. Выберите другую традицию или другую группу мотивов.',
+    relPick: 'Сделать выбранной традицией',
+    decA: 'космология и этиология (A–I)', decB: 'приключения и трикстеры (J–N)', decAs: 'космология и этиология', decBs: 'приключения и трикстеры',
+    decLabel: 'Среднее сходство пар традиций в зависимости от расстояния между ними, отдельно для космологических и приключенческих мотивов',
+    decX: 'расстояние между традициями, км', decY: 'среднее сходство пар традиций',
+    decTh: ['Расстояние', 'Космология', 'Приключения', 'Все мотивы', 'Пар (все мотивы)'],
+    wide: 'широкий ареал', moUmapLabel: 'Мотивы в пространстве сходства ареалов, проекция UMAP', moMapLabel: 'Карта мира: традиции, в которых записан выбранный мотив',
+    moMostIn: name => 'чаще всего: ' + name,
+    moUmapCap: n => `Показаны ${nf(n)} ${ruPl(n, 'мотив', 'мотива', 'мотивов')}, записанные хотя бы у пяти традиций. Мотив отнесён к области, если на неё приходится не меньше 60% его встречаемости с поправкой на число записей в области. Проекция UMAP, оси ничего не значат.`,
+    moHas: 'мотив записан', moHasNot: 'мотив не записан', moTotal: n => ruPl(n, 'мотив всего', 'мотива всего', 'мотивов всего'),
+    moMeta: (letter, isA, n, N) => `Раздел ${letter} каталога (${isA ? 'космология и этиология' : 'приключения и трикстеры'}) · записан у ${nf(n)} ${ruPl(n, 'традиции', 'традиций', 'традиций')} из ${nf(N)} · `,
+    moLink: 'список мотивов в каталоге',
+    moMapCap: id => `Синие точки: традиции, где записан мотив ${id}. Серые: остальные традиции каталога.`,
+    moShare: 'Доля традиций с мотивом в трёх больших областях', moOf: (p, a, b) => `${p} · ${a} из ${b}`,
+    moAreas: 'Области взяты из третьего шага кластеризации. Учтены традиции с 15 и более мотивами.',
+    moSimilar: 'Мотивы с самым похожим ареалом', moJacc: 'Число справа показывает долю общих традиций (мера Жаккара).',
+    moAll: n => `Все ${nTrad(n)} с этим мотивом`
+  }
+};
+const t = (k, ...a) => { const v = TX[LANG][k]; return typeof v === 'function' ? v(...a) : v; };
+const setAttrs = el => { const d = el.dataset; if (d.tTitle) el.title = t(d.tTitle); if (d.tAria) el.setAttribute('aria-label', t(d.tAria)); if (d.tPh) el.placeholder = t(d.tPh); };
+const tAttr = (el, o) => { for (const k in o) el.dataset['t' + k[0].toUpperCase() + k.slice(1)] = o[k]; setAttrs(el); return el; };
+const applyAttrs = () => { for (const el of document.querySelectorAll('[data-t-title],[data-t-aria],[data-t-ph]')) setAttrs(el); };
 
 // ---------- derived data
 const gMot = Array.from({ length: NG }, () => []);
@@ -39,7 +143,7 @@ const km = (a, b) => {
 };
 
 // ---------- shared drawing pieces
-const SYMS = [d3.symbol(d3.symbolCircle, 50)(), d3.symbol(d3.symbolDiamond, 46)(), d3.symbol(d3.symbolTriangle, 46)(), d3.symbol(d3.symbolSquare, 46)()];
+const DOT = d3.symbol(d3.symbolCircle, 50)();
 const NSVG = 'http://www.w3.org/2000/svg';
 const defs = document.getElementById('geo-defs');
 for (const [id, d] of [['geo-land', GEO.land], ['geo-grat', GEO.grat], ['geo-sphere', GEO.sphere]]) {
@@ -47,9 +151,9 @@ for (const [id, d] of [['geo-land', GEO.land], ['geo-grat', GEO.grat], ['geo-sph
 }
 const mapBg = grat => g => { if (grat) g.append('use').attr('href', '#geo-grat'); g.append('use').attr('href', '#geo-land'); if (grat) g.append('use').attr('href', '#geo-sphere'); };
 const MAPO = { W: GEO.W, H: GEO.H, y0: GEO.y0 };
-const swatch = (cls, shape) => {
+const swatch = cls => {
   const s = document.createElementNS(NSVG, 'svg'); s.setAttribute('class', 'sw'); s.setAttribute('viewBox', '-8 -8 16 16'); s.setAttribute('aria-hidden', 'true');
-  const p = document.createElementNS(NSVG, 'path'); p.setAttribute('d', SYMS[shape || 0]); p.setAttribute('class', 'mk ' + cls); p.setAttribute('transform', 'scale(1.35)'); s.append(p); return s;
+  const p = document.createElementNS(NSVG, 'path'); p.setAttribute('d', DOT); p.setAttribute('class', 'mk ' + cls); p.setAttribute('transform', 'scale(1.35)'); s.append(p); return s;
 };
 const steps = (host, vars, titles) => { host.textContent = ''; vars.forEach((v, i) => { const s = h('i'); s.style.background = 'var(--' + v + ')'; if (titles) s.title = titles[i]; host.append(s); }); };
 
@@ -65,7 +169,7 @@ const Tip = {
   },
   hide() { tipEl.hidden = true; }
 };
-const tipTitle = t => h('div', { class: 'tt', text: t });
+const tipTitle = s => h('div', { class: 'tt', text: s });
 const tipLine = (strong, rest) => h('div', { class: 'tl' }, strong != null ? h('b', { text: strong }) : null, rest != null ? h('span', { text: rest }) : null);
 
 class Plot {
@@ -73,7 +177,7 @@ class Plot {
     this.host = host; this.o = Object.assign({ y0: 0, rPx: 3.4, hitPx: 16 }, o);
     this.k = 1; this.u = 1; this.rs = 1; this.pts = []; this.hov = null; this.ext = null; this.sel = null; this.styleFn = () => ({ cls: 'nul' });
     host.classList.add('plot');
-    const svg = this.svg = d3.select(host).append('svg').attr('role', 'img').attr('aria-label', this.o.label || '');
+    const svg = this.svg = d3.select(host).append('svg').attr('role', 'img');
     this.root = svg.append('g');
     this.bg = this.root.append('g'); this.marks = this.root.append('g'); this.over = this.root.append('g').attr('pointer-events', 'none');
     this.ring = this.over.append('circle').attr('class', 'hov-ring').attr('display', 'none');
@@ -84,8 +188,10 @@ class Plot {
        .on('click', e => { const d = this.pick(e); this.setHover(d, e); if (d && this.o.click) this.o.click(d, e); });
     if (this.o.zoom) this.initZoom();
     this.measure(true);
-    new ResizeObserver(() => this.measure()).observe(host);
+    this.ro = new ResizeObserver(() => this.measure()); this.ro.observe(host);
   }
+  label(s) { this.svg.attr('aria-label', s); return this; }
+  destroy() { this.ro.disconnect(); }
   setBox() { this.svg.attr('viewBox', `0 ${this.o.y0} ${this.o.W} ${this.o.H}`); }
   measure(silent) {
     const w = this.host.clientWidth; if (!w) return;
@@ -100,13 +206,12 @@ class Plot {
     if (!silent && this.o.resize) this.o.resize(this);
   }
   tf(d) { const s = d._s || {}; return `translate(${d.x},${d.y}) scale(${(this.u / this.k) * (this.o.rPx / 4) * this.rs * (s.f || 1)})`; }
-  setPoints(pts) { this.pts = pts; this.hov = null; this.ext = null; this.sel = this.marks.selectAll('path').data(pts, d => d.id).join('path'); return this; }
+  setPoints(pts) { this.pts = pts; this.hov = null; this.ext = null; this.sel = this.marks.selectAll('path').data(pts, d => d.id).join('path').attr('d', DOT); return this; }
   restyle(fn) {
     if (fn) this.styleFn = fn; if (!this.sel) return this; const self = this;
     this.sel.each(function (d) {
       const s = d._s = self.styleFn(d);
       this.setAttribute('class', 'mk ' + s.cls + (s.dim ? ' dim' : ''));
-      this.setAttribute('d', SYMS[s.shape || 0]);
       this.setAttribute('transform', self.tf(d));
       if (s.hide) this.setAttribute('display', 'none'); else this.removeAttribute('display');
     });
@@ -136,16 +241,16 @@ class Plot {
       })
       .on('zoom', e => { self.k = e.transform.k; self.root.attr('transform', e.transform); self.applyScale(); self.host.classList.toggle('zoomed', self.k > 1.01); if (o.onzoom) o.onzoom(self); });
     this.svg.call(z);
-    const go = (fn, a) => { const t = reduceMotion ? this.svg : this.svg.transition().duration(260); t.call(fn, a); };
-    const mk = (txt, label, fn) => h('button', { type: 'button', class: 'zb', 'aria-label': label, title: label, text: txt, onclick: fn });
+    const go = (fn, a) => { const tr = reduceMotion ? this.svg : this.svg.transition().duration(260); tr.call(fn, a); };
+    const mk = (txt, key, fn) => tAttr(h('button', { type: 'button', class: 'zb', text: txt, onclick: fn }), { title: key, aria: key });
     this.host.append(h('div', { class: 'zoombar' },
-      mk('+', 'Приблизить', () => go(z.scaleBy, 1.8)), mk('−', 'Отдалить', () => go(z.scaleBy, 1 / 1.8)), mk('⟲', 'Показать весь мир', () => go(z.transform, d3.zoomIdentity))));
+      mk('+', 'zoomIn', () => go(z.scaleBy, 1.8)), mk('−', 'zoomOut', () => go(z.scaleBy, 1 / 1.8)), mk('⟲', 'zoomReset', () => go(z.transform, d3.zoomIdentity))));
   }
 }
 
 let selectMotif = () => {};
-const motifBtn = (m, val, noScroll) => h('button', { class: 'mref', type: 'button', title: 'Открыть карту мотива в атласе', onclick: () => selectMotif(m, !noScroll) },
-  h('span', { class: 'code', text: M.id[m] }), h('span', { text: M.title[m] }), val ? h('span', { class: 'val', text: val }) : null);
+const motifBtn = (m, val, noScroll) => tAttr(h('button', { class: 'mref', type: 'button', onclick: () => selectMotif(m, !noScroll) },
+  h('span', { class: 'code', text: M.id[m] }), h('span', { text: M.title[m] }), val ? h('span', { class: 'val', text: val }) : null), { title: 'openMotif' });
 const segInit = (host, cb) => {
   host.addEventListener('click', e => { const b = e.target.closest('button'); if (!b) return; cb(b.dataset.v); });
   return v => { for (const b of host.querySelectorAll('button')) b.setAttribute('aria-pressed', String(b.dataset.v === String(v))); };
@@ -162,19 +267,19 @@ function initClusters(saved) {
   const act = () => (st.hov != null ? st.hov : st.pin);
   const styleFn = d => {
     const n = nodeOf(d.g); if (!n) return { cls: 'low', f: 0.72, z: 0 };
-    const a = act(); return { cls: 'c' + n.hue, shape: n.shape, dim: a != null && a !== n.id, z: a === n.id ? 2 : 1 };
+    const a = act(); return { cls: 'k' + n.col, dim: a != null && a !== n.id, z: a === n.id ? 2 : 1 };
   };
   const tipFor = d => {
     const n = nodeOf(d.g), c = G.n[d.g];
-    return [tipTitle(G.name[d.g]), tipLine(null, n ? n.name : 'Меньше 15 мотивов, в расчёт не входила'), tipLine(String(c), plural(c, 'мотив записан', 'мотива записано', 'мотивов записано'))];
+    return [tipTitle(G.name[d.g]), tipLine(null, n ? nm(n) : t('lowData')), tipLine(String(c), t('motifsRecorded', c))];
   };
   const activeNodes = () => Array.from(new Set(D.labels[st.k])).map(i => nodes[i]).sort((a, b) => a.rank - b.rank);
 
-  const map = new Plot($('#clMap'), Object.assign({}, MAPO, { zoom: true, sorted: true, bg: mapBg(true), label: 'Карта мира: традиции окрашены по кластерам сходства мотивов',
+  const map = new Plot($('#clMap'), Object.assign({}, MAPO, { zoom: true, sorted: true, bg: mapBg(true),
     hover: (d, e, mv) => { if (!d) { Tip.hide(); um.mark(null); return; } if (mv) return Tip.move(e); Tip.show(e, tipFor(d)); um.mark(umByG.get(d.g) || null); } }));
   const PAD = 28;
   const placeUm = p => { for (const d of umPts) { d.x = PAD + d.nx * (p.o.W - 2 * PAD); d.y = PAD + (1 - d.ny) * (p.o.H - 2 * PAD); } };
-  const um = new Plot($('#clUmap'), { W: 600, H: 430, pixel: w => Math.max(300, Math.min(470, w * 0.74)), rPx: 3, sorted: true, label: 'Традиции в пространстве сходства, проекция UMAP',
+  const um = new Plot($('#clUmap'), { W: 600, H: 430, pixel: w => Math.max(300, Math.min(470, w * 0.74)), rPx: 3, sorted: true,
     hover: (d, e, mv) => { if (!d) { Tip.hide(); map.mark(null); return; } if (mv) return Tip.move(e); Tip.show(e, tipFor(d)); map.mark(mapPts[d.g]); },
     resize: p => { placeUm(p); p.applyScale(); drawLabels(); } });
   const labG = um.over.append('g');
@@ -186,23 +291,23 @@ function initClusters(saved) {
     const fs = 12, W = um.o.W, H = um.o.H, a = act();
     const items = activeNodes().map(n => {
       const pts = umPts.filter(p => nodeOf(p.g) === n);
-      return { n, x: d3.mean(pts, p => p.x), y: d3.mean(pts, p => p.y), w: n.short.length * fs * 0.6 + 8, hh: fs * 1.35, size: pts.length };
+      return { n, x: d3.mean(pts, p => p.x), y: d3.mean(pts, p => p.y), w: sh(n).length * fs * 0.6 + 8, hh: fs * 1.35, size: pts.length };
     }).sort((p, q) => q.size - p.size);
     const placed = [];
     for (const it of items) {
       it.x = Math.max(it.w / 2 + 2, Math.min(W - it.w / 2 - 2, it.x));
-      const y0 = it.y; let t = 0;
+      const y0 = it.y; let tr = 0;
       const hit = () => placed.some(p => Math.abs(p.x - it.x) < (p.w + it.w) / 2 && Math.abs(p.y - it.y) < (p.hh + it.hh) / 2);
-      while (hit() && t < 14) { t++; it.y = y0 + (t % 2 ? 1 : -1) * Math.ceil(t / 2) * it.hh; }
+      while (hit() && tr < 14) { tr++; it.y = y0 + (tr % 2 ? 1 : -1) * Math.ceil(tr / 2) * it.hh; }
       it.y = Math.max(it.hh, Math.min(H - it.hh, it.y)); placed.push(it);
     }
     labG.selectAll('text').data(items, d => d.n.id).join('text').attr('class', 'dlab').attr('x', d => d.x).attr('y', d => d.y)
-      .attr('font-size', fs).attr('stroke-width', 3.5).text(d => d.n.short).attr('opacity', d => (a != null && a !== d.n.id ? 0.22 : 1));
+      .attr('font-size', fs).attr('stroke-width', 3.5).text(d => sh(d.n)).attr('opacity', d => (a != null && a !== d.n.id ? 0.22 : 1));
   }
   function drawLegend() {
     const ul = $('#clLegend'); ul.textContent = '';
     for (const n of activeNodes()) {
-      const b = h('button', { class: 'lg', type: 'button', 'data-node': n.id, 'aria-pressed': String(st.pin === n.id) }, swatch('c' + n.hue, n.shape), h('span', { text: n.name }), h('span', { class: 'ct', text: String(n.n) }));
+      const b = h('button', { class: 'lg', type: 'button', 'data-node': n.id, 'aria-pressed': String(st.pin === n.id) }, swatch('k' + n.col), h('span', { text: nm(n) }), h('span', { class: 'ct', text: String(n.n) }));
       const on = () => { st.hov = n.id; soft(); }, off = () => { st.hov = null; soft(); };
       b.addEventListener('mouseenter', on); b.addEventListener('mouseleave', off); b.addEventListener('focus', on); b.addEventListener('blur', off);
       b.addEventListener('click', () => { st.pin = st.pin === n.id ? null : n.id; for (const x of ul.querySelectorAll('.lg')) x.setAttribute('aria-pressed', String(+x.dataset.node === st.pin)); soft(); });
@@ -214,107 +319,129 @@ function initClusters(saved) {
   function drawInfo() {
     const a = act(), key = a == null ? -1 : a; if (key === infoFor) return; infoFor = key;
     const box = $('#clInfo'); box.textContent = '';
-    if (a == null) { box.append(h('p', { class: 'hint', text: 'Наведите на кластер в списке, чтобы выделить его на карте и увидеть характерные мотивы. Щелчок закрепляет выбор.' })); return; }
+    if (a == null) { box.append(h('p', { class: 'hint', text: t('clHint') })); return; }
     const n = nodes[a];
-    box.append(h('h4', { text: n.name }),
-      h('p', { class: 'fine', text: `${n.n} ${plural(n.n, 'традиция', 'традиции', 'традиций')} · медианная доля космологических мотивов ${pc(n.shareA)}` }),
-      h('p', { class: 'fine', style: 'margin:8px 0 2px', text: 'Характерные мотивы: доля традиций с мотивом в кластере и вне его' }));
+    box.append(h('h4', { text: nm(n) }), h('p', { class: 'fine', text: t('clMeta', n.n, pc(n.shareA)) }), h('p', { class: 'fine', style: 'margin:8px 0 2px', text: t('clInd') }));
     const ol = h('ol', { class: 'mlist' });
     for (const [m, pin, pout] of n.ind) ol.append(h('li', null, motifBtn(m, pc(pin) + ' / ' + pc(pout))));
     const members = D.kept.filter((g, j) => D.labels[st.k][j] === n.id).map(g => G.name[g]).sort((x, y) => x.localeCompare(y));
-    box.append(ol, h('p', { class: 'fine', style: 'margin-top:8px', text: 'Ближе всего к центру кластера: ' + n.core.map(g => G.name[g]).join('; ') }),
-      h('details', null, h('summary', { text: `Все ${n.n} ${plural(n.n, 'традиция', 'традиции', 'традиций')} кластера` }), h('div', { class: 'names', text: members.join('; ') })));
+    box.append(ol, h('p', { class: 'fine', style: 'margin-top:8px', text: t('clCore') + n.core.map(g => G.name[g]).join('; ') }),
+      h('details', null, h('summary', { text: t('clAll', n.n) }), h('div', { class: 'names', text: members.join('; ') })));
   }
   function notes() {
     const sp = D.splits[st.k], p = nodes[sp.parent], kids = sp.children.map(i => nodes[i]).sort((a, b) => a.rank - b.rank);
     const s = $('#splitNote'); s.textContent = '';
-    s.append(h('b', { text: `Шаг ${st.k - 1} → ${st.k}. ` }), p.id === 0 ? 'Все традиции делятся' : `Кластер «${p.name}» делится`, ` на «${kids[0].name}» и «${kids[1].name}».`);
+    s.append(h('b', { text: t('step', st.k - 1, st.k) }), p.id === 0 ? t('splitAll') : t('splitOne', nm(p)), t('splitInto', nm(kids[0]), nm(kids[1])));
     const [same, chance] = D.coh[st.k], c = $('#cohNote'); c.textContent = '';
-    c.append('Из десяти географически ближайших соседей каждой традиции ', h('b', { text: pc(same) }), ' попадают в её же кластер. При случайном разбиении на кластеры таких же размеров было бы ', h('b', { text: pc(chance) }), '.');
+    c.append(t('coh1'), h('b', { text: pc(same) }), t('coh2'), h('b', { text: pc(chance) }), t('coh3'));
   }
   function soft() { map.restyle(styleFn); um.restyle(styleFn); drawLabels(); drawInfo(); }
+  function texts() { map.label(t('clMapLabel')); um.label(t('clUmapLabel')); play.textContent = st.timer ? t('stop') : t('play'); infoFor = -2; drawLegend(); notes(); }
   function render() {
     STATE.k = st.k; range.value = st.k; out.textContent = st.k;
     if (st.pin != null && !D.labels[st.k].includes(st.pin)) st.pin = null;
-    st.hov = null; infoFor = -2; drawLegend(); notes(); soft();
+    st.hov = null; texts(); soft();
   }
   const setK = k => { st.k = Math.max(2, Math.min(12, k)); render(); };
-  const stop = () => { if (st.timer) { clearInterval(st.timer); st.timer = null; play.textContent = '▶ Показать по шагам'; } };
+  const stop = () => { if (st.timer) { clearInterval(st.timer); st.timer = null; play.textContent = t('play'); } };
   range.addEventListener('input', () => { stop(); setK(+range.value); });
   $('#kMinus').addEventListener('click', () => { stop(); setK(st.k - 1); });
   $('#kPlus').addEventListener('click', () => { stop(); setK(st.k + 1); });
   play.addEventListener('click', () => {
     if (st.timer) return stop();
-    play.textContent = '■ Остановить'; setK(2);
     st.timer = setInterval(() => { if (st.k >= 12) return stop(); setK(st.k + 1); }, 1500);
+    setK(2);
   });
+  RERENDER.push(() => { texts(); soft(); });
   render();
 }
 
 // ============================================================ 2. NMF complexes
 function initNmf() {
   const cls = w => (w >= 90 ? 7 : w >= 75 ? 6 : w >= 60 ? 5 : w >= 45 ? 4 : w >= 30 ? 3 : w >= 15 ? 2 : 1);
-  steps($('#nmfScale'), ['s1', 's2', 's3', 's4', 's5', 's6', 's7'], ['5–15%', '15–30%', '30–45%', '45–60%', '60–75%', '75–90%', '90% и выше']);
-  const grid = $('#nmfGrid');
-  for (const c of D.nmf) {
-    const host = h('div');
-    const list = h('ol', { class: 'mlist' });
-    for (const m of c.motifs.slice(0, 6)) list.append(h('li', null, motifBtn(m)));
-    grid.append(h('article', { class: 'ncard' },
-      h('h3', null, h('span', { text: c.name }), h('span', { class: 'ct', text: `${c.active} ${plural(c.active, 'традиция', 'традиции', 'традиций')}` })),
-      host, list, h('p', { class: 'fine', text: 'Сильнее всего: ' + c.trad.slice(0, 5).map(g => G.name[g]).join('; ') })));
-    const pts = []; D.kept.forEach((g, j) => { const w = c.w[j]; if (w >= 5) pts.push({ id: g, g, w, x: GXY[g][0], y: GXY[g][1] }); });
-    const p = new Plot(host, Object.assign({}, MAPO, { rPx: 2.5, hitPx: 12, sorted: true, bg: mapBg(false), label: `Карта комплекса «${c.name}»: традиции, где набор мотивов выражен`,
-      hover: (d, e, mv) => { if (!d) return Tip.hide(); if (mv) return Tip.move(e); Tip.show(e, [tipTitle(G.name[d.g]), tipLine(d.w + '%', 'от максимального веса набора')]); } }));
-    p.setPoints(pts).restyle(d => ({ cls: 's' + cls(d.w), f: 0.75 + 0.95 * d.w / 100, z: d.w }));
+  const grid = $('#nmfGrid'); let plots = [];
+  function build() {
+    for (const p of plots) p.destroy(); plots = []; grid.textContent = '';
+    steps($('#nmfScale'), ['s1', 's2', 's3', 's4', 's5', 's6', 's7'], ['5–15%', '15–30%', '30–45%', '45–60%', '60–75%', '75–90%', t('nmfTop')]);
+    for (const c of D.nmf) {
+      const host = h('div'), list = h('ol', { class: 'mlist' });
+      for (const m of c.motifs.slice(0, 6)) list.append(h('li', null, motifBtn(m)));
+      grid.append(h('article', { class: 'ncard' },
+        h('h3', null, h('span', { text: nm(c) }), h('span', { class: 'ct', text: nTrad(c.active) })),
+        host, list, h('p', { class: 'fine', text: t('nmfStrong') + c.trad.slice(0, 5).map(g => G.name[g]).join('; ') })));
+      const pts = []; D.kept.forEach((g, j) => { const w = c.w[j]; if (w >= 5) pts.push({ id: g, g, w, x: GXY[g][0], y: GXY[g][1] }); });
+      const p = new Plot(host, Object.assign({}, MAPO, { rPx: 2.5, hitPx: 12, sorted: true, bg: mapBg(false),
+        hover: (d, e, mv) => { if (!d) return Tip.hide(); if (mv) return Tip.move(e); Tip.show(e, [tipTitle(G.name[d.g]), tipLine(d.w + '%', t('nmfTip'))]); } }));
+      p.label(t('nmfLabel', nm(c))).setPoints(pts).restyle(d => ({ cls: 's' + cls(d.w), f: 0.75 + 0.95 * d.w / 100, z: d.w }));
+      plots.push(p);
+    }
   }
+  RERENDER.push(build);
+  build();
 }
 
 // ============================================================ 3. principal axes
 function initAxes(saved) {
   const TXT = {
-    A: [
-      { pos: 'запад и центр Евразии', neg: 'Южная Америка, Мезоамерика, Океания, Северная Америка', note: 'Положительный полюс собирают космологические мотивы европейских и ближневосточных сказок и легенд. Африка, юг Азии и Сибирь лежат около нуля.' },
-      { pos: 'Африка, Южная Америка, юг Азии, Океания', neg: 'Сибирь и Северная Америка', note: 'Южный полюс: происхождение смерти (сброшенная кожа, перепутанная весть), радужный змей, пятна на Луне. Северный полюс: ныряльщик за землёй. Картина близка к противопоставлению индо-тихоокеанского и континентально-евразийского комплексов у Берёзкина.' },
-      { pos: 'Африка, юг и восток Азии', neg: 'Южная Америка', note: 'Африкано-азиатский полюс: смерть из-за ложной вести, хамелеон-вестник, бессмертная Луна (мотив a36). Амазонский полюс: инцест Луны, небо птиц, любовники-животные.' },
-      { pos: 'запад Северной Америки', neg: 'Сибирь', note: 'Внутри северного мира Сибирь (Большая Медведица как копытное, Млечный Путь как лыжня) отделяется от запада Северной Америки, где смерть связана с Койотом.' }
-    ],
-    B: [
-      { pos: 'запад и центр Евразии', neg: 'Америка', note: 'Сказочный фонд Евразии против Нового Света. Эта ось сильнее других связана с изученностью традиции (корреляция с логарифмом числа мотивов 0,69), поэтому часть контраста отражает объём записей.' },
-      { pos: 'Африка южнее Сахары', neg: 'Северная Америка, Сибирь, Европа', note: 'Африканский полюс: трикстер-заяц, гиена-неудачница, смоляное чучело.' },
-      { pos: 'Южная Америка и Мезоамерика', neg: 'Северная Америка и Сибирь', note: 'Южноамериканский полюс: женщина у ягуаров, дети убитой матери. Североамериканский: обманутые танцоры, трикстер-ворон.' },
-      { pos: 'Равнины и запад Северной Америки', neg: 'Арктика и Сибирь', note: 'Трикстерские эпизоды Равнин (неудачное подражание хозяину) против арктического цикла Ворона.' }
-    ]
+    en: {
+      A: [
+        { pos: 'western and central Eurasia', neg: 'South America, Mesoamerica, Oceania, North America', note: 'The positive pole gathers the cosmological motifs of European and Near Eastern tales and legends. Africa, southern Asia and Siberia sit near zero.' },
+        { pos: 'Africa, South America, southern Asia, Oceania', neg: 'Siberia and North America', note: 'Southern pole: the origin of death (the shed skin, the muddled message), the rainbow serpent, spots on the Moon. Northern pole: the earth-diver. The picture is close to the contrast between the Indo-Pacific and Continental Eurasian complexes in Berezkin’s work.' },
+        { pos: 'Africa, southern and eastern Asia', neg: 'South America', note: 'African and Asian pole: death through a falsified message, the chameleon as messenger, the immortal Moon (motif a36). Amazonian pole: the incestuous Moon, the sky of birds, animal lovers.' },
+        { pos: 'western North America', neg: 'Siberia', note: 'Within the northern world, Siberia (Ursa Major as an ungulate, the Milky Way as a snowshoe track) separates from western North America, where death is tied to Coyote.' }
+      ],
+      B: [
+        { pos: 'western and central Eurasia', neg: 'the Americas', note: 'The Eurasian stock of folktales against the New World. This axis is tied more than the others to how well a tradition is documented (correlation with the log number of motifs: 0.69), so part of the contrast reflects the volume of records.' },
+        { pos: 'Sub-Saharan Africa', neg: 'North America, Siberia, Europe', note: 'African pole: the hare as trickster, the hyena as the loser, the tar baby.' },
+        { pos: 'South America and Mesoamerica', neg: 'North America and Siberia', note: 'South American pole: the woman among jaguars, the children of a murdered mother. North American pole: the hoodwinked dancers, the raven as trickster.' },
+        { pos: 'the Plains and western North America', neg: 'the Arctic and Siberia', note: 'Trickster episodes of the Plains (the bungling host) against the Raven cycle of the Arctic.' }
+      ]
+    },
+    ru: {
+      A: [
+        { pos: 'запад и центр Евразии', neg: 'Южная Америка, Мезоамерика, Океания, Северная Америка', note: 'Положительный полюс собирают космологические мотивы европейских и ближневосточных сказок и легенд. Африка, юг Азии и Сибирь лежат около нуля.' },
+        { pos: 'Африка, Южная Америка, юг Азии, Океания', neg: 'Сибирь и Северная Америка', note: 'Южный полюс: происхождение смерти (сброшенная кожа, перепутанная весть), радужный змей, пятна на Луне. Северный полюс: ныряльщик за землёй. Картина близка к противопоставлению индо-тихоокеанского и континентально-евразийского комплексов у Берёзкина.' },
+        { pos: 'Африка, юг и восток Азии', neg: 'Южная Америка', note: 'Африкано-азиатский полюс: смерть из-за ложной вести, хамелеон-вестник, бессмертная Луна (мотив a36). Амазонский полюс: инцест Луны, небо птиц, любовники-животные.' },
+        { pos: 'запад Северной Америки', neg: 'Сибирь', note: 'Внутри северного мира Сибирь (Большая Медведица как копытное, Млечный Путь как лыжня) отделяется от запада Северной Америки, где смерть связана с Койотом.' }
+      ],
+      B: [
+        { pos: 'запад и центр Евразии', neg: 'Америка', note: 'Сказочный фонд Евразии против Нового Света. Эта ось сильнее других связана с изученностью традиции (корреляция с логарифмом числа мотивов 0,69), поэтому часть контраста отражает объём записей.' },
+        { pos: 'Африка южнее Сахары', neg: 'Северная Америка, Сибирь, Европа', note: 'Африканский полюс: трикстер-заяц, гиена-неудачница, смоляное чучело.' },
+        { pos: 'Южная Америка и Мезоамерика', neg: 'Северная Америка и Сибирь', note: 'Южноамериканский полюс: женщина у ягуаров, дети убитой матери. Североамериканский: обманутые танцоры, трикстер-ворон.' },
+        { pos: 'Равнины и запад Северной Америки', neg: 'Арктика и Сибирь', note: 'Трикстерские эпизоды Равнин (неудачное подражание хозяину) против арктического цикла Ворона.' }
+      ]
+    }
   };
   const st = { set: saved.axSet === 'B' ? 'B' : 'A', ax: saved.ax >= 0 && saved.ax <= 3 ? saved.ax : 1 };
   const cls = v => (v > 85 ? 'dp4' : v > 60 ? 'dp3' : v > 35 ? 'dp2' : v > 12 ? 'dp1' : v >= -12 ? 'd0' : v >= -35 ? 'dn1' : v >= -60 ? 'dn2' : v >= -85 ? 'dn3' : 'dn4');
   steps($('#axScale'), ['dn4', 'dn3', 'dn2', 'dn1', 'd0', 'dp1', 'dp2', 'dp3', 'dp4']);
-  const plot = new Plot($('#axMap'), Object.assign({}, MAPO, { zoom: true, sorted: true, bg: mapBg(true), label: 'Карта мира: положение традиций на главной оси',
-    hover: (d, e, mv) => { if (!d) return Tip.hide(); if (mv) return Tip.move(e); Tip.show(e, [tipTitle(G.name[d.g]), tipLine((d.v > 0 ? '+' : d.v < 0 ? '−' : '') + Math.abs(d.v), 'положение на оси, от −100 до +100')]); } }));
+  const plot = new Plot($('#axMap'), Object.assign({}, MAPO, { zoom: true, sorted: true, bg: mapBg(true),
+    hover: (d, e, mv) => { if (!d) return Tip.hide(); if (mv) return Tip.move(e); Tip.show(e, [tipTitle(G.name[d.g]), tipLine((d.v > 0 ? '+' : d.v < 0 ? '−' : '') + Math.abs(d.v), t('axTip'))]); } }));
   const setSet = segInit($('#axSet'), v => { st.set = v; render(); });
   const setNum = segInit($('#axNum'), v => { st.ax = +v; render(); });
   function pole(host, color, title, motifs, trad) {
     host.textContent = '';
     const dot = h('i'); dot.style.background = `var(--${color})`;
     const ol = h('ol', { class: 'mlist' }); for (const m of motifs) ol.append(h('li', null, motifBtn(m)));
-    host.append(h('h3', null, dot, h('span', { text: title })), ol, h('p', { class: 'fine tr', text: 'Традиции у полюса: ' + trad.map(g => G.name[g]).join('; ') }));
+    host.append(h('h3', null, dot, h('span', { text: title })), ol, h('p', { class: 'fine tr', text: t('axPole') + trad.map(g => G.name[g]).join('; ') }));
   }
   function render() {
     STATE.axSet = st.set; STATE.ax = st.ax; setSet(st.set); setNum(st.ax);
-    const S = D.axes[st.set], a = S.ax[st.ax], t = TXT[st.set][st.ax];
+    const S = D.axes[st.set], a = S.ax[st.ax], tx = TXT[LANG][st.set][st.ax];
     const pts = S.g.map((g, j) => ({ id: g, g, v: a.s[j], x: GXY[g][0], y: GXY[g][1] }));
-    plot.setPoints(pts).restyle(d => ({ cls: cls(d.v), z: Math.abs(d.v) }));
+    plot.label(t('axMapLabel')).setPoints(pts).restyle(d => ({ cls: cls(d.v), z: Math.abs(d.v) }));
     const up = s => s.charAt(0).toUpperCase() + s.slice(1);
-    $('#axNegLab').textContent = t.neg; $('#axPosLab').textContent = t.pos;
+    $('#axNegLab').textContent = tx.neg; $('#axPosLab').textContent = tx.pos;
     const n = $('#axNote'); n.textContent = '';
-    n.append(h('b', { text: `Ось ${st.ax + 1}: ${t.neg} ↔ ${t.pos}. ` }), t.note);
-    $('#axCap').textContent = `Ось объясняет ${String(a.var).replace('.', ',')}% разброса. В расчёт вошли ${nf.format(S.g.length)} ${plural(S.g.length, 'традиция', 'традиции', 'традиций')} с 15 и более мотивами этой группы и ${nf.format(S.nm)} ${plural(S.nm, 'мотив', 'мотива', 'мотивов')}. Значения нормированы так, что ±100 соответствует 97-му процентилю.`;
-    pole($('#axNeg'), 'dn3', up(t.neg), a.neg, a.negT); pole($('#axPos'), 'dp3', up(t.pos), a.pos, a.posT);
+    n.append(h('b', { text: t('axis', st.ax + 1, tx.neg, tx.pos) }), tx.note);
+    $('#axCap').textContent = t('axCap', dec(String(a.var)), S.g.length, S.nm);
+    pole($('#axNeg'), 'dn3', up(tx.neg), a.neg, a.negT); pole($('#axPos'), 'dp3', up(tx.pos), a.pos, a.posT);
   }
+  RERENDER.push(render);
   render();
 }
 
-// ============================================================ 4. relatives and distance decay
+// ============================================================ 4. relatives and distance
 function initRel(saved) {
   const inSet = { all: () => true, A: m => mIsA[m], B: m => !mIsA[m] };
   const prep = {};
@@ -336,24 +463,23 @@ function initRel(saved) {
     return out;
   };
   const TH = [0.03, 0.06, 0.10, 0.15, 0.22, 0.32];
-  const cls = v => { if (!(v > 0)) return 'nul'; let c = 1; for (const t of TH) if (v >= t) c++; return 's' + c; };
-  steps($('#relScale'), ['s1', 's2', 's3', 's4', 's5', 's6', 's7'], ['ниже 0,03', '0,03–0,06', '0,06–0,10', '0,10–0,15', '0,15–0,22', '0,22–0,32', '0,32 и выше']);
-  $('#relScale').prepend(h('i', { class: 't', text: '0' })); $('#relScale').append(h('i', { class: 't', text: '0,32+' }));
+  const cls = v => { if (!(v > 0)) return 'nul'; let c = 1; for (const x of TH) if (v >= x) c++; return 's' + c; };
   const st = { set: ['all', 'A', 'B'].includes(saved.relSet) ? saved.relSet : 'all', f: gByName.has(saved.focus) ? gByName.get(saved.focus) : gByName.get('Chukchi') };
   const dl = $('#relNames'); for (const n of G.name.slice().sort((a, b) => a.localeCompare(b))) dl.append(h('option', { value: n }));
   const mapPts = d3.range(NG).map(g => ({ id: g, g, x: GXY[g][0], y: GXY[g][1] }));
   let S = null, dist = null, scPts = [], scByG = new Map();
+  const kmTxt = (d, step) => nf(Math.round(d / step) * step) + ' ' + t('km');
   const tipFor = g => {
-    if (g === st.f) return [tipTitle(G.name[g]), tipLine(null, 'выбранная традиция')];
-    if (isNaN(S[g])) return [tipTitle(G.name[g]), tipLine(null, 'меньше 10 мотивов этой группы')];
-    return [tipTitle(G.name[g]), tipLine(f2(S[g]), 'сходство с ' + G.name[st.f]), tipLine(nf.format(Math.round(dist[g] / 10) * 10) + ' км', 'расстояние')];
+    if (g === st.f) return [tipTitle(G.name[g]), tipLine(null, t('relSel'))];
+    if (isNaN(S[g])) return [tipTitle(G.name[g]), tipLine(null, t('relFew'))];
+    return [tipTitle(G.name[g]), tipLine(f2(S[g]), t('relSimTo', G.name[st.f])), tipLine(kmTxt(dist[g], 10), t('relDist'))];
   };
-  const map = new Plot($('#relMap'), Object.assign({}, MAPO, { zoom: true, sorted: true, bg: mapBg(true), label: 'Карта мира: сходство традиций с выбранной',
+  const map = new Plot($('#relMap'), Object.assign({}, MAPO, { zoom: true, sorted: true, bg: mapBg(true),
     hover: (d, e, mv) => { if (!d) { Tip.hide(); sc.mark(null); return; } if (mv) return Tip.move(e); Tip.show(e, tipFor(d.g)); sc.mark(scByG.get(d.g) || null); },
     click: d => setFocus(d.g) }));
   const focRing = map.over.append('circle').attr('class', 'sel-ring');
   map.o.onzoom = map.o.resize = () => { const p = mapPts[st.f]; focRing.attr('cx', p.x).attr('cy', p.y).attr('r', 9 * map.u / map.k); };
-  const sc = new Plot($('#relScatter'), { W: 600, H: 360, pixel: w => Math.max(260, Math.min(380, w * 0.62)), rPx: 2.6, hitPx: 14, sorted: true, label: 'Сходство с выбранной традицией в зависимости от расстояния',
+  const sc = new Plot($('#relScatter'), { W: 600, H: 360, pixel: w => Math.max(260, Math.min(380, w * 0.62)), rPx: 2.6, hitPx: 14, sorted: true,
     hover: (d, e, mv) => { if (!d) { Tip.hide(); map.mark(null); return; } if (mv) return Tip.move(e); Tip.show(e, tipFor(d.g)); map.mark(mapPts[d.g]); },
     click: d => setFocus(d.g), resize: () => drawScatter() });
   const axG = sc.bg.append('g').attr('class', 'ax'), lineG = sc.bg.append('g');
@@ -364,100 +490,112 @@ function initRel(saved) {
   function drawScatter() {
     const W = sc.o.W, H = sc.o.H, L = 40, R = 14, T = 26, B = 38;
     let mx = 0; if (S) for (let g = 0; g < NG; g++) if (g !== st.f && S[g] > mx) mx = S[g];
-    const dec = D.decay[st.set]; mx = Math.max(mx, d3.max(dec.mean));
+    const decay = D.decay[st.set]; mx = Math.max(mx, d3.max(decay.mean));
     const ymax = Math.min(1, Math.max(0.3, Math.ceil(mx * 10) / 10));
     const x = d3.scaleLinear([0, 20000], [L, W - R]), y = d3.scaleLinear([0, ymax], [H - B, T]);
     axG.selectAll('*').remove();
-    const yt = d3.range(0, ymax + 1e-9, ymax > 0.6 ? 0.2 : 0.1);
-    for (const v of yt) {
+    for (const v of d3.range(0, ymax + 1e-9, ymax > 0.6 ? 0.2 : 0.1)) {
       axG.append('line').attr('class', v === 0 ? 'base' : 'grid').attr('x1', L).attr('x2', W - R).attr('y1', y(v)).attr('y2', y(v));
-      axG.append('text').attr('x', L - 6).attr('y', y(v)).attr('text-anchor', 'end').attr('dominant-baseline', 'central').attr('font-size', 11).text(f2(v).replace(/0$/, ''));
+      axG.append('text').attr('x', L - 6).attr('y', y(v)).attr('text-anchor', 'end').attr('dominant-baseline', 'central').attr('font-size', 11).text(dec(v.toFixed(1)));
     }
-    for (const v of [0, 5000, 10000, 15000, 20000]) axG.append('text').attr('x', x(v)).attr('y', H - B + 15).attr('text-anchor', v === 20000 ? 'end' : v === 0 ? 'start' : 'middle').attr('font-size', 11).text(v === 0 ? '0' : nf.format(v));
-    axG.append('text').attr('class', 'ttl').attr('x', (L + W - R) / 2).attr('y', H - 6).attr('text-anchor', 'middle').attr('font-size', 11.5).text('расстояние до выбранной традиции, км');
-    axG.append('text').attr('class', 'ttl').attr('x', 4).attr('y', 5).attr('text-anchor', 'start').attr('font-size', 11.5).attr('dominant-baseline', 'hanging').text('сходство с выбранной традицией');
-    const mid = dec.mean.map((v, i) => [(D.decay.bins[i] + D.decay.bins[i + 1]) / 2, v]);
+    for (const v of [0, 5000, 10000, 15000, 20000]) axG.append('text').attr('x', x(v)).attr('y', H - B + 15).attr('text-anchor', v === 20000 ? 'end' : v === 0 ? 'start' : 'middle').attr('font-size', 11).text(nf(v));
+    axG.append('text').attr('class', 'ttl').attr('x', (L + W - R) / 2).attr('y', H - 6).attr('text-anchor', 'middle').attr('font-size', 11.5).text(t('relX'));
+    axG.append('text').attr('class', 'ttl').attr('x', 4).attr('y', 5).attr('text-anchor', 'start').attr('font-size', 11.5).attr('dominant-baseline', 'hanging').text(t('relY'));
+    const mid = decay.mean.map((v, i) => [(D.decay.bins[i] + D.decay.bins[i + 1]) / 2, v]);
     lineG.selectAll('*').remove();
     lineG.append('path').attr('class', 'meanline').attr('d', d3.line().x(d => x(d[0])).y(d => y(d[1])).curve(d3.curveMonotoneX)(mid));
     for (const d of scPts) { d.x = x(dist[d.g]); d.y = y(Math.min(ymax, S[d.g])); }
     sc.applyScale();
   }
+  function scale() {
+    const r = (a, b) => `${f2(a)}–${f2(b)}`;
+    const host = $('#relScale');
+    steps(host, ['s1', 's2', 's3', 's4', 's5', 's6', 's7'], [t('relBelow', f2(0.03)), r(0.03, 0.06), r(0.06, 0.10), r(0.10, 0.15), r(0.15, 0.22), r(0.22, 0.32), t('relAbove', f2(0.32))]);
+    host.prepend(h('i', { class: 't', text: '0' })); host.append(h('i', { class: 't', text: f2(0.32) + '+' }));
+  }
   function render() {
-    STATE.relSet = st.set; STATE.focus = G.name[st.f]; setSeg(st.set);
+    STATE.relSet = st.set; STATE.focus = G.name[st.f]; setSeg(st.set); scale();
+    map.label(t('relMapLabel')); sc.label(t('relScLabel'));
     const p = getPrep(st.set), ok = !!p.elig[st.f];
     S = sims(st.set, st.f); dist = new Float64Array(NG); for (let g = 0; g < NG; g++) dist[g] = km(st.f, g);
-    map.restyle(d => d.g === st.f ? { cls: 'foc', f: 1.5, z: 9 } : isNaN(S[d.g]) ? { cls: 'low', f: 0.72, z: -1 } : { cls: cls(S[d.g]), z: S[d.g] });
+    map.restyle(d => (d.g === st.f ? { cls: 'foc', f: 1.5, z: 9 } : isNaN(S[d.g]) ? { cls: 'low', f: 0.72, z: -1 } : { cls: cls(S[d.g]), z: S[d.g] }));
     map.o.resize();
     scPts = []; if (ok) for (let g = 0; g < NG; g++) if (g !== st.f && !isNaN(S[g])) scPts.push({ id: g, g, x: 0, y: 0 });
     scByG = new Map(scPts.map(d => [d.g, d]));
     sc.setPoints(scPts); drawScatter(); sc.restyle(d => ({ cls: cls(S[d.g]), z: S[d.g] }));
     const note = $('#relNote'); note.textContent = '';
-    const setName = { all: 'все мотивы', A: 'космологические и этиологические мотивы', B: 'приключенческие и трикстерские мотивы' }[st.set];
     note.append(h('b', { text: G.name[st.f] + '. ' }));
     const list = $('#relList'); list.textContent = '';
-    if (!ok) { note.append(`У этой традиции меньше 10 мотивов выбранной группы, сходство для неё не считается. Выберите другую традицию или другую группу мотивов.`); return; }
+    if (!ok) { note.append(t('relNo')); return; }
     const order = scPts.map(d => d.g).sort((a, b) => S[b] - S[a]);
-    const far = order.filter(g => dist[g] > 5000).slice(0, 1)[0];
-    note.append(`Учитываются ${setName}; сравнение с ${nf.format(p.ne - 1)} традициями.`);
-    if (far != null) note.append(` Самая похожая традиция дальше 5 000 км: ${G.name[far]} (сходство ${f2(S[far])}, ${nf.format(Math.round(dist[far] / 100) * 100)} км).`);
+    const far = order.find(g => dist[g] > 5000);
+    note.append(t('relSet')[st.set] + t('relCmp', p.ne - 1));
+    if (far != null) note.append(t('relFar', G.name[far], f2(S[far]), nf(Math.round(dist[far] / 100) * 100)));
     order.slice(0, 15).forEach((g, i) => {
       const dot = h('i'); dot.style.background = `var(--${cls(S[g])})`;
-      const b = h('button', { class: 'rrow', type: 'button', title: 'Сделать выбранной традицией', onclick: () => setFocus(g) },
-        h('span', { class: 'rk', text: String(i + 1) }), dot, h('span', { text: G.name[g] }), h('span', { class: 'v', text: f2(S[g]) }), h('span', { class: 'km', text: nf.format(Math.round(dist[g] / 10) * 10) + ' км' }));
+      const b = tAttr(h('button', { class: 'rrow', type: 'button', onclick: () => setFocus(g) },
+        h('span', { class: 'rk', text: String(i + 1) }), dot, h('span', { text: G.name[g] }), h('span', { class: 'v', text: f2(S[g]) }), h('span', { class: 'km', text: kmTxt(dist[g], 10) })), { title: 'relPick' });
       b.addEventListener('mouseenter', () => { map.mark(mapPts[g]); sc.mark(scByG.get(g)); }); b.addEventListener('mouseleave', () => { map.mark(null); sc.mark(null); });
       list.append(h('li', null, b));
     });
   }
+  RERENDER.push(render);
   render();
 }
 
 // ============================================================ 4b. mean decay curves
 function initDecay() {
   const host = $('#decayPlot'), bins = D.decay.bins; host.classList.add('plot');
-  const SER = [{ key: 'A', name: 'космология и этиология (A–I)', short: 'космология и этиология', color: 'c2' }, { key: 'B', name: 'приключения и трикстеры (J–N)', short: 'приключения и трикстеры', color: 'c6' }];
+  const SER = [{ key: 'A', name: 'decA', short: 'decAs', color: 'a1' }, { key: 'B', name: 'decB', short: 'decBs', color: 'a2' }];
   const mids = bins.slice(0, -1).map((b, i) => (b + bins[i + 1]) / 2);
-  const rng = i => `${nf.format(bins[i])}–${nf.format(Math.min(20000, bins[i + 1]))} км`;
-  const leg = $('#decayLegend');
-  for (const s of SER) { const k = h('span', { class: 'lk' }); k.style.borderTopColor = `var(--${s.color})`; leg.append(h('span', { class: 'it' }, k, s.name)); }
-  const svg = d3.select(host).append('svg').attr('role', 'img').attr('aria-label', 'Среднее сходство пар традиций в зависимости от расстояния между ними, отдельно для космологических и приключенческих мотивов');
-  let x = null, cross = null, T = 28, B = 38, H = 0;
+  const rng = i => `${nf(bins[i])}–${nf(Math.min(20000, bins[i + 1]))} ${t('km')}`;
+  const svg = d3.select(host).append('svg').attr('role', 'img');
+  let x = null, cross = null; const T = 28, B = 38;
   function draw() {
-    const W = host.clientWidth; if (!W) return; H = Math.round(Math.max(240, Math.min(330, W * 0.58)));
+    const W = host.clientWidth; if (!W) return; const H = Math.round(Math.max(240, Math.min(330, W * 0.58)));
     const L = 40, R = 16;
-    svg.attr('viewBox', `0 0 ${W} ${H}`).selectAll('*').remove();
+    svg.attr('viewBox', `0 0 ${W} ${H}`).attr('aria-label', t('decLabel')).selectAll('*').remove();
     x = d3.scaleLinear([0, 20000], [L, W - R]); const y = d3.scaleLog([0.02, 0.3], [H - B, T]);
     const ax = svg.append('g').attr('class', 'ax');
     for (const v of [0.02, 0.05, 0.1, 0.2, 0.3]) {
       ax.append('line').attr('class', v === 0.02 ? 'base' : 'grid').attr('x1', L).attr('x2', W - R).attr('y1', y(v)).attr('y2', y(v));
       ax.append('text').attr('x', L - 6).attr('y', y(v)).attr('text-anchor', 'end').attr('dominant-baseline', 'central').attr('font-size', 11).text(f2(v));
     }
-    for (const v of [0, 5000, 10000, 15000, 20000]) ax.append('text').attr('x', x(v)).attr('y', H - B + 15).attr('text-anchor', v === 20000 ? 'end' : v === 0 ? 'start' : 'middle').attr('font-size', 11).text(v === 0 ? '0' : nf.format(v));
-    ax.append('text').attr('class', 'ttl').attr('x', (L + W - R) / 2).attr('y', H - 6).attr('text-anchor', 'middle').attr('font-size', 11.5).text('расстояние между традициями, км');
-    ax.append('text').attr('class', 'ttl').attr('x', 4).attr('y', 5).attr('text-anchor', 'start').attr('font-size', 11.5).attr('dominant-baseline', 'hanging').text('среднее сходство пар традиций');
+    for (const v of [0, 5000, 10000, 15000, 20000]) ax.append('text').attr('x', x(v)).attr('y', H - B + 15).attr('text-anchor', v === 20000 ? 'end' : v === 0 ? 'start' : 'middle').attr('font-size', 11).text(nf(v));
+    ax.append('text').attr('class', 'ttl').attr('x', (L + W - R) / 2).attr('y', H - 6).attr('text-anchor', 'middle').attr('font-size', 11.5).text(t('decX'));
+    ax.append('text').attr('class', 'ttl').attr('x', 4).attr('y', 5).attr('text-anchor', 'start').attr('font-size', 11.5).attr('dominant-baseline', 'hanging').text(t('decY'));
     cross = svg.append('line').attr('class', 'cross').attr('y1', T).attr('y2', H - B).attr('display', 'none');
     for (const s of SER) {
       const pts = mids.map((m, i) => [m, D.decay[s.key].mean[i]]);
       svg.append('path').attr('class', 'dline').attr('d', d3.line().x(d => x(d[0])).y(d => y(d[1]))(pts)).style('stroke', `var(--${s.color})`);
       svg.append('g').selectAll('circle').data(pts).join('circle').attr('class', 'ddot').attr('cx', d => x(d[0])).attr('cy', d => y(d[1])).attr('r', 4).style('fill', `var(--${s.color})`);
       const last = pts[pts.length - 1];
-      svg.append('text').attr('class', 'meanlab').attr('x', W - R).attr('y', y(last[1]) - 11).attr('text-anchor', 'end').attr('font-size', 11.5).attr('stroke-width', 3).text(s.short);
+      svg.append('text').attr('class', 'meanlab').attr('x', W - R).attr('y', y(last[1]) - 11).attr('text-anchor', 'end').attr('font-size', 11.5).attr('stroke-width', 3).text(t(s.short));
     }
   }
   svg.on('pointermove', e => {
     if (!x) return; const mx = d3.pointer(e)[0]; let bi = 0, bd = Infinity;
     mids.forEach((m, i) => { const q = Math.abs(x(m) - mx); if (q < bd) { bd = q; bi = i; } });
     cross.attr('display', null).attr('x1', x(mids[bi])).attr('x2', x(mids[bi]));
-    Tip.show(e, [tipTitle(rng(bi))].concat(SER.map(s => { const k = h('span', { class: 'lk' }); k.style.borderTopColor = `var(--${s.color})`; return h('div', { class: 'tl' }, k, h('b', { text: f3(D.decay[s.key].mean[bi]) }), h('span', { text: s.short })); })));
+    Tip.show(e, [tipTitle(rng(bi))].concat(SER.map(s => { const k = h('span', { class: 'lk' }); k.style.borderTopColor = `var(--${s.color})`; return h('div', { class: 'tl' }, k, h('b', { text: f3(D.decay[s.key].mean[bi]) }), h('span', { text: t(s.short) })); })));
   }).on('pointerleave', () => { if (cross) cross.attr('display', 'none'); Tip.hide(); });
-  const tb = h('tbody');
-  bins.slice(0, -1).forEach((b, i) => tb.append(h('tr', null, h('td', { text: rng(i) }), h('td', { text: f3(D.decay.A.mean[i]) }), h('td', { text: f3(D.decay.B.mean[i]) }), h('td', { text: f3(D.decay.all.mean[i]) }), h('td', { text: nf.format(D.decay.all.n[i]) }))));
-  $('#decayTable').append(h('table', { class: 'tbl' }, h('thead', null, h('tr', null, h('th', { text: 'Расстояние' }), h('th', { text: 'Космология' }), h('th', { text: 'Приключения' }), h('th', { text: 'Все мотивы' }), h('th', { text: 'Пар (все мотивы)' }))), tb));
-  new ResizeObserver(draw).observe(host); draw();
+  function build() {
+    const leg = $('#decayLegend'); leg.textContent = '';
+    for (const s of SER) { const k = h('span', { class: 'lk' }); k.style.borderTopColor = `var(--${s.color})`; leg.append(h('span', { class: 'it' }, k, t(s.name))); }
+    const tb = h('tbody'), th = t('decTh');
+    bins.slice(0, -1).forEach((b, i) => tb.append(h('tr', null, h('td', { text: rng(i) }), h('td', { text: f3(D.decay.A.mean[i]) }), h('td', { text: f3(D.decay.B.mean[i]) }), h('td', { text: f3(D.decay.all.mean[i]) }), h('td', { text: nf(D.decay.all.n[i]) }))));
+    const box = $('#decayTable'); box.textContent = '';
+    box.append(h('table', { class: 'tbl' }, h('thead', null, h('tr', null, ...th.map(s => h('th', { text: s })))), tb));
+    draw();
+  }
+  new ResizeObserver(draw).observe(host);
+  RERENDER.push(build);
+  build();
 }
 
 // ============================================================ 5. motif atlas
 function initMotifs(saved) {
-  const A = D.atlas, HUE = A.regs.map(i => nodes[i].hue), REGN = A.regs.map(i => nodes[i]);
+  const A = D.atlas, REGN = A.regs.map(i => nodes[i]);
   const atlasPos = new Int32Array(NM).fill(-1); A.m.forEach((m, j) => { atlasPos[m] = j; });
   const mById = new Map(M.id.map((id, m) => [id, m]));
   const st = { m: mById.has(saved.motif) ? mById.get(saved.motif) : mById.get('a36') };
@@ -465,22 +603,18 @@ function initMotifs(saved) {
   const umPts = A.m.map((m, j) => ({ id: m, m, nx: A.xy[j][0], ny: A.xy[j][1], home: A.home[j], x: 0, y: 0 }));
   const PAD = 16;
   const place = p => { for (const d of umPts) { d.x = PAD + d.nx * (p.o.W - 2 * PAD); d.y = PAD + (1 - d.ny) * (p.o.H - 2 * PAD); } };
-  const homeName = i => (i < 3 ? REGN[i].short : 'широкий ареал');
-  const um = new Plot($('#moUmap'), { W: 600, H: 480, pixel: w => Math.max(320, Math.min(560, w * 0.86)), rPx: 2.5, hitPx: 12, label: 'Мотивы в пространстве сходства ареалов, проекция UMAP',
-    hover: (d, e, mv) => { if (!d) return Tip.hide(); if (mv) return Tip.move(e); Tip.show(e, [tipTitle(M.id[d.m] + ' · ' + M.title[d.m]), tipLine(String(mDf[d.m]), plural(mDf[d.m], 'традиция', 'традиции', 'традиций')), tipLine(null, d.home < 3 ? 'чаще всего: ' + homeName(d.home) : 'широкий ареал')]); },
+  const homeName = i => (i < 3 ? sh(REGN[i]) : t('wide'));
+  const um = new Plot($('#moUmap'), { W: 600, H: 480, pixel: w => Math.max(320, Math.min(560, w * 0.86)), rPx: 2.5, hitPx: 12,
+    hover: (d, e, mv) => { if (!d) return Tip.hide(); if (mv) return Tip.move(e); Tip.show(e, [tipTitle(M.id[d.m] + ' · ' + M.title[d.m]), tipLine(null, nTrad(mDf[d.m])), tipLine(null, d.home < 3 ? t('moMostIn', homeName(d.home)) : t('wide'))]); },
     click: d => selectMotif(d.m, false), resize: p => { place(p); p.applyScale(); ring(); } });
   const selRing = um.over.append('circle').attr('class', 'sel-ring').attr('display', 'none');
   const ring = () => { const j = atlasPos[st.m]; if (j < 0) return selRing.attr('display', 'none'); const d = umPts[j]; selRing.attr('display', null).attr('cx', d.x).attr('cy', d.y).attr('r', 8); };
-  place(um); um.setPoints(umPts).restyle(d => ({ cls: d.home < 3 ? 'c' + HUE[d.home] : 'nul', f: d.home < 3 ? 1 : 0.85 }));
+  place(um); um.setPoints(umPts).restyle(d => ({ cls: d.home < 3 ? 'k' + REGN[d.home].col : 'nul', f: d.home < 3 ? 1 : 0.85 }));
   const counts = [0, 0, 0, 0]; for (const v of A.home) counts[v]++;
-  const leg = $('#moLegend');
-  for (let i = 0; i < 4; i++) leg.append(h('span', { class: 'it' }, swatch(i < 3 ? 'c' + HUE[i] : 'nul', 0), `${homeName(i)} · ${nf.format(counts[i])}`));
-  $('#moUmapCap').textContent = `Показаны ${nf.format(A.m.length)} ${plural(A.m.length, 'мотив', 'мотива', 'мотивов')}, записанные хотя бы у пяти традиций. Мотив отнесён к области, если на неё приходится не меньше 60% его встречаемости с поправкой на число записей в области. Проекция UMAP, оси ничего не значат.`;
-
   const mapPts = d3.range(NG).map(g => ({ id: g, g, x: GXY[g][0], y: GXY[g][1] }));
   let has = new Uint8Array(NG);
-  const map = new Plot($('#moMap'), Object.assign({}, MAPO, { zoom: true, sorted: true, rPx: 3.1, bg: mapBg(true), label: 'Карта мира: традиции, в которых записан выбранный мотив',
-    hover: (d, e, mv) => { if (!d) return Tip.hide(); if (mv) return Tip.move(e); Tip.show(e, [tipTitle(G.name[d.g]), tipLine(null, has[d.g] ? 'мотив записан' : 'мотив не записан'), tipLine(String(G.n[d.g]), plural(G.n[d.g], 'мотив всего', 'мотива всего', 'мотивов всего'))]); } }));
+  const map = new Plot($('#moMap'), Object.assign({}, MAPO, { zoom: true, sorted: true, rPx: 3.1, bg: mapBg(true),
+    hover: (d, e, mv) => { if (!d) return Tip.hide(); if (mv) return Tip.move(e); Tip.show(e, [tipTitle(G.name[d.g]), tipLine(null, has[d.g] ? t('moHas') : t('moHasNot')), tipLine(String(G.n[d.g]), t('moTotal', G.n[d.g]))]); } }));
   map.setPoints(mapPts);
   const similar = m => {
     const cnt = new Map(); for (const g of D.inc[m]) for (const n of gMot[g]) if (n !== m) cnt.set(n, (cnt.get(n) || 0) + 1);
@@ -489,32 +623,33 @@ function initMotifs(saved) {
   };
   function render() {
     const m = st.m; STATE.motif = M.id[m];
+    um.label(t('moUmapLabel')); map.label(t('moMapLabel'));
+    const leg = $('#moLegend'); leg.textContent = '';
+    for (let i = 0; i < 4; i++) leg.append(h('span', { class: 'it' }, swatch(i < 3 ? 'k' + REGN[i].col : 'nul'), `${homeName(i)} · ${nf(counts[i])}`));
+    $('#moUmapCap').textContent = t('moUmapCap', A.m.length);
     has = new Uint8Array(NG); for (const g of D.inc[m]) has[g] = 1;
     map.restyle(d => (has[d.g] ? { cls: 'on', z: 1, f: 1.2 } : { cls: 'nul', z: 0, f: 0.55 }));
     ring();
     const head = $('#moHead'); head.textContent = '';
-    const letter = M.id[m][0].toUpperCase();
     head.append(h('div', { class: 'idline' }, h('span', { class: 'bigcode', text: M.id[m] }), h('span', { class: 'ttl', text: M.title[m] })),
       h('p', { class: 'desc', text: (M.desc && M.desc[m]) || '' }),
-      h('p', { class: 'meta' }, `Раздел ${letter} каталога (${mIsA[m] ? 'космология и этиология' : 'приключения и трикстеры'}) · записан у ${nf.format(mDf[m])} ${plural(mDf[m], 'традиции', 'традиций', 'традиций')} из ${nf.format(NG)} · `,
-        h('a', { href: 'https://www.ruthenia.ru/folklore/berezkin/eng.html', text: 'список мотивов в каталоге' })));
-    $('#moMapCap').textContent = `Синие точки: традиции, где записан мотив ${M.id[m]}. Серые: остальные традиции каталога.`;
+      h('p', { class: 'meta' }, t('moMeta', M.id[m][0].toUpperCase(), mIsA[m], mDf[m], NG), h('a', { href: 'https://www.ruthenia.ru/folklore/berezkin/eng.html', text: t('moLink') })));
+    $('#moMapCap').textContent = t('moMapCap', M.id[m]);
     const side = $('#moSide'); side.textContent = '';
     const cnt = [0, 0, 0]; for (const g of D.inc[m]) { const j = keptPos[g]; if (j >= 0) cnt[regIdx.get(l3[j])]++; }
     const meters = h('div', { class: 'meters' });
     REGN.forEach((n, i) => {
-      const share = cnt[i] / regSize[i], fill = h('div', { class: 'fill' }); fill.style.width = (share * 100).toFixed(1) + '%'; fill.style.background = `var(--c${n.hue})`;
-      meters.append(h('div', { class: 'meter' }, h('div', { class: 'top' }, h('span', { text: n.name }), h('span', { class: 'v', text: `${pc(share)} · ${cnt[i]} из ${regSize[i]}` })), h('div', { class: 'track' }, fill)));
+      const share = cnt[i] / regSize[i], fill = h('div', { class: 'fill' }); fill.style.width = (share * 100).toFixed(1) + '%'; fill.style.background = `var(--k${n.col})`;
+      meters.append(h('div', { class: 'meter' }, h('div', { class: 'top' }, h('span', { text: nm(n) }), h('span', { class: 'v', text: t('moOf', pc(share), cnt[i], regSize[i]) })), h('div', { class: 'track' }, fill)));
     });
-    side.append(h('div', { class: 'info' }, h('h4', { text: 'Доля традиций с мотивом в трёх больших областях' }), meters,
-      h('p', { class: 'fine', style: 'margin-top:6px', text: 'Области взяты из третьего шага кластеризации. Учтены традиции с 15 и более мотивами.' })));
+    side.append(h('div', { class: 'info' }, h('h4', { text: t('moShare') }), meters, h('p', { class: 'fine', style: 'margin-top:6px', text: t('moAreas') })));
     const sim = similar(m);
     if (sim.length) {
       const ol = h('ol', { class: 'mlist' }); for (const [n, j] of sim) ol.append(h('li', null, motifBtn(n, f2(j), true)));
-      side.append(h('div', { class: 'info' }, h('h4', { text: 'Мотивы с самым похожим ареалом' }), ol, h('p', { class: 'fine', style: 'margin-top:6px', text: 'Число справа показывает долю общих традиций (мера Жаккара).' })));
+      side.append(h('div', { class: 'info' }, h('h4', { text: t('moSimilar') }), ol, h('p', { class: 'fine', style: 'margin-top:6px', text: t('moJacc') })));
     }
     const names = D.inc[m].map(g => G.name[g]).sort((a, b) => a.localeCompare(b));
-    side.append(h('details', null, h('summary', { text: `Все ${names.length} ${plural(names.length, 'традиция', 'традиции', 'традиций')} с этим мотивом` }), h('div', { class: 'names', text: names.join('; ') })));
+    side.append(h('details', null, h('summary', { text: t('moAll', names.length) }), h('div', { class: 'names', text: names.join('; ') })));
   }
   selectMotif = (m, scroll) => {
     st.m = m; render(); $('#moResults').textContent = '';
@@ -529,16 +664,29 @@ function initMotifs(saved) {
     return ex.concat(pre, sub).slice(0, 8);
   };
   const inp = $('#moSearch'), res = $('#moResults');
-  const showRes = () => { res.textContent = ''; for (const o of search(inp.value)) res.append(motifBtn(o.m, mDf[o.m] + ' ' + plural(mDf[o.m], 'традиция', 'традиции', 'традиций'), true)); };
+  const showRes = () => { res.textContent = ''; for (const o of search(inp.value)) res.append(motifBtn(o.m, nTrad(mDf[o.m]), true)); };
   inp.addEventListener('input', showRes);
   inp.addEventListener('keydown', e => { if (e.key === 'Enter') { const r = search(inp.value); if (r.length) { selectMotif(r[0].m, false); inp.value = ''; } } });
+  RERENDER.push(() => { render(); showRes(); });
   render();
 }
 
 // ============================================================ boot
+function facts() { $('#fG').textContent = nf(D.meta.nG); $('#fM').textContent = nf(D.meta.nM); $('#fP').textContent = nf(D.meta.nPairs); $('#fMed').textContent = nf(D.meta.medianM); }
+function setLang(l) {
+  LANG = l === 'ru' ? 'ru' : 'en'; STATE.lang = LANG; document.documentElement.lang = LANG;
+  try { localStorage.setItem('comparanda-lang', LANG); } catch (e) { /* storage is optional */ }
+  for (const b of document.querySelectorAll('#langSeg button')) b.setAttribute('aria-pressed', String(b.dataset.v === LANG));
+  applyAttrs(); Tip.hide();
+  for (const f of RERENDER) f();
+}
 function start(saved) {
   saved = saved || {};
-  $('#fG').textContent = nf.format(D.meta.nG); $('#fM').textContent = nf.format(D.meta.nM); $('#fP').textContent = nf.format(D.meta.nPairs); $('#fMed').textContent = nf.format(D.meta.medianM);
+  let stored = null; try { stored = localStorage.getItem('comparanda-lang'); } catch (e) { /* storage is optional */ }
+  LANG = (saved.lang || stored) === 'ru' ? 'ru' : 'en'; STATE.lang = LANG; document.documentElement.lang = LANG;
+  for (const b of document.querySelectorAll('#langSeg button')) b.setAttribute('aria-pressed', String(b.dataset.v === LANG));
+  $('#langSeg').addEventListener('click', e => { const b = e.target.closest('button'); if (b && b.dataset.v !== LANG) setLang(b.dataset.v); });
+  applyAttrs(); facts(); RERENDER.push(facts);
   initClusters(saved); initNmf(); initAxes(saved); initRel(saved); initDecay(); initMotifs(saved);
   window.__ready = true;
 }

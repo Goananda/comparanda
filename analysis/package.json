@@ -1,5 +1,5 @@
 {
-  "name": "berezkin-motif-areas-build",
+  "name": "comparanda-build",
   "private": true,
   "description": "Map geometry for the page: projects the land outline and tradition coordinates",
   "dependencies": {

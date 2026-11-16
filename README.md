@@ -1,68 +1,74 @@
-# Ареалы фольклорных мотивов
+# Comparanda
 
-Разведочный анализ аналитического каталога мифологии и фольклора Ю. Е. Берёзкина и Е. Н. Дувакина: какие традиции похожи друг на друга по набору мотивов, какие мотивы встречаются вместе и как сходство зависит от расстояния.
+*Comparing elements of culture across the world's traditions.*
 
-**Интерактивная страница:** https://goananda.github.io/berezkin-motif-areas/
+Comparanda (Latin for "things to be compared") is an open project for comparing cultural data across many traditions with reproducible statistics and interactive maps. It starts with folklore and mythology; other kinds of cultural elements are planned.
 
-> **In English.** An exploratory analysis of the analytical catalogue of world mythology and folklore by Yu. E. Berezkin and E. N. Duvakin (923 traditions, 2,563 motifs). Traditions are clustered by motif repertoire alone, motifs are grouped into areal complexes, and motif similarity is compared with geographic distance. The interactive page is in Russian. The tables in [`data/derived/`](data/derived) have English column names and are described in [`data/README.md`](data/README.md).
+**Interactive page:** https://goananda.github.io/comparanda/ (English by default, with a Russian version; the switch is at the top right)
 
-## Что на странице
+Русская версия этого файла: [README.ru.md](README.ru.md)
 
-1. **Кластеры культур.** Иерархическая кластеризация традиций по наборам мотивов, от 2 до 12 кластеров. Координаты в расчёт не входят.
-2. **Комплексы мотивов.** Двенадцать наборов мотивов с общим ареалом (неотрицательное матричное разложение).
-3. **Главные оси.** Главные компоненты отдельно для космологических мотивов (разделы A–I каталога) и для приключенческих и трикстерских (J–N).
-4. **Сходство и расстояние.** Карта сходства любой традиции со всеми остальными и кривые убывания сходства с расстоянием.
-5. **Атлас мотивов.** Карта любого мотива, поиск по коду или слову, мотивы с похожим ареалом.
+## Study 1. Myths remember geography
 
-Карты центрированы на Тихом океане и приближаются кнопками или колесом мыши с Ctrl.
+An exploratory analysis of the analytical catalogue of world mythology and folklore by Yu. E. Berezkin and E. N. Duvakin: 923 traditions, 2,563 motifs and 82,046 tradition–motif pairs. It asks which traditions resemble each other in their repertoire of motifs, which motifs travel together, and how similarity depends on distance.
 
-## Что получилось
+### What is on the page
 
-- Кластеры, построенные без координат, ложатся на карту сплошными областями. При 8 кластерах 88% из десяти географически ближайших соседей традиции попадают в её же кластер; при случайном разбиении на кластеры таких же размеров было бы 15%.
-- Первым отделяется блок от Европы и Магриба до Индии и Монголии. Сибирь и Арктика отходят от Северной Америки только на шестом шаге, а чукчи, коряки, ительмены и кереки до двенадцатого шага остаются в одном кластере с Аляской и эскимосами.
-- У космологических мотивов вторая главная ось противопоставляет север (Сибирь и Северная Америка) югу (Африка, Южная Америка, юг Азии, Океания). Это близко к противопоставлению континентально-евразийского и индо-тихоокеанского комплексов у Ю. Е. Берёзкина.
-- Среднее сходство пар традиций падает с 0,22 у соседей ближе 250 км до 0,024 на расстоянии 12–14 тысяч км. У космологических мотивов оно снова растёт на 16–20 тысячах км (0,040 против 0,032 на 10–14 тысячах; 95%-й бутстреп-интервал разницы 0,005–0,011). У приключенческих мотивов такого роста нет.
+1. **Culture clusters.** Hierarchical clustering of traditions by their sets of motifs, from 2 to 12 clusters. Coordinates are not part of the calculation. Each cluster has its own colour.
+2. **Motif complexes.** Twelve sets of motifs that share a range (non-negative matrix factorisation).
+3. **Principal axes.** Principal components, separately for cosmological motifs (catalogue sections A–I) and for adventure and trickster motifs (J–N).
+4. **Similarity and distance.** A map of how similar any tradition is to all the others, and curves of how similarity falls with distance.
+5. **Motif atlas.** A map of any motif, search by code or word, and motifs with a similar range.
 
-## Что лежит в репозитории
+Maps are centred on the Pacific and zoom with the buttons or with Ctrl + mouse wheel. Motif and tradition names are in English in both language versions, as in the source files.
 
-| Путь | Содержимое |
+### Findings
+
+- Clusters built without coordinates form contiguous areas on the map. With 8 clusters, 88% of a tradition's ten geographically nearest neighbours fall into its own cluster; a random partition into clusters of the same sizes would give 15%.
+- The first block to split off runs from Europe and the Maghreb to India and Mongolia. Siberia and the Arctic part from North America only at the sixth step, and Chukchi, Koryak, Itelmen and Kerek stay in one cluster with Alaska and the Eskimo traditions up to the twelfth step.
+- For cosmological motifs the second principal axis sets the north (Siberia and North America) against the south (Africa, South America, southern Asia, Oceania). This is close to the contrast between the Continental Eurasian and Indo-Pacific complexes in Berezkin's work.
+- Mean similarity of pairs of traditions falls from 0.22 for neighbours within 250 km to 0.024 at 12–14 thousand km. For cosmological motifs it rises again at 16–20 thousand km (0.040 against 0.032 at 10–14 thousand; 95% bootstrap interval of the difference 0.005–0.011). Adventure motifs show no such rise.
+
+### Caveats
+
+- Coverage is uneven: from 2 to 598 motifs per tradition. A missing motif may simply not have been recorded.
+- The genre mix differs. Cosmological motifs make up about 20% of the record in Europe and about 72% in Mesoamerica. Part of the difference between clusters reflects what collectors wrote down.
+- Clusters and complexes use the 831 traditions with 15 or more motifs. The other 92 traditions appear on the cluster map as hollow circles.
+- Cluster boundaries depend on the similarity measure and the method. A few traditions land in a cluster centred on another continent, and ancient written traditions (Sumer, Akkad, Egypt, Ancient Greece) fall outside the Eurasian block.
+- Cluster and complex names were given by their membership while preparing this work. The catalogue has no such units.
+- This is the version of the catalogue cleaned in 2023, and the coordinates of traditions come from an older version.
+
+## What is in the repository
+
+| Path | Contents |
 |---|---|
-| [`index.html`](index.html) | Интерактивная страница одним файлом. Данные встроены, библиотека D3 загружается с cdnjs. |
-| [`data/source/`](data/source) | Исходные файлы в том виде, в каком они скачаны: мотивы, пары «традиция, мотив», координаты и две производные таблицы автора блога. |
-| [`data/derived/`](data/derived) | Результаты анализа в CSV: матрица 0/1, кластеры, комплексы, оси, таблица убывания сходства. |
-| [`data/README.md`](data/README.md) | Описание всех файлов и столбцов, происхождение данных. |
-| [`analysis/`](analysis) | Скрипты, которыми всё посчитано, и исходники страницы. |
+| [`index.html`](index.html) | The interactive page as a single file. Data are embedded; the D3 library is loaded from cdnjs. |
+| [`data/source/`](data/source) | Source files exactly as downloaded: motifs, tradition–motif pairs, coordinates, and two derived tables by the blog author. |
+| [`data/derived/`](data/derived) | Analysis results as CSV: the 0/1 matrix, clusters, complexes, axes, the distance-decay table. |
+| [`data/README.md`](data/README.md) | Description of every file and column, and the provenance of the data. |
+| [`analysis/`](analysis) | The scripts that computed everything, and the sources of the page. |
 
-## Как пересчитать
+## How to reproduce
 
-Нужны Python 3.10 или новее и Node.js 18 или новее.
+You need Python 3.10 or newer and Node.js 18 or newer.
 
 ```bash
 pip install -r analysis/requirements.txt
 bash analysis/run_all.sh
 ```
 
-Скрипт заново строит матрицу, кластеры, комплексы, оси, таблицы в `data/derived/` и `index.html`. Расчёт занимает около десяти минут. Случайные генераторы зафиксированы, но проекции UMAP могут немного отличаться на других версиях библиотек. Скрипты из `analysis/exploratory/` на страницу не влияют: это проверки и пробы, на которые опирается текст.
+The script rebuilds the matrix, clusters, complexes, axes, the tables in `data/derived/` and `index.html`. It takes about ten minutes. Random seeds are fixed, but UMAP projections may differ slightly with other library versions. The scripts in `analysis/exploratory/` do not affect the page: they are the checks and trials behind statements in the text.
 
-## Оговорки
+## Data sources and terms of use
 
-- Изученность традиций неравномерна: от 2 до 598 мотивов на традицию. Отсутствие мотива может значить, что его не записали.
-- Жанровый состав записей разный. В Европе на космологические мотивы приходится около 20% записанных мотивов, в Мезоамерике около 72%. Часть различий между кластерами отражает то, что именно записывали.
-- В кластеры и комплексы вошла 831 традиция с 15 и более мотивами. Остальные 92 традиции показаны на карте кластеров пустыми кружками.
-- Границы кластеров зависят от меры сходства и метода. Несколько традиций попали в кластер другого континента, а древние письменные традиции (Шумер, Аккад, Египет, Древняя Греция) оказались вне евразийского блока.
-- Названия кластеров и комплексов даны по их составу при подготовке этой работы. В каталоге таких единиц нет.
-- Это версия каталога, очищенная в 2023 году, а координаты традиций взяты из более старой версии.
+- **The catalogue.** Yu. E. Berezkin, E. N. Duvakin. Thematic classification and areal distribution of folklore and mythological motifs. Analytical catalogue (in Russian). https://www.ruthenia.ru/folklore/berezkin/
+- **The catalogue as tables.** Michalopoulos S., Xue M. M. (2021). Folklore. *The Quarterly Journal of Economics*, 136(4), 1993–2046. Replication package: Harvard Dataverse, https://doi.org/10.7910/DVN/IXOHKB, licence CC0 1.0.
+- **Cleaned files.** Kenneth S. Reyes, Two Points blog, "The tales we tell" (2023): https://twopoints.blog/posts/2023-04-22-the-tales-we-tell/. The blog's text and images are distributed under CC BY 4.0. The files in `data/source/` were downloaded from there on 16 November 2026 and have not been changed.
+- **Coordinates of traditions** reached the cleaned files from the repository [macleginn/mythology-queries](https://github.com/macleginn/mythology-queries).
+- **Land outline** on the maps: Natural Earth (public domain) through the world-atlas package.
 
-## Источники данных и условия использования
+If you are the author or rights holder of any of these materials and object to its being placed here, please open an issue in this repository.
 
-- **Каталог.** Ю. Е. Берёзкин, Е. Н. Дувакин. Тематическая классификация и распределение фольклорно-мифологических мотивов по ареалам. Аналитический каталог. https://www.ruthenia.ru/folklore/berezkin/
-- **Данные каталога в табличном виде.** Michalopoulos S., Xue M. M. (2021). Folklore. *The Quarterly Journal of Economics*, 136(4), 1993–2046. Репликационный пакет: Harvard Dataverse, https://doi.org/10.7910/DVN/IXOHKB, лицензия CC0 1.0.
-- **Очищенные файлы.** Kenneth S. Reyes, блог Two Points, «The tales we tell» (2023): https://twopoints.blog/posts/2023-04-22-the-tales-we-tell/. Тексты и изображения блога распространяются по лицензии CC BY 4.0. Файлы в `data/source/` скачаны оттуда 16 ноября 2026 года и не изменены.
-- **Координаты традиций** попали в очищенные файлы из репозитория [macleginn/mythology-queries](https://github.com/macleginn/mythology-queries).
-- **Контур суши** на картах: Natural Earth (общественное достояние) через пакет world-atlas.
+## How it was made
 
-Если вы автор или правообладатель какого-либо из этих материалов и возражаете против его размещения здесь, откройте issue в этом репозитории.
-
-## Как это сделано
-
-Анализ и страница подготовлены в диалоге с Claude (Anthropic). Все расчёты воспроизводятся скриптами из `analysis/`.
+The analysis and the page were prepared in dialogue with Claude (Anthropic). All calculations can be reproduced with the scripts in `analysis/`.
