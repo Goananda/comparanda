@@ -14,20 +14,26 @@ An exploratory analysis of the analytical catalogue of world mythology and folkl
 
 ### What is on the page
 
-1. **Culture clusters.** Hierarchical clustering of traditions by their sets of motifs, from 2 to 12 clusters. Coordinates are not part of the calculation. Each cluster has its own colour.
-2. **Motif complexes.** Twelve sets of motifs that share a range (non-negative matrix factorisation).
-3. **Principal axes.** Principal components, separately for cosmological motifs (catalogue sections A–I) and for adventure and trickster motifs (J–N).
-4. **Similarity and distance.** A map of how similar any tradition is to all the others, and curves of how similarity falls with distance.
-5. **Motif atlas.** A map of any motif, search by code or word, and motifs with a similar range.
+The home tab carries the title and a list of the sections. Each of the other tabs shows the same data in its own way.
 
-Maps are centred on the Pacific and zoom with the buttons or with Ctrl + mouse wheel. Motif and tradition names are in English in both language versions, as in the source files.
+| Tab | Method | What it shows |
+|---|---|---|
+| **Clusters** | LSA and Ward clustering | Traditions grouped by their sets of motifs, from 2 to 12 clusters. Coordinates are not part of the calculation. Each cluster has its own colour. |
+| **Tree** | the same hierarchy in full | All 831 traditions on one radial tree. Any branch can be shown on the map together with the motifs that set it apart. |
+| **Axes** | principal components | The main directions of variation, separately for cosmological motifs (sections A–I) and adventure and trickster motifs (J–N). |
+| **Complexes** | NMF | Twelve sets of motifs that share a range. |
+| **Atlas** | UMAP of motif ranges | A map of any motif, search by code or word, and motifs with a similar range. |
+| **Correlations** | phi coefficient | Pick a motif to list the motifs most often recorded in the same traditions, or a tradition to list the traditions with the most similar motifs. Two motifs give a three-colour map (only the first, only the second, both); two traditions give the motifs they share. |
+| **Method** | | Data, calculations and caveats. |
+
+A tab can be linked directly, for example `…/comparanda/#tree`. Maps are centred on the Pacific and zoom with the buttons or with Ctrl + mouse wheel. Motif and tradition names are in English in both language versions, as in the source files.
 
 ### Findings
 
 - Clusters built without coordinates form contiguous areas on the map. With 8 clusters, 88% of a tradition's ten geographically nearest neighbours fall into its own cluster; a random partition into clusters of the same sizes would give 15%.
 - The first block to split off runs from Europe and the Maghreb to India and Mongolia. Siberia and the Arctic part from North America only at the sixth step, and Chukchi, Koryak, Itelmen and Kerek stay in one cluster with Alaska and the Eskimo traditions up to the twelfth step.
 - For cosmological motifs the second principal axis sets the north (Siberia and North America) against the south (Africa, South America, southern Asia, Oceania). This is close to the contrast between the Continental Eurasian and Indo-Pacific complexes in Berezkin's work.
-- Mean similarity of pairs of traditions falls from 0.22 for neighbours within 250 km to 0.024 at 12–14 thousand km. For cosmological motifs it rises again at 16–20 thousand km (0.040 against 0.032 at 10–14 thousand; 95% bootstrap interval of the difference 0.005–0.011). Adventure motifs show no such rise.
+- Mean similarity of pairs of traditions falls from 0.22 for neighbours within 250 km to 0.024 at 12–14 thousand km. For cosmological motifs it rises again at 16–20 thousand km (0.040 against 0.032 at 10–14 thousand; 95% bootstrap interval of the difference 0.005–0.011). Adventure motifs show no such rise. The figures are in `data/derived/distance_decay.csv`.
 
 ### Caveats
 
@@ -44,7 +50,7 @@ Maps are centred on the Pacific and zoom with the buttons or with Ctrl + mouse w
 |---|---|
 | [`index.html`](index.html) | The interactive page as a single file. Data are embedded; the D3 library is loaded from cdnjs. |
 | [`data/source/`](data/source) | Source files exactly as downloaded: motifs, tradition–motif pairs, coordinates, and two derived tables by the blog author. |
-| [`data/derived/`](data/derived) | Analysis results as CSV: the 0/1 matrix, clusters, complexes, axes, the distance-decay table. |
+| [`data/derived/`](data/derived) | Analysis results as CSV: the 0/1 matrix, clusters and the full tree, complexes, axes, the distance-decay table. |
 | [`data/README.md`](data/README.md) | Description of every file and column, and the provenance of the data. |
 | [`analysis/`](analysis) | The scripts that computed everything, and the sources of the page. |
 

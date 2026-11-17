@@ -34,7 +34,6 @@ const TX = {
   en: {
     zoomIn: 'Zoom in', zoomOut: 'Zoom out', zoomReset: 'Show the whole world', openMotif: 'Open this motif in the atlas',
     navLabel: 'Sections', langLabel: 'Language', kLess: 'One cluster fewer', kMore: 'One cluster more',
-    relPh: 'Start typing a name', moPh: 'Code or word: a36, moon, trickster', moFound: 'Motifs found',
     clMapLabel: 'World map: traditions coloured by cluster of motif similarity', clUmapLabel: 'Traditions in similarity space, UMAP projection',
     lowData: 'Fewer than 15 motifs; left out of the analysis',
     motifsRecorded: n => (n === 1 ? 'motif recorded' : 'motifs recorded'),
@@ -51,25 +50,14 @@ const TX = {
     axis: (i, neg, pos) => `Axis ${i}: ${neg} ↔ ${pos}. `,
     axCap: (v, ng, nmot) => `The axis explains ${v}% of the variance. It is computed on ${nTrad(ng)} with 15 or more motifs of this group and ${nf(nmot)} motifs. Scores are scaled so that ±100 is the 97th percentile.`,
     axPole: 'Traditions at this pole: ',
-    relMapLabel: 'World map: similarity of every tradition to the selected one', relScLabel: 'Similarity to the selected tradition against distance from it',
-    relBelow: v => `below ${v}`, relAbove: v => `${v} and above`, relSel: 'selected tradition', relFew: 'fewer than 10 motifs of this group',
-    relSimTo: name => 'similarity to ' + name, relDist: 'distance', km: 'km',
-    relX: 'distance from the selected tradition, km', relY: 'similarity to the selected tradition',
-    relSet: { all: 'All motifs are used', A: 'Cosmological and etiological motifs are used', B: 'Adventure and trickster motifs are used' },
-    relCmp: n => `; compared with ${nTrad(n)}.`,
-    relFar: (name, s, d) => ` Most similar tradition beyond 5,000 km: ${name} (similarity ${s}, ${d} km).`,
-    relNo: 'This tradition has fewer than 10 motifs of the selected group, so similarity is not computed for it. Pick another tradition or another group of motifs.',
-    relPick: 'Make this the selected tradition',
-    decA: 'cosmology and etiology (A–I)', decB: 'adventure and tricksters (J–N)', decAs: 'cosmology and etiology', decBs: 'adventure and tricksters',
-    decLabel: 'Mean similarity of pairs of traditions against the distance between them, separately for cosmological and adventure motifs',
-    decX: 'distance between traditions, km', decY: 'mean similarity of pairs of traditions',
-    decTh: ['Distance', 'Cosmology', 'Adventure', 'All motifs', 'Pairs (all motifs)'],
+    km: 'km', moPh: 'code or word: a36, moon, trickster',
     wide: 'widespread', moUmapLabel: 'Motifs in the space of range similarity, UMAP projection', moMapLabel: 'World map: traditions in which the selected motif is recorded',
     moMostIn: name => 'most frequent in: ' + name,
     moUmapCap: n => `Shown are ${nf(n)} motifs recorded in at least five traditions. A motif is assigned to an area when that area accounts for at least 60% of its occurrence, adjusted for how much is recorded there. This is a UMAP projection; the axes mean nothing.`,
     moHas: 'motif recorded', moHasNot: 'motif not recorded', moTotal: n => (n === 1 ? 'motif in total' : 'motifs in total'),
     moMeta: (letter, isA, n, N) => `Catalogue section ${letter} (${isA ? 'cosmology and etiology' : 'adventure and tricksters'}) · recorded in ${nf(n)} of ${nf(N)} traditions · `,
     moLink: 'motif list in the catalogue',
+    moCor: 'compare with other motifs',
     moMapCap: id => `Blue dots: traditions where motif ${id} is recorded. Grey dots: the other traditions in the catalogue.`,
     moShare: 'Share of traditions with the motif in three macro-areas', moOf: (p, a, b) => `${p} · ${a} of ${b}`,
     moAreas: 'The areas come from the three-cluster step. Traditions with 15 or more motifs are counted.',
@@ -79,7 +67,6 @@ const TX = {
   ru: {
     zoomIn: 'Приблизить', zoomOut: 'Отдалить', zoomReset: 'Показать весь мир', openMotif: 'Открыть карту мотива в атласе',
     navLabel: 'Разделы', langLabel: 'Язык', kLess: 'На один кластер меньше', kMore: 'На один кластер больше',
-    relPh: 'Начните вводить название', moPh: 'Код или слово: a36, moon, trickster', moFound: 'Найденные мотивы',
     clMapLabel: 'Карта мира: традиции окрашены по кластерам сходства мотивов', clUmapLabel: 'Традиции в пространстве сходства, проекция UMAP',
     lowData: 'Меньше 15 мотивов, в расчёт не входила',
     motifsRecorded: n => ruPl(n, 'мотив записан', 'мотива записано', 'мотивов записано'),
@@ -96,25 +83,14 @@ const TX = {
     axis: (i, neg, pos) => `Ось ${i}: ${neg} ↔ ${pos}. `,
     axCap: (v, ng, nmot) => `Ось объясняет ${v}% разброса. В расчёт вошли ${nTrad(ng)} с 15 и более мотивами этой группы и ${nf(nmot)} ${ruPl(nmot, 'мотив', 'мотива', 'мотивов')}. Значения нормированы так, что ±100 соответствует 97-му процентилю.`,
     axPole: 'Традиции у полюса: ',
-    relMapLabel: 'Карта мира: сходство традиций с выбранной', relScLabel: 'Сходство с выбранной традицией в зависимости от расстояния',
-    relBelow: v => `ниже ${v}`, relAbove: v => `${v} и выше`, relSel: 'выбранная традиция', relFew: 'меньше 10 мотивов этой группы',
-    relSimTo: name => 'сходство с ' + name, relDist: 'расстояние', km: 'км',
-    relX: 'расстояние до выбранной традиции, км', relY: 'сходство с выбранной традицией',
-    relSet: { all: 'Учитываются все мотивы', A: 'Учитываются космологические и этиологические мотивы', B: 'Учитываются приключенческие и трикстерские мотивы' },
-    relCmp: n => `; сравнение с ${nf(n)} ${ruPl(n, 'традицией', 'традициями', 'традициями')}.`,
-    relFar: (name, s, d) => ` Самая похожая традиция дальше 5 000 км: ${name} (сходство ${s}, ${d} км).`,
-    relNo: 'У этой традиции меньше 10 мотивов выбранной группы, сходство для неё не считается. Выберите другую традицию или другую группу мотивов.',
-    relPick: 'Сделать выбранной традицией',
-    decA: 'космология и этиология (A–I)', decB: 'приключения и трикстеры (J–N)', decAs: 'космология и этиология', decBs: 'приключения и трикстеры',
-    decLabel: 'Среднее сходство пар традиций в зависимости от расстояния между ними, отдельно для космологических и приключенческих мотивов',
-    decX: 'расстояние между традициями, км', decY: 'среднее сходство пар традиций',
-    decTh: ['Расстояние', 'Космология', 'Приключения', 'Все мотивы', 'Пар (все мотивы)'],
+    km: 'км', moPh: 'код или слово: a36, moon, trickster',
     wide: 'широкий ареал', moUmapLabel: 'Мотивы в пространстве сходства ареалов, проекция UMAP', moMapLabel: 'Карта мира: традиции, в которых записан выбранный мотив',
     moMostIn: name => 'чаще всего: ' + name,
     moUmapCap: n => `Показаны ${nf(n)} ${ruPl(n, 'мотив', 'мотива', 'мотивов')}, записанные хотя бы у пяти традиций. Мотив отнесён к области, если на неё приходится не меньше 60% его встречаемости с поправкой на число записей в области. Проекция UMAP, оси ничего не значат.`,
     moHas: 'мотив записан', moHasNot: 'мотив не записан', moTotal: n => ruPl(n, 'мотив всего', 'мотива всего', 'мотивов всего'),
     moMeta: (letter, isA, n, N) => `Раздел ${letter} каталога (${isA ? 'космология и этиология' : 'приключения и трикстеры'}) · записан у ${nf(n)} ${ruPl(n, 'традиции', 'традиций', 'традиций')} из ${nf(N)} · `,
     moLink: 'список мотивов в каталоге',
+    moCor: 'сравнить с другими мотивами',
     moMapCap: id => `Синие точки: традиции, где записан мотив ${id}. Серые: остальные традиции каталога.`,
     moShare: 'Доля традиций с мотивом в трёх больших областях', moOf: (p, a, b) => `${p} · ${a} из ${b}`,
     moAreas: 'Области взяты из третьего шага кластеризации. Учтены традиции с 15 и более мотивами.',
@@ -212,6 +188,8 @@ class Plot {
     this.sel.each(function (d) {
       const s = d._s = self.styleFn(d);
       this.setAttribute('class', 'mk ' + s.cls + (s.dim ? ' dim' : ''));
+      if (s.fill) this.style.fill = s.fill; else if (this.style.fill) this.style.fill = '';
+      if (s.op != null) this.style.fillOpacity = s.op; else if (this.style.fillOpacity) this.style.fillOpacity = '';
       this.setAttribute('transform', self.tf(d));
       if (s.hide) this.setAttribute('display', 'none'); else this.removeAttribute('display');
     });
@@ -248,13 +226,87 @@ class Plot {
   }
 }
 
-let selectMotif = () => {};
-const motifBtn = (m, val, noScroll) => tAttr(h('button', { class: 'mref', type: 'button', onclick: () => selectMotif(m, !noScroll) },
+let selectMotif = () => {}, openMotif = () => {}, openCor = () => {}, corSet = null;
+const motifBtn = (m, val, noScroll) => tAttr(h('button', { class: 'mref', type: 'button', onclick: () => openMotif(m) },
   h('span', { class: 'code', text: M.id[m] }), h('span', { text: M.title[m] }), val ? h('span', { class: 'val', text: val }) : null), { title: 'openMotif' });
 const segInit = (host, cb) => {
   host.addEventListener('click', e => { const b = e.target.closest('button'); if (!b) return; cb(b.dataset.v); });
   return v => { for (const b of host.querySelectorAll('button')) b.setAttribute('aria-pressed', String(b.dataset.v === String(v))); };
 };
+
+// ---------- shared by several views
+const KEPT = D.kept, LEAF = D.labels[12];
+const PROJ = d3.geoEqualEarth().rotate([-153, 0]).fitWidth(GEO.W, { type: 'Sphere' });   // the same projection as in analysis/build_geo.mjs
+const GEOPATH = d3.geoPath(PROJ);
+const arcPath = (a, b) => GEOPATH({ type: 'LineString', coordinates: [[G.lon[a], G.lat[a]], [G.lon[b], G.lat[b]]] });
+const leafOf = g => { const j = keptPos[g]; return j < 0 ? null : nodes[LEAF[j]]; };
+const chip = cls => { const i = h('i', { class: 'chip ' + cls }); return i; };
+// motif search by code or by a word of the title
+const MIDX = []; for (let m = 0; m < NM; m++) if (mDf[m] > 0) MIDX.push({ m, id: M.id[m], t: M.title[m].toLowerCase() });
+const motifSearch = (q, lim = 8) => {
+  q = q.trim().toLowerCase(); if (!q) return [];
+  const ex = [], pre = [], sub = [];
+  for (const o of MIDX) { if (o.id === q) ex.push(o); else if (o.id.startsWith(q)) pre.push(o); else if (o.t.includes(q)) sub.push(o); }
+  pre.sort((a, b) => a.id.length - b.id.length || a.id.localeCompare(b.id)); sub.sort((a, b) => mDf[b.m] - mDf[a.m]);
+  return ex.concat(pre, sub).slice(0, lim);
+};
+// a search field whose list drops down on focus and narrows as you type; o.items(query) -> array, o.row(item) -> element, o.pick(item)
+function picker(inp, o) {
+  const wrap = h('span', { class: 'pk' }), box = h('div', { class: 'pkbox', role: 'listbox' }); inp.replaceWith(wrap); wrap.append(inp, box); box.hidden = true;
+  let items = [], shown = 0, act = -1;
+  const more = () => {
+    for (const end = Math.min(items.length, shown + 150); shown < end; shown++) {
+      const it = items[shown], row = o.row(it); row.classList.add('pkrow'); row.setAttribute('role', 'option');
+      row.addEventListener('mousedown', e => { e.preventDefault(); choose(it); }); box.append(row);
+    }
+  };
+  const close = () => { box.hidden = true; };
+  const open = () => {
+    items = o.items(inp.value); box.textContent = ''; shown = 0; act = -1; more(); box.hidden = !items.length; box.scrollTop = 0;
+    box.style.left = ''; box.style.right = ''; if (!box.hidden && wrap.getBoundingClientRect().left + box.offsetWidth > document.documentElement.clientWidth - 8) { box.style.left = 'auto'; box.style.right = '0'; }
+  };
+  const choose = it => { inp.value = ''; close(); inp.blur(); o.pick(it); };
+  const move = d => {
+    if (box.hidden) open(); const n = box.children.length; if (!n) return; if (act >= 0) box.children[act].classList.remove('act');
+    act = Math.max(0, Math.min(n - 1, act + d)); const r = box.children[act]; r.classList.add('act');
+    if (r.offsetTop < box.scrollTop) box.scrollTop = r.offsetTop; else if (r.offsetTop + r.offsetHeight > box.scrollTop + box.clientHeight) box.scrollTop = r.offsetTop + r.offsetHeight - box.clientHeight;
+  };
+  inp.addEventListener('focus', open); inp.addEventListener('input', open); inp.addEventListener('click', () => { if (box.hidden) open(); });
+  inp.addEventListener('blur', () => setTimeout(close, 150));
+  box.addEventListener('scroll', () => { if (box.scrollTop + box.clientHeight > box.scrollHeight - 120) more(); });
+  inp.addEventListener('keydown', e => {
+    if (e.key === 'Escape') close();
+    else if (e.key === 'ArrowDown') { e.preventDefault(); move(1); }
+    else if (e.key === 'ArrowUp') { e.preventDefault(); move(-1); }
+    else if (e.key === 'Enter' && !box.hidden && items.length && (act >= 0 || inp.value.trim())) choose(items[Math.max(act, 0)]);
+  });
+}
+const MALL = MIDX.slice().sort((x, y) => x.id.localeCompare(y.id, 'en', { numeric: true }));     // catalogue order: a1, a2, ... a10
+const motifItems = q => (q.trim() ? motifSearch(q, 400) : MALL);
+const motifRow = o => h('div', { class: 'mref' }, h('span', { class: 'code', text: o.id }), h('span', { text: M.title[o.m] }), h('span', { class: 'val', text: nf(mDf[o.m]) }));
+
+// ============================================================ 0. home: the cluster map at eight clusters, without controls
+function initHome() {
+  const lab = D.labels[8], st = { hov: null };
+  const nodeOf = g => { const j = keptPos[g]; return j < 0 ? null : nodes[lab[j]]; };
+  const map = new Plot($('#hmMap'), Object.assign({}, MAPO, { zoom: true, sorted: true, bg: mapBg(true),
+    hover: (d, e, mv) => {
+      if (!d) return Tip.hide(); if (mv) return Tip.move(e); const n = nodeOf(d.g), c = G.n[d.g];
+      Tip.show(e, [tipTitle(G.name[d.g]), tipLine(null, n ? nm(n) : t('lowData')), tipLine(String(c), t('motifsRecorded', c))]);
+    } }));
+  map.setPoints(d3.range(NG).map(g => ({ id: g, g, x: GXY[g][0], y: GXY[g][1] })));
+  const paint = () => map.restyle(d => { const n = nodeOf(d.g); return n ? { cls: 'k' + n.col, dim: st.hov != null && st.hov !== n.id, z: st.hov === n.id ? 2 : 1 } : { cls: 'low', f: 0.72, z: 0 }; });
+  function texts() {
+    map.label(t('clMapLabel')); const leg = $('#hmLegend'); leg.textContent = '';
+    for (const n of Array.from(new Set(lab)).map(i => nodes[i]).sort((a, b) => a.rank - b.rank)) {
+      const it = h('span', { class: 'it' }, swatch('k' + n.col), sh(n));
+      it.addEventListener('mouseenter', () => { st.hov = n.id; paint(); }); it.addEventListener('mouseleave', () => { st.hov = null; paint(); });
+      leg.append(it);
+    }
+    paint();
+  }
+  RERENDER.push(texts); texts();
+}
 
 // ============================================================ 1. clusters
 function initClusters(saved) {
@@ -441,159 +493,7 @@ function initAxes(saved) {
   render();
 }
 
-// ============================================================ 4. relatives and distance
-function initRel(saved) {
-  const inSet = { all: () => true, A: m => mIsA[m], B: m => !mIsA[m] };
-  const prep = {};
-  const getPrep = s => {
-    if (prep[s]) return prep[s];
-    const f = inSet[s], elig = new Uint8Array(NG); let ne = 0;
-    for (let g = 0; g < NG; g++) { let c = 0; for (const m of gMot[g]) if (f(m)) c++; if (c >= 10) { elig[g] = 1; ne++; } }
-    const idf = new Float64Array(NM);
-    for (let m = 0; m < NM; m++) { if (!f(m)) continue; let df = 0; for (const g of D.inc[m]) df += elig[g]; idf[m] = df > 0 ? Math.log(ne / df) : 0; }
-    const norm = new Float64Array(NG);
-    for (let g = 0; g < NG; g++) { if (!elig[g]) continue; let q = 0; for (const m of gMot[g]) q += idf[m] * idf[m]; norm[g] = Math.sqrt(q); }
-    return (prep[s] = { elig, idf, norm, ne });
-  };
-  const sims = (s, f) => {
-    const p = getPrep(s), acc = new Float64Array(NG), out = new Float64Array(NG).fill(NaN);
-    if (!p.elig[f]) return out;
-    for (const m of gMot[f]) { const w = p.idf[m]; if (!w) continue; const w2 = w * w; for (const g of D.inc[m]) acc[g] += w2; }
-    for (let g = 0; g < NG; g++) if (p.elig[g] && p.norm[g] > 0) out[g] = acc[g] / (p.norm[f] * p.norm[g]);
-    return out;
-  };
-  const TH = [0.03, 0.06, 0.10, 0.15, 0.22, 0.32];
-  const cls = v => { if (!(v > 0)) return 'nul'; let c = 1; for (const x of TH) if (v >= x) c++; return 's' + c; };
-  const st = { set: ['all', 'A', 'B'].includes(saved.relSet) ? saved.relSet : 'all', f: gByName.has(saved.focus) ? gByName.get(saved.focus) : gByName.get('Chukchi') };
-  const dl = $('#relNames'); for (const n of G.name.slice().sort((a, b) => a.localeCompare(b))) dl.append(h('option', { value: n }));
-  const mapPts = d3.range(NG).map(g => ({ id: g, g, x: GXY[g][0], y: GXY[g][1] }));
-  let S = null, dist = null, scPts = [], scByG = new Map();
-  const kmTxt = (d, step) => nf(Math.round(d / step) * step) + ' ' + t('km');
-  const tipFor = g => {
-    if (g === st.f) return [tipTitle(G.name[g]), tipLine(null, t('relSel'))];
-    if (isNaN(S[g])) return [tipTitle(G.name[g]), tipLine(null, t('relFew'))];
-    return [tipTitle(G.name[g]), tipLine(f2(S[g]), t('relSimTo', G.name[st.f])), tipLine(kmTxt(dist[g], 10), t('relDist'))];
-  };
-  const map = new Plot($('#relMap'), Object.assign({}, MAPO, { zoom: true, sorted: true, bg: mapBg(true),
-    hover: (d, e, mv) => { if (!d) { Tip.hide(); sc.mark(null); return; } if (mv) return Tip.move(e); Tip.show(e, tipFor(d.g)); sc.mark(scByG.get(d.g) || null); },
-    click: d => setFocus(d.g) }));
-  const focRing = map.over.append('circle').attr('class', 'sel-ring');
-  map.o.onzoom = map.o.resize = () => { const p = mapPts[st.f]; focRing.attr('cx', p.x).attr('cy', p.y).attr('r', 9 * map.u / map.k); };
-  const sc = new Plot($('#relScatter'), { W: 600, H: 360, pixel: w => Math.max(260, Math.min(380, w * 0.62)), rPx: 2.6, hitPx: 14, sorted: true,
-    hover: (d, e, mv) => { if (!d) { Tip.hide(); map.mark(null); return; } if (mv) return Tip.move(e); Tip.show(e, tipFor(d.g)); map.mark(mapPts[d.g]); },
-    click: d => setFocus(d.g), resize: () => drawScatter() });
-  const axG = sc.bg.append('g').attr('class', 'ax'), lineG = sc.bg.append('g');
-  map.setPoints(mapPts);
-  const setSeg = segInit($('#relSet'), v => { st.set = v; render(); });
-  $('#relSearch').addEventListener('change', e => { const g = gByName.get(e.target.value.trim()); if (g != null) { setFocus(g); e.target.value = ''; } });
-  function setFocus(g) { st.f = g; render(); }
-  function drawScatter() {
-    const W = sc.o.W, H = sc.o.H, L = 40, R = 14, T = 26, B = 38;
-    let mx = 0; if (S) for (let g = 0; g < NG; g++) if (g !== st.f && S[g] > mx) mx = S[g];
-    const decay = D.decay[st.set]; mx = Math.max(mx, d3.max(decay.mean));
-    const ymax = Math.min(1, Math.max(0.3, Math.ceil(mx * 10) / 10));
-    const x = d3.scaleLinear([0, 20000], [L, W - R]), y = d3.scaleLinear([0, ymax], [H - B, T]);
-    axG.selectAll('*').remove();
-    for (const v of d3.range(0, ymax + 1e-9, ymax > 0.6 ? 0.2 : 0.1)) {
-      axG.append('line').attr('class', v === 0 ? 'base' : 'grid').attr('x1', L).attr('x2', W - R).attr('y1', y(v)).attr('y2', y(v));
-      axG.append('text').attr('x', L - 6).attr('y', y(v)).attr('text-anchor', 'end').attr('dominant-baseline', 'central').attr('font-size', 11).text(dec(v.toFixed(1)));
-    }
-    for (const v of [0, 5000, 10000, 15000, 20000]) axG.append('text').attr('x', x(v)).attr('y', H - B + 15).attr('text-anchor', v === 20000 ? 'end' : v === 0 ? 'start' : 'middle').attr('font-size', 11).text(nf(v));
-    axG.append('text').attr('class', 'ttl').attr('x', (L + W - R) / 2).attr('y', H - 6).attr('text-anchor', 'middle').attr('font-size', 11.5).text(t('relX'));
-    axG.append('text').attr('class', 'ttl').attr('x', 4).attr('y', 5).attr('text-anchor', 'start').attr('font-size', 11.5).attr('dominant-baseline', 'hanging').text(t('relY'));
-    const mid = decay.mean.map((v, i) => [(D.decay.bins[i] + D.decay.bins[i + 1]) / 2, v]);
-    lineG.selectAll('*').remove();
-    lineG.append('path').attr('class', 'meanline').attr('d', d3.line().x(d => x(d[0])).y(d => y(d[1])).curve(d3.curveMonotoneX)(mid));
-    for (const d of scPts) { d.x = x(dist[d.g]); d.y = y(Math.min(ymax, S[d.g])); }
-    sc.applyScale();
-  }
-  function scale() {
-    const r = (a, b) => `${f2(a)}–${f2(b)}`;
-    const host = $('#relScale');
-    steps(host, ['s1', 's2', 's3', 's4', 's5', 's6', 's7'], [t('relBelow', f2(0.03)), r(0.03, 0.06), r(0.06, 0.10), r(0.10, 0.15), r(0.15, 0.22), r(0.22, 0.32), t('relAbove', f2(0.32))]);
-    host.prepend(h('i', { class: 't', text: '0' })); host.append(h('i', { class: 't', text: f2(0.32) + '+' }));
-  }
-  function render() {
-    STATE.relSet = st.set; STATE.focus = G.name[st.f]; setSeg(st.set); scale();
-    map.label(t('relMapLabel')); sc.label(t('relScLabel'));
-    const p = getPrep(st.set), ok = !!p.elig[st.f];
-    S = sims(st.set, st.f); dist = new Float64Array(NG); for (let g = 0; g < NG; g++) dist[g] = km(st.f, g);
-    map.restyle(d => (d.g === st.f ? { cls: 'foc', f: 1.5, z: 9 } : isNaN(S[d.g]) ? { cls: 'low', f: 0.72, z: -1 } : { cls: cls(S[d.g]), z: S[d.g] }));
-    map.o.resize();
-    scPts = []; if (ok) for (let g = 0; g < NG; g++) if (g !== st.f && !isNaN(S[g])) scPts.push({ id: g, g, x: 0, y: 0 });
-    scByG = new Map(scPts.map(d => [d.g, d]));
-    sc.setPoints(scPts); drawScatter(); sc.restyle(d => ({ cls: cls(S[d.g]), z: S[d.g] }));
-    const note = $('#relNote'); note.textContent = '';
-    note.append(h('b', { text: G.name[st.f] + '. ' }));
-    const list = $('#relList'); list.textContent = '';
-    if (!ok) { note.append(t('relNo')); return; }
-    const order = scPts.map(d => d.g).sort((a, b) => S[b] - S[a]);
-    const far = order.find(g => dist[g] > 5000);
-    note.append(t('relSet')[st.set] + t('relCmp', p.ne - 1));
-    if (far != null) note.append(t('relFar', G.name[far], f2(S[far]), nf(Math.round(dist[far] / 100) * 100)));
-    order.slice(0, 15).forEach((g, i) => {
-      const dot = h('i'); dot.style.background = `var(--${cls(S[g])})`;
-      const b = tAttr(h('button', { class: 'rrow', type: 'button', onclick: () => setFocus(g) },
-        h('span', { class: 'rk', text: String(i + 1) }), dot, h('span', { text: G.name[g] }), h('span', { class: 'v', text: f2(S[g]) }), h('span', { class: 'km', text: kmTxt(dist[g], 10) })), { title: 'relPick' });
-      b.addEventListener('mouseenter', () => { map.mark(mapPts[g]); sc.mark(scByG.get(g)); }); b.addEventListener('mouseleave', () => { map.mark(null); sc.mark(null); });
-      list.append(h('li', null, b));
-    });
-  }
-  RERENDER.push(render);
-  render();
-}
-
-// ============================================================ 4b. mean decay curves
-function initDecay() {
-  const host = $('#decayPlot'), bins = D.decay.bins; host.classList.add('plot');
-  const SER = [{ key: 'A', name: 'decA', short: 'decAs', color: 'a1' }, { key: 'B', name: 'decB', short: 'decBs', color: 'a2' }];
-  const mids = bins.slice(0, -1).map((b, i) => (b + bins[i + 1]) / 2);
-  const rng = i => `${nf(bins[i])}–${nf(Math.min(20000, bins[i + 1]))} ${t('km')}`;
-  const svg = d3.select(host).append('svg').attr('role', 'img');
-  let x = null, cross = null; const T = 28, B = 38;
-  function draw() {
-    const W = host.clientWidth; if (!W) return; const H = Math.round(Math.max(240, Math.min(330, W * 0.58)));
-    const L = 40, R = 16;
-    svg.attr('viewBox', `0 0 ${W} ${H}`).attr('aria-label', t('decLabel')).selectAll('*').remove();
-    x = d3.scaleLinear([0, 20000], [L, W - R]); const y = d3.scaleLog([0.02, 0.3], [H - B, T]);
-    const ax = svg.append('g').attr('class', 'ax');
-    for (const v of [0.02, 0.05, 0.1, 0.2, 0.3]) {
-      ax.append('line').attr('class', v === 0.02 ? 'base' : 'grid').attr('x1', L).attr('x2', W - R).attr('y1', y(v)).attr('y2', y(v));
-      ax.append('text').attr('x', L - 6).attr('y', y(v)).attr('text-anchor', 'end').attr('dominant-baseline', 'central').attr('font-size', 11).text(f2(v));
-    }
-    for (const v of [0, 5000, 10000, 15000, 20000]) ax.append('text').attr('x', x(v)).attr('y', H - B + 15).attr('text-anchor', v === 20000 ? 'end' : v === 0 ? 'start' : 'middle').attr('font-size', 11).text(nf(v));
-    ax.append('text').attr('class', 'ttl').attr('x', (L + W - R) / 2).attr('y', H - 6).attr('text-anchor', 'middle').attr('font-size', 11.5).text(t('decX'));
-    ax.append('text').attr('class', 'ttl').attr('x', 4).attr('y', 5).attr('text-anchor', 'start').attr('font-size', 11.5).attr('dominant-baseline', 'hanging').text(t('decY'));
-    cross = svg.append('line').attr('class', 'cross').attr('y1', T).attr('y2', H - B).attr('display', 'none');
-    for (const s of SER) {
-      const pts = mids.map((m, i) => [m, D.decay[s.key].mean[i]]);
-      svg.append('path').attr('class', 'dline').attr('d', d3.line().x(d => x(d[0])).y(d => y(d[1]))(pts)).style('stroke', `var(--${s.color})`);
-      svg.append('g').selectAll('circle').data(pts).join('circle').attr('class', 'ddot').attr('cx', d => x(d[0])).attr('cy', d => y(d[1])).attr('r', 4).style('fill', `var(--${s.color})`);
-      const last = pts[pts.length - 1];
-      svg.append('text').attr('class', 'meanlab').attr('x', W - R).attr('y', y(last[1]) - 11).attr('text-anchor', 'end').attr('font-size', 11.5).attr('stroke-width', 3).text(t(s.short));
-    }
-  }
-  svg.on('pointermove', e => {
-    if (!x) return; const mx = d3.pointer(e)[0]; let bi = 0, bd = Infinity;
-    mids.forEach((m, i) => { const q = Math.abs(x(m) - mx); if (q < bd) { bd = q; bi = i; } });
-    cross.attr('display', null).attr('x1', x(mids[bi])).attr('x2', x(mids[bi]));
-    Tip.show(e, [tipTitle(rng(bi))].concat(SER.map(s => { const k = h('span', { class: 'lk' }); k.style.borderTopColor = `var(--${s.color})`; return h('div', { class: 'tl' }, k, h('b', { text: f3(D.decay[s.key].mean[bi]) }), h('span', { text: t(s.short) })); })));
-  }).on('pointerleave', () => { if (cross) cross.attr('display', 'none'); Tip.hide(); });
-  function build() {
-    const leg = $('#decayLegend'); leg.textContent = '';
-    for (const s of SER) { const k = h('span', { class: 'lk' }); k.style.borderTopColor = `var(--${s.color})`; leg.append(h('span', { class: 'it' }, k, t(s.name))); }
-    const tb = h('tbody'), th = t('decTh');
-    bins.slice(0, -1).forEach((b, i) => tb.append(h('tr', null, h('td', { text: rng(i) }), h('td', { text: f3(D.decay.A.mean[i]) }), h('td', { text: f3(D.decay.B.mean[i]) }), h('td', { text: f3(D.decay.all.mean[i]) }), h('td', { text: nf(D.decay.all.n[i]) }))));
-    const box = $('#decayTable'); box.textContent = '';
-    box.append(h('table', { class: 'tbl' }, h('thead', null, h('tr', null, ...th.map(s => h('th', { text: s })))), tb));
-    draw();
-  }
-  new ResizeObserver(draw).observe(host);
-  RERENDER.push(build);
-  build();
-}
-
-// ============================================================ 5. motif atlas
+// ============================================================ 4. motif atlas
 function initMotifs(saved) {
   const A = D.atlas, REGN = A.regs.map(i => nodes[i]);
   const atlasPos = new Int32Array(NM).fill(-1); A.m.forEach((m, j) => { atlasPos[m] = j; });
@@ -633,7 +533,8 @@ function initMotifs(saved) {
     const head = $('#moHead'); head.textContent = '';
     head.append(h('div', { class: 'idline' }, h('span', { class: 'bigcode', text: M.id[m] }), h('span', { class: 'ttl', text: M.title[m] })),
       h('p', { class: 'desc', text: (M.desc && M.desc[m]) || '' }),
-      h('p', { class: 'meta' }, t('moMeta', M.id[m][0].toUpperCase(), mIsA[m], mDf[m], NG), h('a', { href: 'https://www.ruthenia.ru/folklore/berezkin/eng.html', text: t('moLink') })));
+      h('p', { class: 'meta' }, t('moMeta', M.id[m][0].toUpperCase(), mIsA[m], mDf[m], NG), h('a', { href: 'https://www.ruthenia.ru/folklore/berezkin/eng.html', text: t('moLink') }), ' · ',
+        h('a', { href: '#correlations', text: t('moCor'), onclick: e => { e.preventDefault(); e.stopPropagation(); openCor('m', M.id[m]); } })));
     $('#moMapCap').textContent = t('moMapCap', M.id[m]);
     const side = $('#moSide'); side.textContent = '';
     const cnt = [0, 0, 0]; for (const g of D.inc[m]) { const j = keptPos[g]; if (j >= 0) cnt[regIdx.get(l3[j])]++; }
@@ -652,26 +553,41 @@ function initMotifs(saved) {
     side.append(h('details', null, h('summary', { text: t('moAll', names.length) }), h('div', { class: 'names', text: names.join('; ') })));
   }
   selectMotif = (m, scroll) => {
-    st.m = m; render(); $('#moResults').textContent = '';
-    if (scroll) $('#motifs').scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth', block: 'start' });
+    st.m = m; render();
   };
-  const idx = []; for (let m = 0; m < NM; m++) if (mDf[m] > 0) idx.push({ m, id: M.id[m], t: M.title[m].toLowerCase() });
-  const search = q => {
-    q = q.trim().toLowerCase(); if (!q) return [];
-    const ex = [], pre = [], sub = [];
-    for (const o of idx) { if (o.id === q) ex.push(o); else if (o.id.startsWith(q)) pre.push(o); else if (o.t.includes(q)) sub.push(o); }
-    pre.sort((a, b) => a.id.length - b.id.length || a.id.localeCompare(b.id)); sub.sort((a, b) => mDf[b.m] - mDf[a.m]);
-    return ex.concat(pre, sub).slice(0, 8);
-  };
-  const inp = $('#moSearch'), res = $('#moResults');
-  const showRes = () => { res.textContent = ''; for (const o of search(inp.value)) res.append(motifBtn(o.m, nTrad(mDf[o.m]), true)); };
-  inp.addEventListener('input', showRes);
-  inp.addEventListener('keydown', e => { if (e.key === 'Enter') { const r = search(inp.value); if (r.length) { selectMotif(r[0].m, false); inp.value = ''; } } });
-  RERENDER.push(() => { render(); showRes(); });
+  picker($('#moSearch'), { items: motifItems, row: motifRow, pick: o => selectMotif(o.m, false) });
+  RERENDER.push(render);
   render();
 }
 
-// ============================================================ boot
+/*@@VIEWS@@*/
+
+// ============================================================ boot: tabs, lazy views, language
+const VIEWS = { home: initHome, clusters: initClusters, tree: initTree, axes: initAxes, complexes: initNmf, motifs: initMotifs, correlations: initCorrelations, method: null };
+const inited = {};
+let currentView = null;
+function show(id) {
+  if (!(id in VIEWS)) id = 'home';
+  if (id === currentView) return;
+  const first = currentView === null; currentView = id; STATE.tab = id; Tip.hide();
+  for (const s of document.querySelectorAll('main > section')) s.hidden = s.id !== id;
+  $('#mast').hidden = id !== 'home';
+  for (const a of document.querySelectorAll('#tabs a')) {
+    if (a.dataset.tab !== id) { a.removeAttribute('aria-current'); continue; }
+    a.setAttribute('aria-current', 'page'); const row = a.parentNode;
+    if (row.scrollWidth > row.clientWidth) row.scrollLeft = a.offsetLeft - (row.clientWidth - a.offsetWidth) / 2;
+  }
+  if (!first) window.scrollTo(0, 0);
+  if (!inited[id] && VIEWS[id]) { inited[id] = true; VIEWS[id](STATE); }
+}
+function go(id) {
+  if (!(id in VIEWS)) id = 'home';
+  if (location.hash.slice(1) !== id) { try { history.pushState(null, '', '#' + id); } catch (e) { /* a sandboxed frame may refuse */ } }
+  show(id);
+}
+openMotif = m => { STATE.motif = M.id[m]; if (inited.motifs) selectMotif(m); go('motifs'); };
+openCor = (mode, a, b) => { STATE.corMode = mode; STATE.corA = a; STATE.corB = b || null; if (corSet) corSet(mode, a, b || null); go('correlations'); };
+const fromHash = () => { try { return decodeURIComponent(location.hash.slice(1)); } catch (e) { return ''; } };
 function facts() { $('#fG').textContent = nf(D.meta.nG); $('#fM').textContent = nf(D.meta.nM); $('#fP').textContent = nf(D.meta.nPairs); $('#fMed').textContent = nf(D.meta.medianM); }
 function setLang(l) {
   LANG = l === 'ru' ? 'ru' : 'en'; STATE.lang = LANG; document.documentElement.lang = LANG;
@@ -681,13 +597,21 @@ function setLang(l) {
   for (const f of RERENDER) f();
 }
 function start(saved) {
-  saved = saved || {};
+  Object.assign(STATE, saved || {});
   let stored = null; try { stored = localStorage.getItem('comparanda-lang'); } catch (e) { /* storage is optional */ }
-  LANG = (saved.lang || stored) === 'ru' ? 'ru' : 'en'; STATE.lang = LANG; document.documentElement.lang = LANG;
+  LANG = (STATE.lang || stored) === 'ru' ? 'ru' : 'en'; STATE.lang = LANG; document.documentElement.lang = LANG;
   for (const b of document.querySelectorAll('#langSeg button')) b.setAttribute('aria-pressed', String(b.dataset.v === LANG));
   $('#langSeg').addEventListener('click', e => { const b = e.target.closest('button'); if (b && b.dataset.v !== LANG) setLang(b.dataset.v); });
+  document.addEventListener('click', e => {
+    const a = e.target.closest ? e.target.closest('a[href^="#"]') : null; if (!a) return;
+    const id = a.getAttribute('href').slice(1); if (!(id in VIEWS)) return;
+    e.preventDefault(); go(id);
+  });
+  window.addEventListener('popstate', () => show(fromHash()));
+  window.addEventListener('hashchange', () => show(fromHash()));
   applyAttrs(); facts(); RERENDER.push(facts);
-  initClusters(saved); initNmf(); initAxes(saved); initRel(saved); initDecay(); initMotifs(saved);
+  const h0 = fromHash();
+  show(h0 in VIEWS ? h0 : (STATE.tab in VIEWS ? STATE.tab : 'home'));
   window.__ready = true;
 }
 const hot = window.claude && window.claude.hot;

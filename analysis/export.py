@@ -193,5 +193,7 @@ D['atlas'] = {'m': midx.tolist(), 'xy': np.round(Em, 4).tolist(), 'home': home.t
 rs = X.sum(1)
 D['meta'] = {'nG': int(len(G)), 'nM': int((X.sum(0) > 0).sum()), 'nPairs': int(X.sum()), 'medianM': int(np.median(rs)), 'minM': int(rs.min()), 'maxM': int(rs.max()), 'nKept': int(N), 'nKeptM': int(km.sum()),
              'nA': int(isA.sum()), 'nB': int((~isA).sum()), 'boot': {2: 0.81, 3: 0.59, 4: 0.65, 5: 0.73, 6: 0.71, 7: 0.68, 8: 0.63, 9: 0.59, 10: 0.64, 11: 0.68, 12: 0.66}}
+Lw = np.load(f'{out}/ward.npy')                                   # the whole Ward tree behind the clusters, drawn on the Tree tab
+D['tree'] = {'merge': Lw[:, :2].astype(int).tolist(), 'h': Lw[:, 2].round(3).tolist()}
 json.dump(D, open(f'{out}/data.json', 'w'), ensure_ascii=False, separators=(',', ':'))
 import os; print('data.json bytes', os.path.getsize(f'{out}/data.json'))

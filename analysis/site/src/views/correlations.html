@@ -1,0 +1,30 @@
+<section id="correlations" hidden>
+  <div class="sec-head">
+    <span class="sec-num"><span lang="en">co-occurrence</span><span lang="ru">совместная встречаемость</span></span>
+    <h2><span lang="en">Which motifs go together, and which traditions tell the same stories</span><span lang="ru">Какие мотивы встречаются вместе и какие традиции рассказывают одно и то же</span></h2>
+    <p class="lede"><span lang="en">Pick a motif to see the motifs most often recorded in the same traditions, or pick a tradition to see the traditions whose sets of motifs are most like its own. Pick a second one to compare the two: for two motifs the map shows where each occurs and where both do, for two traditions you get the motifs they share.</span><span lang="ru">Выберите мотив, чтобы увидеть мотивы, которые чаще всего записаны в тех же традициях, или выберите традицию, чтобы увидеть традиции с самыми похожими наборами мотивов. Выберите второй объект, чтобы сравнить два: для двух мотивов карта покажет, где встречается каждый и где оба, для двух традиций появится список общих мотивов.</span></p>
+  </div>
+  <div class="controls">
+    <div class="ctl"><span class="lab" id="crModeLab"><span lang="en">Compare</span><span lang="ru">Сравнивать</span></span>
+      <div class="seg" role="group" aria-labelledby="crModeLab" id="crMode">
+        <button type="button" data-v="m" aria-pressed="true"><span lang="en">Motifs</span><span lang="ru">Мотивы</span></button>
+        <button type="button" data-v="t" aria-pressed="false"><span lang="en">Traditions</span><span lang="ru">Традиции</span></button>
+      </div>
+    </div>
+    <div class="ctl"><label for="crInA" id="crLabA"></label><input type="search" id="crInA" autocomplete="off"></div>
+    <div class="ctl"><label for="crInB" id="crLabB"></label><input type="search" id="crInB" autocomplete="off"></div>
+  </div>
+  <div class="mcard" id="crHead"></div>
+  <div class="row2 wide">
+    <div class="crleft">
+      <figure class="plate">
+        <div class="hleg" id="crKey" style="padding:2px 4px 0"></div>
+        <div id="crMap"></div>
+        <figcaption id="crCap"></figcaption>
+      </figure>
+      <div id="crDetail"></div>
+    </div>
+    <div class="panel" id="crSide"></div>
+  </div>
+  <p class="fine" style="margin-top:18px;max-width:92ch"><span lang="en">The correlation is the Pearson coefficient between two columns or two rows of the tradition-by-motif table (the phi coefficient). For two motifs it is computed over all 923 traditions, for two traditions over the 2,563 motifs recorded at least once. A value of 1 means identical sets, 0 means no more overlap than chance would give, and a negative value means the two avoid each other. Poorly documented traditions and rare motifs give unstable values, so look at the number of shared items as well.</span><span lang="ru">Корреляция считается как коэффициент Пирсона между двумя столбцами или двумя строками таблицы «традиция × мотив» (коэффициент фи). Для двух мотивов он считается по всем 923 традициям, для двух традиций по 2 563 мотивам, записанным хотя бы раз. Значение 1 означает совпадающие наборы, 0 означает, что пересечение такое же, как при случайном совпадении, отрицательное значение означает, что два объекта избегают друг друга. Плохо записанные традиции и редкие мотивы дают неустойчивые значения, поэтому смотрите и на число общих элементов.</span></p>
+</section>

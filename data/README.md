@@ -89,4 +89,10 @@ Two rows per axis (the negative and the positive pole): `axis`, `motif_set`, `va
 
 Mean similarity of pairs of traditions by distance band: `km_from`, `km_to`, `mean_similarity_all`, `mean_similarity_cosmology`, `mean_similarity_adventure`, and the number of pairs in each band (`n_pairs_all`, `n_pairs_cosmology`, `n_pairs_adventure`).
 
+### `cluster_tree.csv` (830 rows)
+
+The whole Ward hierarchy behind the clusters, one row per merge: `merge` (`#1` … `#830`, in the order of merging), `child_a`, `child_b` (a tradition name or an earlier merge), `height`, `n_traditions`.
+
+## Similarity
+
 The similarity of two traditions is the cosine between their motif vectors, where a motif's weight is ln(N / number of traditions with the motif). Only traditions with at least 10 recorded motifs of the group in question are included. Distance is measured along the great circle.

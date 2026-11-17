@@ -21,14 +21,16 @@ Things to know:
 - Cluster and complex names are set by hand in `export.py`, in English and Russian, from the membership of each unit. They are tied to this version of the data: if the source files change, cluster sizes will shift and the dictionary of names will need updating.
 - The principal axes are computed separately for sections A–I and J–N, on traditions with 15 or more motifs of the group and motifs recorded in at least ten of them.
 - The page does not show motif definitions, only codes and titles. Full definitions are in `data/source/motifs.csv`.
+- The Correlations tab computes its coefficients in the browser from the tradition–motif pairs embedded in the page.
 - `exploratory/` holds the trials and checks behind statements on the page: a comparison of methods for the axes, cluster membership, similarity between clusters, the contribution of pairs of regions to the far distance bands. They do not affect the build.
 
 ## Languages of the page
 
 The page is in English by default and has a Russian version; the choice is kept in the browser. Motif and tradition names are not translated.
 
-- Static text lives in `site/src/body.html` as pairs of elements marked `lang="en"` and `lang="ru"`; a CSS rule hides the language that is not selected.
-- Text produced by scripts (captions, tooltips, notes) lives in the `TX` dictionary at the top of `site/src/app.js`, and the captions of the principal axes in `TXT` inside `initAxes`.
+- The frame of the page and the original views are in `site/src/body.html`, `app.js` and `style.css`. Every newer view is a pair of files in `site/src/views/` (`tree.html` and `tree.js`, `correlations.html` and `correlations.js`), inserted by `build.py`. Views are built when their tab is first opened.
+- Static text is written as pairs of elements marked `lang="en"` and `lang="ru"`; a CSS rule hides the language that is not selected.
+- Text produced by scripts (captions, tooltips, notes) lives in the `TX` dictionary at the top of `site/src/app.js`; each view file adds its own strings to it. The captions of the principal axes are in `TXT` inside `initAxes`.
 - Names of clusters and complexes in both languages come from `export.py`.
 
 ## Cluster colours

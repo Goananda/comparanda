@@ -86,4 +86,9 @@ dec = D['decay']; b = dec['bins']
 pd.DataFrame({'km_from': b[:-1], 'km_to': [min(20000, v) for v in b[1:]],
               'mean_similarity_all': dec['all']['mean'], 'mean_similarity_cosmology': dec['A']['mean'], 'mean_similarity_adventure': dec['B']['mean'],
               'n_pairs_all': dec['all']['n'], 'n_pairs_cosmology': dec['A']['n'], 'n_pairs_adventure': dec['B']['n']}).to_csv(f'{out}/distance_decay.csv', index=False)
+tr = D['tree']; kn = [D['g']['name'][g] for g in D['kept']]; size = [1] * len(kn); rows = []     # the whole cluster tree, one row per merge
+ref = lambda c: kn[c] if c < len(kn) else f'#{c - len(kn) + 1}'
+for i, ((a, b), hgt) in enumerate(zip(tr['merge'], tr['h'])):
+    size.append(size[a] + size[b]); rows.append({'merge': f'#{i + 1}', 'child_a': ref(a), 'child_b': ref(b), 'height': hgt, 'n_traditions': size[-1]})
+pd.DataFrame(rows).to_csv(f'{out}/cluster_tree.csv', index=False)
 print('tables written to', out, ':', sorted(os.listdir(out)))
