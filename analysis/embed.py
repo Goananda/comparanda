@@ -20,7 +20,7 @@ for nn, md in [(15, 0.3), (25, 0.4)]:
     np.save(f'{out}/umap_g_{nn}.npy', E)
 # motif embedding
 df = Xk.sum(0); idf = np.log(Xk.shape[0]/df); W = normalize(Xk*idf)
-svd = TruncatedSVD(30, random_state=0, n_iter=10).fit(W)
+svd = TruncatedSVD(30, algorithm='arpack', random_state=0).fit(W)
 Vm = normalize((svd.components_.T * svd.singular_values_))
 Em = umap.UMAP(n_neighbors=20, min_dist=0.25, metric='cosine', random_state=42).fit_transform(Vm)
 np.save(f'{out}/umap_m.npy', Em)

@@ -16,7 +16,7 @@ Object.assign(TX.ru, {
 });
 
 function initTree() {
-  const T = D.tree, N = KEPT.length, NN = 2 * N - 1, root = NN - 1, R0 = 300, VB = 348, TAU = 2 * Math.PI;
+  const T = D.tree, N = KEPT.length, NN = 2 * N - 1, root = NN - 1, R0 = 300, VB = 336, TAU = 2 * Math.PI;
   const st = { k: 12, pin: -1, hov: -1 };
   // children, parents and heights; leaves are 0..N-1 (indices into the analysed traditions), merges follow
   const ca = new Int32Array(NN).fill(-1), cb = new Int32Array(NN).fill(-1), par = new Int32Array(NN).fill(-1), hh = new Float64Array(NN);
@@ -111,19 +111,41 @@ function initTree() {
     cut.attr('r', rc); cutLab.attr('y', -rc - 5).text(t('trCut', st.k));
     $('#trK').textContent = st.k;
   }
-  let small = null;
+  let small = null, labW = 0;
   function labels() {
-    small = host.clientWidth < 520; gLab.selectAll('*').remove();
-    const lab = D.labels[st.k], groups = [], fs = 12.5, last = [-9, -9], leg = $('#trLegend'); leg.textContent = ''; leg.hidden = !small;
+    small = host.clientWidth < 520; labW = host.clientWidth; gLab.selectAll('*').remove();
+    const lab = D.labels[st.k], groups = [], leg = $('#trLegend'); leg.textContent = ''; leg.hidden = !small;
     for (let i = 1, s0 = 0; i <= N; i++) if (i === N || lab[order[i]] !== lab[order[s0]]) { groups.push({ n: nodes[lab[order[s0]]], a0: la[s0] - hs, a1: la[i - 1] + hs }); s0 = i; }
     for (const g of groups) {
       gLab.append('path').attr('class', 'tarc ck' + g.n.col).attr('d', `M${px(g.a0, R0 + 11)}${arc(g.a0, g.a1, R0 + 11, 1)}`);
-      if (small) { leg.append(h('span', { class: 'it' }, chip('ck' + g.n.col), sh(g.n))); continue; }
-      const txt = sh(g.n), am = (g.a0 + g.a1) / 2, half = (txt.length * fs * 0.29 + 5) / (R0 + 24);
-      const lvl = am - half > last[0] ? 0 : 1; last[lvl] = am + half;
-      const bottom = am > Math.PI / 2 && am < 1.5 * Math.PI, r = R0 + 19 + lvl * 15 + (bottom ? 9 : 0), w = half * 1.7, id = 'trl' + g.n.id;
-      gLab.append('path').attr('id', id).attr('fill', 'none').attr('d', bottom ? `M${px(am + w, r)}${arc(am + w, am - w, r, 0)}` : `M${px(am - w, r)}${arc(am - w, am + w, r, 1)}`);
-      gLab.append('text').attr('class', 'tlab').attr('font-size', fs).append('textPath').attr('href', '#' + id).attr('startOffset', '50%').attr('text-anchor', 'middle').text(txt);
+      if (small) leg.append(h('span', { class: 'it' }, chip('ck' + g.n.col), sh(g.n)));
+    }
+    if (small) return;
+    // The names stand on one ring in one type size: 14 px on screen when every name fits the arc of its own cluster,
+    // smaller (down to 9.5 px) when one does not. A name that is still wider than its arc moves its neighbours aside.
+    const unit = (svg.node().getBoundingClientRect().width || 2 * VB) / (2 * VB), rb = R0 + 19;      // screen px per unit
+    const probe = gLab.append('text').attr('class', 'tlab').attr('font-size', 20).attr('visibility', 'hidden');
+    for (const g of groups) {
+      g.txt = sh(g.n); const w = probe.text(g.txt).node().getComputedTextLength();
+      g.m = w > 0 ? w / 20 : g.txt.length * 0.58; g.c = (g.a0 + g.a1) / 2;                           // width at size 1
+    }
+    probe.remove();
+    const fsMax = Math.min(12.5, 14 / unit), fsMin = Math.min(fsMax, 9.5 / unit);
+    const fs = Math.max(fsMin, Math.min(fsMax, ...groups.map(g => ((g.a1 - g.a0) * rb - 8) / g.m))), gap = 7 / rb;
+    for (const g of groups) g.h = g.m * fs / rb / 2;
+    for (let it = 0; it < 400; it++) {
+      let moved = false;
+      groups.forEach((a, i) => {
+        const b = groups[(i + 1) % groups.length], ov = a.h + b.h + gap - (b.c - a.c + (i === groups.length - 1 ? TAU : 0));
+        if (ov > 1e-4) { a.c -= ov / 2; b.c += ov / 2; moved = true; }
+      });
+      if (!moved) break;
+    }
+    for (const g of groups) {
+      // in the lower half the text runs the other way round, so its baseline moves out by the height of a capital
+      const c = ((g.c % TAU) + TAU) % TAU, bottom = c > Math.PI / 2 && c < 1.5 * Math.PI, r = rb + (bottom ? 0.72 * fs : 0), w = g.h + 0.06, id = 'trl' + g.n.id;
+      gLab.append('path').attr('id', id).attr('fill', 'none').attr('d', bottom ? `M${px(g.c + w, r)}${arc(g.c + w, g.c - w, r, 0)}` : `M${px(g.c - w, r)}${arc(g.c - w, g.c + w, r, 1)}`);
+      gLab.append('text').attr('class', 'tlab').attr('font-size', fs.toFixed(2)).append('textPath').attr('href', '#' + id).attr('startOffset', '50%').attr('text-anchor', 'middle').text(g.txt);
     }
   }
   const pick = e => {                                         // the branch whose sector lies under the pointer
@@ -138,7 +160,8 @@ function initTree() {
      .on('click', e => { const k = pick(e); st.pin = k < 0 || k === st.pin ? -1 : k; st.hov = -1; update(); });
   const setK = k => { st.k = Math.max(2, Math.min(12, k)); colour(); labels(); update(true); };
   $('#trMinus').addEventListener('click', () => setK(st.k - 1)); $('#trPlus').addEventListener('click', () => setK(st.k + 1));
-  new ResizeObserver(() => { if (host.clientWidth && (host.clientWidth < 520) !== small) labels(); }).observe(host);
+  new ResizeObserver(() => { if (host.clientWidth && ((host.clientWidth < 520) !== small || Math.abs(host.clientWidth - labW) > 12)) labels(); }).observe(host);
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(() => labels());   // the names are measured, so lay them out again once the web font is in
   const texts = () => { svg.attr('aria-label', t('trLabel')); map.label(t('trMapLabel')); colour(); labels(); update(true); };
   RERENDER.push(texts); texts();
 }

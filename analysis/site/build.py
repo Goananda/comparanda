@@ -15,7 +15,7 @@ assert body.count('<!--@@VIEWS@@-->') == 1 and js.count('/*@@VIEWS@@*/') == 1
 body = body.replace('<!--@@VIEWS@@-->', '\n'.join(read(p[:-3] + '.html') for p in parts))
 js = js.replace('/*@@VIEWS@@*/', '\n'.join(f'// ------------------------------------------------------------ views/{os.path.basename(p)}\n' + read(p) for p in parts))
 esc = lambda t: t.replace('</', '<\\/').replace('\u2028', '\\u2028').replace('\u2029', '\\u2029')
-D = json.load(open(data_path, encoding='utf-8')); D['m'].pop('desc', None)  # the page shows codes and titles only; full definitions stay in data/source/motifs.csv
+D = json.load(open(data_path, encoding='utf-8'))                        # motif descriptions (D['m']['desc'], ['ru'], ['tru']) are shown on hover
 for unused in ('ref', 'decay'): D.pop(unused, None)                     # kept in data.json for the tables, not needed by the page
 data = esc(json.dumps(D, ensure_ascii=False, separators=(',', ':')))
 geo = esc(json.dumps(json.load(open(geo_path, encoding='utf-8')), ensure_ascii=False, separators=(',', ':')))
@@ -26,7 +26,7 @@ html = f'''<!DOCTYPE html>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Comparanda</title>
-<meta name="description" content="Comparanda: myths remember geography. Interactive views of 2,563 folklore and mythology motifs across 923 traditions, based on the Berezkin and Duvakin catalogue.">
+<meta name="description" content="Comparanda: myths remember geography. Interactive views of {D['meta']['nM']:,} folklore and mythology motifs across {D['meta']['nG']:,} traditions, based on the Berezkin and Duvakin catalogue.">
 <meta property="og:type" content="website">
 <meta property="og:title" content="Comparanda: myths remember geography">
 <meta property="og:description" content="Group the world's traditions by their folklore motifs alone and the map redraws itself. Culture clusters, the full tree, principal axes, motif complexes, a motif atlas and correlations.">

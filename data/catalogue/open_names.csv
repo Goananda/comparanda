@@ -1,0 +1,333 @@
+﻿region,name,problem,n_entries,motifs,qualifiers,candidates
+Малайзия – Индонезия,даяки,unresolved,29,a3 b2a b2d b3a b3b b3d b3e b52 b79a1 e2 f54 f54a g17 i41 k24,"ЮВ Борнео; группа не указ., каян?; группа не указ.; каян ?; группа не указ.; каян?; западные?",
+Северная Африка,Марокко,ambiguous,23,b16c e11 f62 i22 i22c i46 i82b k27 k27h1 k27q k27z2a2 k32h3 k32m k33d k56,Марракеш; Фес; Фец,"Berber (Morocco,SW Algeria) | Morocco Arabs"
+Восточная Сибирь,эвенки,ambiguous,14,a12 a6a d13 i135 i8b i8d k27x5 m29b3 m94a1,,Baikal Evenki | Evenki of China | Far East Evenki | Sym Evenki | Western Evenki
+Южная Сибирь – Монголия,тувинцы,ambiguous,14,i138 i35b i3a j42 k137a k27s k27ss k27v3 k80d m114b2 n28a1 n28c n28i,,Tuvinians | Tuvinians South Altai
+Южная Сибирь - Монголия,тувинцы,ambiguous,13,a2 b2d i46 k176 k27 k58b l110 l15h2 l42d l65b3 l95b,Салдан,Tuvinians | Tuvinians South Altai
+Большой Бассейн,шошони,ambiguous,13,b44 d13 d4a1 i22 j4a k1a k27n2 k27o3 m29b3 m29e m46,,"Eastern Shohone | Northern Shoshone | Western Shoshoni,Gosiute"
+Малайзия – Индонезия,Даяки,unresolved,11,a35 a39b b116 b116a b79 c34 e35 i98a k27x m1 m7,группа не указ.,
+Субарктика,танана,ambiguous,10,a21 e15 e15a e15b f49c k43 m17b m29a1 m46,,"Tanana | Upper Tanana,Tanacross"
+Западная Сибирь,селькупы,ambiguous,9,a19 a2f c6c2 c6j j53c k32n k43 k73a4 l72h,,Northern Sel'kup | Southern Sel'kup
+Средний Запад,кри,ambiguous,9,j12g j4 k27n2 k43 l5 m81,,Eastern Cree | Plains Cree | Swampy Cree (Eastern) | Swampy Cree (Western) | Western Wood Cree
+Южная Сибирь – Монголия,Тувинцы,ambiguous,8,b120 j50b k27f4 k27o3 k80d m1 m199k m29b3,р.Бурен-Гол,Tuvinians | Tuvinians South Altai
+СВ Азия,коряки,ambiguous,8,d13 i27a i37b k32n k43 m29a1,,Maritime Koryak (Alyutor) | Reindeer Koryak
+Северная Европа,саамы,ambiguous,7,e9i1 k160a k27n2 k27x5 l41c m57a n22,,"Eastern Sami, incl. Skolts | Western Sami"
+Южная Азия,Индия,ambiguous,7,i79a k27n2 k62 k75a m143 m29k1 m29o1,южная?,"Hindi, Chhattisgarhi | India, literary sources"
+Мезоамерика,науатль,ambiguous,6,b56 b56a h16 i37f l8 m29k1,,Puebla & Huasteca Nahua | Veracruz Nahuatl
+Судан – Восточная Африка,Чад,ambiguous,6,e9b e9c k24 k25 k25a1 k25e,этнос не указан,"Maba | Mbum,Mundang | Bilala"
+Арктика,инупиат,ambiguous,6,f49b m29a1 m29b3 m29z4,,Bering Strait Inupiat | North Alaskan Inupiat
+Кавказ – Малая Азия,Дагестан,unresolved,6,i45a i45c l15a l15a1 l15d l18,группа не указана,
+Калифорния,мивок,ambiguous,5,b13 i28 i37 j40 m29e,,Coast Miwok | Lake Miwok | Sierra Miwok
+Большой Бассейн,пайют,ambiguous,5,d4a1 l24 m29b3 m29e,,Northern Paiute | Southern Paiute
+Китай – Корея,Когурё,unresolved,5,f45b j21 j57 k106 m3,,
+Кавказ – Малая Азия,убыхи,unresolved,5,k14 k173 k27 k27l1 k27n2,зап. в Турции в 1955,
+Тайвань – Филиппины,Филиппины,unresolved,4,b77 b77b b77b1 m29a,этнос не указ.,
+Балканы,апокриф,unresolved,4,c6 c6d c6j1 i52,~болгары-богомилы,
+Волга - Пермь,тюрки,unresolved,3,a32d a32f a4,,
+Западная Европа,германцы,unresolved,3,a18 a19c a19c1,,
+Большой Юго-Запад,мимбрес,unresolved,3,a32a f18a l18,"11 в. н.э., юго-запад Нью-Мексико",
+Малайзия – Индонезия,Индонезия,unresolved,3,b2a b2d k94,,
+Меланезия,Финшхафен,unresolved,3,b14a i82a i99,"пров. Моробе, северное побережье Папуа-Н",
+Кавказ – Малая Азия,дагестанские татары,unresolved,3,b46 b46c i46,,
+Иран – Средняя Азия,Хорезмско-тюркская письменная традиция,unresolved,3,b50 b51a c3,,
+Малайзия – Индонезия,мааньян,unresolved,3,c25 i125 i130,,
+Равнины,дакота,ambiguous,3,d13 f35a m29z4,санти?,Santee | Teton | Yankton
+Иран – Средняя Азия,афганцы,unresolved,3,e9 f62 k25,"но, возможно, афганские таджики",
+Побережье - Плато,Ванкувер,unresolved,3,e30 e30a e9,сэлиши? этнос не указан,
+Центральные Анды,Уауры,unresolved,3,f45b g1 g23a,,
+Передняя Азия,Арабы,ambiguous,3,i22b i8a i98a,мусульманская мифология; письменные источники,"Arabs: Iraq | Arabs: Palestine,Syria,Lebanon | Ormuzd strait, Saheli | Saudia"
+Восточная Сибирь,центральные,unresolved,3,j46 k2a m39a4i,,
+Большой Юго-Запад,керес,ambiguous,3,k10 k1a m29b3,,Eastern Keres | Western Keres
+Южная Азия,Южная Индия,ambiguous,3,k32 k33 k76,этнос не указ.; этнос не указан,"Konde,Matumbi,Pangwa | Southern Australia"
+Иран – Средняя Азия,парсиваны,unresolved,3,k32 k32g,гератский диалект,
+Австралия,Группа не известна,unresolved,3,l15a l15a1 l42,,
+Гондурас - Панама,Дикис,unresolved,3,l18 l19a,подвески из золота,
+Бантуязычная Африка,метисы-мусульмане,unresolved,3,l94 l94b m154,,
+Западная Европа,латынь,unresolved,3,m57c m91c1 m91c2,"11 в., возможно, 10 в.",
+Передняя Азия,сабии,unresolved,2,a5 i82b,языческая община на юге Ирака близ Арран; языческая община на юге Ирака близ арран,
+Южная Азия,гхасиа,unresolved,2,a12 a12f,,
+Южная Азия,джайны,unresolved,2,a19c1 a32,Бомбей,
+Центральные Анды,Ла-Пас,unresolved,2,a24 c2,,
+Центральные Анды,Чукуйто,unresolved,2,a24 c2,,
+Центральные Анды,Оруро,unresolved,2,a24 c2,,
+СЗ Амазония,Путумайо,unresolved,2,a31 c2,"бора, окайна, уитото или андоке",
+Туркестан,Томской,unresolved,2,a43 b73,,
+Тибет – Северо-Восток Индии,древнегреческие источники,unresolved,2,b2f i19,,
+Меланезия,Новые Гебриды,unresolved,2,b3a j59,,
+Малайзия – Индонезия,пайрара,unresolved,2,b3e i8i,Восточный Тимор; Тимор,
+СВ Азия,Анадырский край,unresolved,2,b42 b42t,,
+Южная Сибирь - Монголия,Тувинцы,ambiguous,2,b42h2 b42hh,,Tuvinians | Tuvinians South Altai
+Передняя Азия,Евреи,unresolved,2,b42p b42t,,
+Равнины,сиу,unresolved,2,b87 i126,"ветвь дегиха – осэдж, омаха или куапо; группа не указ.",
+Тайвань – Филиппины,кавалан,unresolved,2,c8 c8aa,,
+Бирма – Индокитай,Pong,unresolved,2,c8aa f47,,
+Бирма – Индокитай,Pu Peo,unresolved,2,c8aa f47,,
+Балканы,сефарды,unresolved,2,c31b m99,,
+Австралия,нуманбор,unresolved,2,c34 i41,локализация не установлена,
+Тибет – Северо-Восток Индии,мильехьем,unresolved,2,e5a e5d,,
+Малайзия – Индонезия,Горром,unresolved,2,e32 e5b,,
+Тайвань – Филиппины,Yligueyn,unresolved,2,e32 e5b,побережье,
+Центральные Анды,Арики,unresolved,2,e5c i72,,
+Восточная Сибирь,куты,unresolved,2,e9d k25,"Среднеколымский улус, 1945 г.",
+Центральная Амазония,Юримагуа,unresolved,2,e17 e18,,
+Бирма – Индокитай,Gie Thieng,unresolved,2,f54e k47a,,
+Бирма – Индокитай,Kayong,unresolved,2,f54e k47a,,
+Бирма – Индокитай,мон-кхмеры,unresolved,2,f54e k47a,,
+Южная Сибирь,Тувинцы,ambiguous,2,g29 k27n3a1,,Tuvinians | Tuvinians South Altai
+Южная Сибирь,тувинцы,ambiguous,2,h16b k27n3a1,,Tuvinians | Tuvinians South Altai
+Центральные Анды,Уанкавилька,unresolved,2,h36 h36g,,
+Передняя Азия,еврейская,unresolved,2,h54,,
+Южная Азия,мусульмане,unresolved,2,i40 i8b,в Sylhet,
+Юго-Восток США,Маундвилл,unresolved,2,i13a l16b,Алабама,
+Тибет – Северо-Восток Индии,Древнегреческие источники по Индии,unresolved,2,i15 i17a,,
+Центральные Анды,Кебрада-де-Умауака,unresolved,2,i22 i22g,СЗ Аргентина,
+Малайзия – Индонезия,керинчи,unresolved,2,i41 i45b,,
+Бантуязычная Африка,малела,unresolved,2,i108 i72,,
+Бантуязычная Африка,фариала,unresolved,2,i108 i72,,
+Кавказ – Малая Азия,тавлинцы,unresolved,2,i94 i95,,
+Австралия,Womma,unresolved,2,i115 i115a,,
+Микронезия – Полинезия,Футуна,ambiguous,2,j23d m5b,,"Rennel,Tikopia,Bellona,Futuna(Erronan) | Wallis, Futuna"
+Северная Африка,Египет,ambiguous,2,k1a m110,,Ancient Egypt | Arabs: Egypt
+Тибет – Северо-Восток Индии,койренг,ambiguous,2,k2b l81,,"Chin,Kuki,Lakher,Mizo,Lushei | Chin-Naga(Rengma,Ao,Angami etc"
+Южная Сибирь – Монголия,монгольская версия,unresolved,2,k27r k27r1,,
+Иран – Средняя Азия,хорезмско-тюркская письменная традиция,unresolved,2,k38e4 n10,,
+Передняя Азия,Эбла,unresolved,2,k41 l19b1,,
+Передняя Азия,Мари,unresolved,2,k41,,
+Китай – Корея,шака,unresolved,2,k47a k47d,,
+Западная Европа,остров Мэн,unresolved,2,k56e k56e1,,
+Китай – Корея,южный,unresolved,2,l13 l14,,
+Западная Сибирь,обские угры,unresolved,2,l18,"Холмогорский клад, III-IV вв., бронзовые",
+Гондурас - Панама,Верагуас,unresolved,2,l18 l19a,подвески из золота,
+Япония,Ikeda,unresolved,2,l85b m78,,
+Бантуязычная Африка,Batwa Kaloshi,unresolved,2,l94 l95b,,
+Бантуязычная Африка,Bena Mpatu,unresolved,2,l94 l95b,,
+Западная Европа,Средневековая латинская традиция,unresolved,2,m13 m13b,,
+Мезоамерика,Nahuatl,unresolved,2,m151a,,
+Бантуязычная Африка,мбеде,unresolved,2,m157 m157a1,,
+Северная Африка,берберы,ambiguous,2,m158a,,"Berber (Morocco,SW Algeria) | Kabyle | Tunisia Berber"
+Южная Азия,Делийский султанат,unresolved,2,n10 n10b,,
+Южная Европа,Далмацию,unresolved,1,a3,,
+Балканы,цыгане,unresolved,1,a3,"Болгария и Румыния, район Дюргево - Русе",
+Передняя Азия,эламиты,unresolved,1,a5,,
+СВ Азия,Коряки,ambiguous,1,a6b,,Maritime Koryak (Alyutor) | Reindeer Koryak
+Побережье - Плато,саюсло,unresolved,1,a32c1,,
+Средняя Европа,польско,unresolved,1,a32d,,
+Средняя Европа,немецкое,unresolved,1,a32d,,
+Северная Африка,ливийцы,ambiguous,1,a33a,,Arabs: Libya | Tunisia Berber
+Западная Африка,Kirri,unresolved,1,a38,,
+Западная Амазония,макуна,ambiguous,1,b1g,,"Barasana,Taibano,Makuna | Macu | Makuxi"
+Мезоамерика,майя Гватемалы,unresolved,1,b2e,,
+Центральные Анды,Южные Анды,unresolved,1,b2e,,
+Южная Азия,Древнегреческие источники,unresolved,1,b2f1,,
+Австралия,мунгураи,unresolved,1,b12,,
+Меланезия,меланезийцы,ambiguous,1,b14a,,"Admiralty islands | Buka, Bougenville | Massim district | N.Britain,N.Ireland | SE New Guinea Melanesians"
+Северная Африка,Арабы,ambiguous,1,b16,?,Algeria Arabs | Arabs: Egypt | Arabs: Libya | Morocco Arabs | Tunisia Arabs | Western Sahara & Mauritania
+Западная Европа,греки,ambiguous,1,b33d1,,Cyprus Greeks | Greeks (modern)
+Иран – Средняя Азия,Калила и Димна,unresolved,1,b40a,,
+Западная Сибирь,котты,unresolved,1,b42f,,
+Южная Сибирь - Монголия,качинские татары,ambiguous,1,b42g,,Astrakhan Tatars and Nogai | Crimea Tatars | Volga (Kazan) Tatars
+Западная Европа,англо-саксы,unresolved,1,b42q,,
+Западная Европа,готы,unresolved,1,b42q,,
+Передняя Азия,иврит,unresolved,1,b42q,,
+Средняя Европа,некрасовцы,unresolved,1,b42q,,
+Восточная Сибирь,Эвенки,ambiguous,1,b43a,,Baikal Evenki | Evenki of China | Far East Evenki | Sym Evenki | Western Evenki
+Волга - Пермь,булгары,unresolved,1,b46c,,
+Меланезия,Авью,unresolved,1,b54,Yonggom Wambon,
+Китай – Корея,дерунг,unresolved,1,b57,,
+Западная Сибирь,ненцев,ambiguous,1,b70,,Forest Nenets | Tundra Nenets
+Малайзия – Индонезия,Сулавеси,ambiguous,1,b74b,буги или макассары,"Balantak,Loinang,Banggai | Sangir Islands"
+Австралия,неустановленная,unresolved,1,b77,,
+Южная Азия,Древняя и современная Индия,unresolved,1,b87,,
+Равнины,Сиу,unresolved,1,b87d,"ветвь дегиха – осэдж, омаха или куапо",
+Бирма – Индокитай,тай-кхын,unresolved,1,c2,,
+Южная Азия,адиян,unresolved,1,c8,,
+Туркестан,Орхонские тюрки,unresolved,1,c8,,
+Тайвань – Филиппины,Кавалан,unresolved,1,c8c,,
+Туркестан,орхонские тюрки,unresolved,1,c8c,,
+Южная Азия,адия,unresolved,1,c8e,,
+Тайван – Филиппины,Кавалан,unresolved,1,c12b,,
+Тайвань – Филиппины,Гаошань,unresolved,1,c19,,
+Льяносы,Ачагуа,unresolved,1,d1b,,
+Бантуязычная Африка,гомбе,unresolved,1,d4e1,,
+Бантуязычная Африка,бунду,unresolved,1,d4e1,,
+Бантуязычная Африка,банса,unresolved,1,d4e1,,
+Бантуязычная Африка,бвака,unresolved,1,d4e1,,
+Бантуязычная Африка,Йейи,unresolved,1,e1,,
+Бантуязычная Африка,яо-ньянджа,unresolved,1,e5c,,
+Восточная Амазония,Точное место записи не известно,unresolved,1,e9f,,
+Южная Бразилия,Калапало,ambiguous,1,e15,,"Kalapalo, Kuikuro | Kalapuya"
+Центральные Анды,горная,ambiguous,1,e19,,"Lima dep. | Northern Peru: Sierra | Pasco,Junin,Huancavelica dep."
+Китай – Корея,Yeh-lang,unresolved,1,e32,,
+Большой Юго-Запад,Нью-Мексико,unresolved,1,f18a,,
+Южная Азия,Бонго,unresolved,1,f24,,
+Китай – Корея,Айлао,unresolved,1,f27,предки тибето-бирманцев бай и ицзу в Юнь,
+Китай – Корея,Наньчжао,unresolved,1,f27,,
+Северные Анды,Яракуй,unresolved,1,f27,,
+Передняя Азия,Эдомитяне,unresolved,1,f30,,
+Западная Европа,Катар,ambiguous,1,f35a,,"Catawba | Katawishi,Manao etc."
+Австралия,северо-запад Западной пустыни,unresolved,1,f38,,
+Южная Азия,буддийская,unresolved,1,f45,,
+Северные Анды,толу,unresolved,1,f45c,,
+Эквадор,Санта-Элена,unresolved,1,f45c,,
+Передняя Азия,Сорок невольниц,unresolved,1,f70,,
+Туркестан,Тохары,unresolved,1,f70c,?,
+Центральная Амазония,Место записи не изв,unresolved,1,f86,,
+Южная Европа,греки,ambiguous,1,f101,,Cyprus Greeks | Greeks (modern)
+Меланезия,муйю,unresolved,1,g21,,
+Бантуязычная Африка,йейи,unresolved,1,h1c,,
+Австралия,Неустановленная,unresolved,1,h4,,
+Передняя Азия,Месопотамия,unresolved,1,h5,,
+Микронезия – Полинезия,Кука,ambiguous,1,h8,,Cook Islands northern | Cook Islands southern
+Меланезия,Папуа,ambiguous,1,h9a,,"Buka, Bougenville | Central Solomons | N.Britain,N.Ireland"
+Бантуязычная Африка,бена мвула,unresolved,1,h11,,
+Бантуязычная Африка,бена-коши,unresolved,1,h18,,
+Бантуязычная Африка,бена-касасе,unresolved,1,h18,,
+Бантуязычная Африка,бена коши,unresolved,1,h24,,
+СЗ Амазония,яуи,unresolved,1,h28,,
+Меланезия,авью,unresolved,1,h34,Yonggom Wambon,
+Китай – Корея,тибето-бирманцев,unresolved,1,h34c,,
+Бантуязычная Африка,ньянги,ambiguous,1,h41,,"Boa,Komo,Nyanga | Ganda,Nyoro,Haya"
+Южная Азия,СЗ Индия,ambiguous,1,h49,,"Hupa,Chilula | Lassik,Catho,Mattole | Yakut"
+Южная Азия,урду,unresolved,1,h49b,,
+Средняя Европа,Познань,unresolved,1,h51,опубликовано по-немецки,
+Передняя Азия,Еврейская,unresolved,1,h54b,,
+Бантуязычная Африка,бузиба,unresolved,1,i1,восточный берег оз. Виктория,
+Кавказ - Малая Азия,Дагестан,unresolved,1,i1,,
+Центральные Анды,Повсеместно,unresolved,1,i5,,
+Китай – Корея,Южный,unresolved,1,i7,,
+Тибет – Северо-Восток Индии,Golaghat,unresolved,1,i8c,,
+Южная Сибирь - Монголия,азиатские кочевники,unresolved,1,i9,,
+Юго-Восток США,мускоги,unresolved,1,i9,"крики , хичити , чокто и др.",
+Юго-Восток США,Мад-Глиф,unresolved,1,i13a,,
+Большой Юго-Запад,Касас Грандес,unresolved,1,i13a,"штат Чиуауа, стиль Ramos Polychrome, 128",
+Большой Юго-Запад,Нижняя Калифорния,unresolved,1,i13a,,
+Китай – Корея,Каталог,unresolved,1,i14,,
+Южная Азия,Древнегреческие источники по Индии,unresolved,1,i17,,
+Меланезия,Гвинеи,ambiguous,1,i19,,North New Guinea Melanesians | SE New Guinea Melanesians
+Тибет – Северо-Восток Индии,древнегреческие,unresolved,1,i21,,
+Балканы,Античные источники,unresolved,1,i21,,
+Северная Европа,Саамы,ambiguous,1,i22b1,западные и восточные?,"Eastern Sami, incl. Skolts | Western Sami"
+Южная Азия,бонго,unresolved,1,i37,,
+Калифорния,Мивок,ambiguous,1,i37a,,Coast Miwok | Lake Miwok | Sierra Miwok
+Северная Африка,Магриба,unresolved,1,i40,,
+Южная Азия,раджастанц­­­ы,unresolved,1,i40,"раджпуты, диалект марвари, Джайсалмер",
+Бантуязычная Африка,Bakwa Kaloshi,unresolved,1,i41,,
+Судан - Восточная Африка,Lululba,unresolved,1,i41,?,
+Судан - Восточная Африка,мюндю,unresolved,1,i41,,
+Западная Африка,ньябва,unresolved,1,i45b,,
+Судан – Восточная Африка,мюндю,unresolved,1,i45b,,
+Меланезия,Malaeng,unresolved,1,i45b,,
+Меланезия,Keweng,unresolved,1,i45b,?,
+Малайзия – Индонезия,волио,unresolved,1,i45b,,
+СЗ Амазония,муинане,unresolved,1,i45b,,
+Средняя Европа,Славяне,unresolved,1,i45c,,
+Туркестан,караханиды,unresolved,1,i46c,,
+Туркестан,кипчаки,unresolved,1,i58,,
+Северная Африка,копты,unresolved,1,i59,,
+Южная Европа,Псевдо-Турпин,unresolved,1,i59b2,,
+Передняя Азия,арабы,ambiguous,1,i62,,"Arabs: Iraq | Arabs: Palestine,Syria,Lebanon | Ormuzd strait, Saheli | Saudia"
+Малайзия – Индонезия,Калимантан,unresolved,1,i62,,
+Малайзия – Индонезия,Мааньян,unresolved,1,i64,,
+Южная Азия,Dora,unresolved,1,i72,,
+Центральные Анды,Центральные Анды,unresolved,1,i75,,
+Мезоамерика,Мезоамерика,unresolved,1,i77,,
+Арктика,Ипиутак,unresolved,1,i79a,,
+Гондурас – Панама,Коста-Рика,unresolved,1,i79a,п-ов Никоя,
+Эквадор,Манаби,ambiguous,1,i79a,,"Katawishi,Manao etc. | Mojo,Manasi,etc. | North New Guinea Melanesians"
+Меланезия,Меланезийцы,ambiguous,1,i82a,,"Admiralty islands | Buka, Bougenville | Massim district | N.Britain,N.Ireland | SE New Guinea Melanesians"
+Малайзия – Индонезия,Tchailoru,unresolved,1,i82a,Тимор,
+Передняя Азия,Элам,unresolved,1,i82b,,
+Волга – Пермь,Тюрки,unresolved,1,i82b,,
+Восточная Сибирь,остальные,unresolved,1,i82b,,
+Волга - Пермь,Тюрки,unresolved,1,i82c,,
+Иран – Средняя Азия,Чагатайский,unresolved,1,i82h,,
+Южная Сибирь – Монголия,сойоты,unresolved,1,i82h,,
+Волга – Пермь,тюрки,unresolved,1,i82i,,
+Иран – Средняя Азия,чагатайский,unresolved,1,i85,,
+Туркестан,Махмуд ал-Кашгари,unresolved,1,i85,,
+Западная Африка,Невольничий берег,unresolved,1,i92,,
+Средняя Европа,Сора,unresolved,1,i93a,,
+Западная Сибирь,камасинск,unresolved,1,i101,,
+Япония,коряки,ambiguous,1,i115,,Maritime Koryak (Alyutor) | Reindeer Koryak
+Бантуязычная Африка,Shogo,unresolved,1,i116,,
+Бантуязычная Африка,Via,unresolved,1,i116,,
+Южная Азия,Dhiri,unresolved,1,i127,,
+Средний Запад,болотные,ambiguous,1,j4,,Swampy Cree (Eastern) | Swampy Cree (Western)
+Полинезия,Футуна,ambiguous,1,j23e,,"Rennel,Tikopia,Bellona,Futuna(Erronan) | Wallis, Futuna"
+Туркестан,Усуни,unresolved,1,j25c,источники эпохи Хань,
+Большой Юго-запад,мимбрес,unresolved,1,j45,,
+Меланезия,Муйю,unresolved,1,j46,,
+Восточная Сибирь,индигирские,unresolved,1,j46,,
+Южная Азия,агария,unresolved,1,j62,,
+Чако,Аргентина,unresolved,1,k1b,,
+Побережье - Плато,палуз,unresolved,1,k3,,
+Южная Азия,Пали,unresolved,1,k8c,,
+Южная Азия,Пакистан,unresolved,1,k8d,,
+Кавказ – Малая Азия,Книга Коркута,unresolved,1,k27o1,,
+Судан – Восточная Африка,Кикуйю,ambiguous,1,k27s,,Kamba | Kikuyu
+Малайзия – Индонезия,Djambi,unresolved,1,k28,Южная Суматра,
+Западная Европа,люксембуржцы,unresolved,1,k32,,
+Западная Африка,мунданг,ambiguous,1,k32n,,"Bondo,Didayi,Gutob | Mbum,Mundang | Mundari,Ho,Asur,Birhor | Sora"
+Судан – Восточная Африка,гамо,unresolved,1,k38d1,,
+Западная Европа,Германия,unresolved,1,k38f6,,
+Центральные Анды,Каста,ambiguous,1,k41,,"Dhoba,Ahir,Halba,Lohar,etc. | Hindi, Chhattisgarhi"
+Китай – Корея,варвары,unresolved,1,k47a,,
+Китай – Корея,Маньи,unresolved,1,k47a,,
+Западная Европа,английская,unresolved,1,k52c,,
+Бантуязычная Африка,Ньясаленд,unresolved,1,k61a,малави?,
+Тайвань – Филиппины,Тайвань,ambiguous,1,k80,,"Ami | Atayal,Sedeq,Saisiyat | Bunun,Tsou,Kanabu | Paiwan,Puyuma,Rukay"
+Мезоамерика,Чакула,unresolved,1,l17b,"Уэуэтенанго, Гватемала",
+Волга – Пермь,Пермский,unresolved,1,l18,,
+Западная Сибирь,Обские угры,unresolved,1,l18,,
+Юго-Восток США,Late Branden,unresolved,1,l18,,
+Мезоамерика,Мехико,unresolved,1,l18,ацтеки?,
+Мезоамерика,Калиштлауака,unresolved,1,l18,матлацинка?,
+Мезоамерика,Тахин,unresolved,1,l18,прорисовка изображения в Edificio de las,
+Гондурас - Панама,Коста-Рика,unresolved,1,l18,,
+Гондурас - Панама,Линеа Вьеха,unresolved,1,l18,,
+Гондурас - Панама,Сан-Исидро-Хенераль,unresolved,1,l18,,
+Гондурас - Панама,Асуэро,unresolved,1,l18,тихоокеанское побережье Панамы,
+Северные Анды,тайрона,unresolved,1,l18,,
+Северные Анды,попаян,unresolved,1,l18,,
+Центральные Анды,роспись в стиле чавин на тканях с южного побережья,unresolved,1,l18,,
+Южная Амазония,шингуано,unresolved,1,l18,группа не указана,
+Гондурас - Панама,Коклэ,unresolved,1,l19a,,
+Северные Анды,кимбая,unresolved,1,l19a,,
+Эквадор,вальдивия,unresolved,1,l19a,,
+Бантуязычная Африка,ронго,unresolved,1,l19b,,
+Южная Европа,по всей Италии,unresolved,1,l19b,,
+Западная Сибирь,усть-полуйская,unresolved,1,l19b,,
+Центральные Анды,уанкарани,unresolved,1,l19b,"горная Боливия, р-н оз. Поопа, 1-2 тыс. ",
+Балканы,Метидой,ambiguous,1,l23a,,Cuba Mestizos | Russkoye Ustye | Soconuzco Mestizos; Cotzumalguapa
+Средняя Европа,русскиеукраинцы,unresolved,1,l37a,,
+Тайвань – Филиппины,Тангиан,ambiguous,1,l40,,"Fang,Bube,Bulu,Tanga | Sepik-Ramu Papuans"
+СВ Азии,коряки,ambiguous,1,l41a,,Maritime Koryak (Alyutor) | Reindeer Koryak
+Южная Европа,bтальянцы,unresolved,1,l41a1,,
+Судан – Восточная Африка,Реюньон,unresolved,1,l72,,
+Туркестан,Узбекистан,unresolved,1,l85f,,
+Меланезия,папуа,ambiguous,1,l107,,"Buka, Bougenville | Central Solomons | N.Britain,N.Ireland"
+Тибет – Северо-Восток Индии,Коиренг,unresolved,1,l113,,
+Мезоамерика,Науатль,ambiguous,1,m1,,Puebla & Huasteca Nahua | Veracruz Nahuatl
+Субарктика,Танана,ambiguous,1,m11,,"Tanana | Upper Tanana,Tanacross"
+Центральные Анды,Pusacpampa,unresolved,1,m21,,
+Центральные Анды,Сан-Мигель,unresolved,1,m21,,
+Северная Африка,Берберы,ambiguous,1,m29b3,,"Berber (Morocco,SW Algeria) | Kabyle | Tunisia Berber"
+Арктика,Инупиат,ambiguous,1,m29b3,,Bering Strait Inupiat | North Alaskan Inupiat
+Тибет – Северо-Восток Индии,нага,ambiguous,1,m29k,,"Chin-Naga(Rengma,Ao,Angami etc | Northern Naga (Konyak etc.)"
+Малайзия – Индонезия,тутум,unresolved,1,m29o,,
+Иран – Средняя Азия,согдийцы,unresolved,1,m30d,,
+Южная Сибирь – Монголия,монгольская,ambiguous,1,m57a1,,Mongols (Inner Mongolia) | Oirat
+Западная Африка,Зеленого Мыса,unresolved,1,m62c,,
+Судан – Восточная Африка,Эритрея,ambiguous,1,m74a,,"Bilin | Kunama | Saho, Afar"
+Передняя Азия,Дофар,unresolved,1,m78,,
+Северная Европа,Марокко,ambiguous,1,m91c7,,"Berber (Morocco,SW Algeria) | Morocco Arabs"
+Южная Сибирь – Монголия,Монгольская версия,unresolved,1,m91e,,
+Восточная Сибирь,западные,ambiguous,1,m94a1,,Western Evenki | Yakut
+Западная Европа,францу зы,unresolved,1,m106e,,
+Западная Африка,Нигерия,ambiguous,1,m116,"ибо, йоруба, иджо?","Biu-Mandara | Bole, Tangale | Tiv,Jukun,Mbete,Wute,Ekoi"
+Иран – Средняя Азия,Курдистан,unresolved,1,m134c,,
+Северная Африка,арабы,ambiguous,1,m187b,,Algeria Arabs | Arabs: Egypt | Arabs: Libya | Morocco Arabs | Tunisia Arabs | Western Sahara & Mauritania
+Южная Азия,бхамта,unresolved,1,m198a4,каста воров на севере Махараштры,
+Передняя Азия,Евреи-сефарды,unresolved,1,n7,,
+Кавказ – Малая Азия,евреи,unresolved,1,n14,либо грузины; запись сделана в Кулаши,
+Кавказ – Малая Азия,куманы,unresolved,1,n27,"«Codex Cumaniсus», составленный в конце ",

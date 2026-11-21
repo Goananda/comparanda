@@ -1,0 +1,120 @@
+motif_id	title	description	note
+e11	list:e12	list:e12	entries e11 and e12 are swapped on the English list
+e12	list:e11	list:e11	entries e11 and e12 are swapped on the English list
+a43	list:a43a	list:a43a	entries a43 and a43a are swapped on the English list
+a43a	list:a43	list:a43	entries a43 and a43a are swapped on the English list
+f18a	list:f18b	list:f18b	entries f18a and f18b are swapped on the English list
+f18b	list:f18a	list:f18a	entries f18a and f18b are swapped on the English list
+i37e	list:i37g	list:i37g	entries i37e and i37g are swapped on the English list
+b38c	list:b38b	list:b38b	the list keeps the earlier numbering: its b38b is the present b38c
+b38e	list:b38c	list:b38c	the list keeps the earlier numbering: its b38c is the present b38e
+b38b	ru	ru	the list entry b38b describes the present b38c
+g9b	list:g9a	list:g9a	the list entry g9a describes the present g9b
+g9a	ru	ru	the list entry g9a describes the present g9b
+i119a	list:i114	list:i114	the list entry i114 describes the present i119a
+i114	ru	ru	the list entry i114 describes the present i119a
+k21a	list:k21	list:k21	the list entry k21 describes the present k21a
+k21	ru	ru	the list entry k21 describes the present k21a
+k27zz4	list:k27zz3	list:k27zz3	the list entry k27zz3 describes the present k27zz4
+k27zz3	ru	ru	the list entry k27zz3 describes the present k27zz4
+l37c1	ru	ru	review of the two versions against the texts of the page: the Russian page is closer (words found only in the English entry occur in 4% of the texts on average, words found only on the Russian page in 10%)
+l37c	ru	ru	the list entry l37c (ATU 735A) describes the present l37c1
+h44a	list:h44	list:h44	the list entry h44 describes the present h44a
+h44	ru	ru	the list entry h44 describes the present h44a
+k27r2	list:k27r1	list:k27r1	the list entry k27r1 describes the present k27r2
+k27r1	ru	ru	the list entry k27r1 describes the present k27r2
+k27z2a2	list:k27z2a1	list:k27z2a1	the list entry k27z2a1 describes the present k27z2a2
+k27z2a1	ru	ru	the list entry k27z2a1 describes the present k27z2a2
+k27q2	list:k27q1	list:k27q1	the list entry k27q1 describes the present k27q2
+k27q1	ru	ru	the list entry k27q1 describes the present k27q2
+j53c	list:j54	list:j54	the list entry j54 describes the present j53c
+j54	ru	ru	the list entry j54 describes the present j53c
+m94b1	list:m94b	list:m94b	the list entry m94b describes the present m94b1
+m94b	list:m94a	list:m94a	the list entry m94a describes the present m94b
+m94a	ru	ru	the list entry m94a describes the present m94b
+m29e	list:m29c	list:m29c	the list entry m29c (skunk) describes the present m29e
+m29c	ru	ru	the list entry m29c (skunk) describes the present m29e
+k27x9	list:k27l	list:k27l	the list entry k27l describes the present k27x9
+k27l	list:k27ll	list:k27ll	the list entry k27ll describes the present k27l
+m100b	list:m100a	list:m100a	the list entry m100a describes the present m100b
+m100a	ru	ru	the list entry m100a describes the present m100b
+m135b	list:m135a	list:m135a	the list entry m135a describes the present m135b; m135a is now the general motif
+m135a	ru	ru	the list entry m135a describes the present m135b; m135a is now the general motif
+b98b	list:b98a	list:b98a	the list entry b98a describes the present b98b
+b98a	ru	ru	the list entry b98a describes the present b98b
+k155a	list:k155	list:k155	the list entry k155 describes the present k155a; k155 is now the general motif
+k155	ru	ru	the list entry k155 describes the present k155a; k155 is now the general motif
+m38c1	list:m38c	list:m38c	the list entry m38c describes the present m38c1; m38c is now the general motif
+m38c	ru	ru	the list entry m38c describes the present m38c1; m38c is now the general motif
+i8e1	list:i8e	list:i8e	the list entry i8e describes the present i8e1; i8e is now limited to anthropomorphic persons
+i8e	ru	ru	the list entry i8e describes the present i8e1; i8e is now limited to anthropomorphic persons
+b2f1	list:b2f	list:b2f	the list entry b2f describes the present b2f1; b2f is now the general motif
+b2f	ru	ru	the list entry b2f describes the present b2f1; b2f is now the general motif
+k77b2	list:k77bb	list:k77bb	the list entry k77bb describes the present k77b2
+k102c	list:k147a	list:k147a	the list entry k147a describes the present k102c
+k56b	list:k56b#2	list:k56b#2	two entries are numbered k56b on the list; the first repeats k56a5b
+h24e	ru	ru	the list entry h24e repeats h25
+i50b	ru	ru	the old database text describes k85b
+l85e	ru	ru	the list entry l85e describes the present l85f
+a47	ru	ru	the list entry a47 describes the present b33g
+j26a	ru	ru	the old database text describes j27b
+e9b	ru	ru	the list entry e9b (turtle or snail wife) does not describe the present e9b
+k27yy	ru	ru	the list entry k27yy covers the present k27yy1 to k27yy4
+k56f1	ru	ru	the old database text repeats k56f
+k32b	ru	ru	the list entry k32b describes the present k32b1
+k56a5b	ru	=	the list title (Conversation with the Frost) belongs to the present k56a5d
+k56a8	ru	=	the list title (Swallowed by boa) belongs to the present k56a8d
+i97	=	ru	no description on the list
+k76d	=	ru	no description on the list
+m105a	=	ru	no description on the list
+l1c	=	ru	the list description repeats l1b
+l106	=	ru	the list description repeats l106a
+m147b	=	ru	the list description repeats m147a
+f73b	old:f73b	old:f73b	the list entry is in Russian; English from the 2021 table
+i13d	=	old:i13d	the list description is in Russian; English from the 2021 table
+i87c	old:i87c	=	the list title repeats the description of i87
+m61a2	old:m61a2	=	the list title repeats m61a1
+m57a	old:m57a	=	misprint on the list (Bears for Beads)
+i37g	list:i37e	list:i37e	entries i37e and i37g are swapped on the English list
+l85f	list:l85e	list:l85e	the list entry l85e describes the present l85f
+m198b	ru	ru	review of the two versions against the texts of the page: the Russian page is closer (finding lost things or thieves in 107 of 112 texts, guessing what is hidden in the hand or box in 53)
+b36	ru	ru	review of the two versions against the texts of the page: the Russian page is closer (words found only in the English entry occur in 4% of the texts on average, words found only on the Russian page in 6%)
+b44e	ru	ru	review of the two versions against the texts of the page: the Russian page is closer (words found only in the English entry occur in 1% of the texts on average, words found only on the Russian page in 6%)
+k25	ru	ru	review of the two versions against the texts of the page: the Russian page is closer (wives from the sky, stars or birds in about half of 1,317 texts; the page covers non-human wives of every kind)
+c12b	ru	ru	review of the two versions against the texts of the page: the Russian page is closer (words found only in the English entry occur in 9% of the texts on average, words found only on the Russian page in 3%)
+k80a3	ru	ru	review of the two versions against the texts of the page: the Russian page is closer (words found only in the English entry occur in 14% of the texts on average, words found only on the Russian page in 13%)
+e26	ru	ru	review of the two versions against the texts of the page: the Russian page is closer (words found only in the English entry occur in 11% of the texts on average, words found only on the Russian page in 13%)
+j19a	ru	ru	review of the two versions against the texts of the page: the Russian page is closer (words found only in the English entry occur in 6% of the texts on average, words found only on the Russian page in 12%)
+i87b	ru	ru	review of the two versions against the texts of the page: the Russian page is closer (words found only in the English entry occur in 3% of the texts on average, words found only on the Russian page in 8%)
+m39a2	ru	ru	review of the two versions against the texts of the page: the Russian page is closer (words found only in the English entry occur in 1% of the texts on average, words found only on the Russian page in 13%)
+b42m1	ru	ru	review of the two versions against the texts of the page: the Russian page is closer (Ket in 4, Selkup in 4, Evenk or Tungus in 6, Yurak or Nenets in 2 of 13 texts)
+k102a2	ru	ru	review of the two versions against the texts of the page: the Russian page is closer (words found only in the English entry occur in 9% of the texts on average, words found only on the Russian page in 8%)
+i33	ru	ru	review of the two versions against the texts of the page: the Russian page is closer (words found only in the English entry occur in 2% of the texts on average, words found only on the Russian page in 8%)
+m39a4b	ru	ru	review of the two versions against the texts of the page: the Russian page is closer (words found only in the English entry occur in 10% of the texts on average, words found only on the Russian page in 15%)
+l15a1	ru	ru	review of the two versions against the texts of the page: the Russian page is closer (words found only in the English entry occur in 4% of the texts on average, words found only on the Russian page in 9%)
+m195a	ru	ru	review of the two versions against the texts of the page: the Russian page is closer (words found only in the English entry occur in 18% of the texts on average, words found only on the Russian page in 14%)
+m75b3	ru	ru	review of the two versions against the texts of the page: the Russian page is closer (words found only in the English entry occur in 8% of the texts on average, words found only on the Russian page in 10%)
+f93	ru	ru	review of the two versions against the texts of the page: the Russian page is closer (the mother-in-law silences the penis in 1 of 4 texts)
+m116a	ru	ru	review of the two versions against the texts of the page: the Russian page is closer (the father dragged away and "I also rested here" in 28 of 68 texts, the wooden cup in 3)
+c32	ru	ru	review of the two versions against the texts of the page: the Russian page is closer (words found only in the English entry occur in 6% of the texts on average, words found only on the Russian page in 65%)
+m94	ru	ru	review of the two versions against the texts of the page: the Russian page is closer (words found only in the English entry occur in 5% of the texts on average, words found only on the Russian page in 16%)
+l19b	ru	ru	review of the two versions against the texts of the page: the Russian page is closer (the Russian definition was narrowed to odd numbers of heads or more than ten)
+m134	ru	ru	review of the two versions against the texts of the page: the Russian page is closer (words found only in the English entry occur in 3% of the texts on average, words found only on the Russian page in 16%)
+i15	ru	ru	review of the two versions against the texts of the page: the Russian page is closer (words found only in the English entry occur in 7% of the texts on average, words found only on the Russian page in 38%)
+k128a	ru	ru	review of the two versions against the texts of the page: the Russian page is closer (words found only in the English entry occur in 10% of the texts on average, words found only on the Russian page in 18%)
+f20	ru	ru	review of the two versions against the texts of the page: the Russian page is closer (words found only in the English entry occur in 2% of the texts on average, words found only on the Russian page in 17%)
+l123	ru	ru	review of the two versions against the texts of the page: the Russian page is closer (words found only in the English entry occur in 13% of the texts on average, words found only on the Russian page in 31%)
+e15a	ru	ru	review of the two versions against the texts of the page: the Russian page is closer (words found only in the English entry occur in 15% of the texts on average, words found only on the Russian page in 33%)
+a2a	ru	ru	review of the two versions against the texts of the page: the Russian page is closer (words found only in the English entry occur in 6% of the texts on average, words found only on the Russian page in 3%)
+e8a	ru	ru	review of the two versions against the texts of the page: the Russian page is closer (words found only in the English entry occur in 26% of the texts on average, words found only on the Russian page in 2%)
+i50	ru	ru	review of the two versions against the texts of the page: the Russian page is closer (the Russian definition is limited to hoofed animals)
+i51a	ru	ru	review of the two versions against the texts of the page: the Russian page is closer (words found only in the English entry occur in 23% of the texts on average, words found only on the Russian page in 1%)
+j4	ru	ru	review of the two versions against the texts of the page: the Russian page is closer (the English entry excludes revenge for both parents, the Russian definition includes it)
+g13b	ru	ru	review of the two versions against the texts of the page: the Russian page is closer (words found only in the English entry occur in 0% of the texts on average, words found only on the Russian page in 4%)
+b37	ru	ru	review of the two versions against the texts of the page: the Russian page is closer (words found only in the English entry occur in 6% of the texts on average, words found only on the Russian page in 3%)
+l124	ru	ru	review of the two versions against the texts of the page: the Russian page is closer (words found only in the English entry occur in 5% of the texts on average, words found only on the Russian page in 8%)
+k102	ru	ru	review of the two versions against the texts of the page: the Russian page is closer (words found only in the English entry occur in 11% of the texts on average, words found only on the Russian page in 6%)
+m29k	ru	ru	review of the two versions against the texts of the page: the Russian page is closer (the page now separates the winning trickster (M29K) from the loser (M29K1))
+m29v	ru	ru	review of the two versions against the texts of the page: the Russian page is closer (the Russian definition names the role (winner by smartness) and the animals)
+m29w	ru	ru	review of the two versions against the texts of the page: the Russian page is closer (the Russian definition names the role (loser))
+c9a	ru	ru	review of the two versions against the texts of the page: the Russian page is closer (toads or frogs in 13 of 16 texts; eels, crocodiles, fish, snakes and turtles in the others)

@@ -1,0 +1,56 @@
+﻿region_key,name,rule,tradition,n_old_motifs,votes
+балканы,греки,default,Greeks (modern),432,431
+волга | пермь,татары,default,Volga (Kazan) Tatars,319,319
+иран | средняя азия,узбеки,default,Uzbek,259,251
+монголия | южная сибирь,монголы,default,Mongols (Khalkha),231,194
+иран | средняя азия,таджики,default,Tajik,229,193
+туркестан,уйгуры,default,Uyghur,167,138
+западная сибирь,ненцы,default,Tundra Nenets,166,148
+монголия | южная сибирь,алтайцы,default,"Altai-Kiji, Telengit",164,160
+восточная сибирь,эвены,default,Evens (Lamuts),148,141
+северная африка,тунис,default,Tunisia Arabs,110,109
+северо-восток индии | тибет,тибетцы,default,Tibetans (U-Tsang),107,99
+северная африка,туниса,default,Tunisia Arabs,92,83
+средний запад,оджибва,default,Ojibwa (Western),87,74
+сз амазония,макуна,default,"Barasana,Taibano,Makuna",72,72
+эскоалеуты,юпик,default,Central Yupiq,67,66
+гвиана,каринья,default,"Karina, Galibi",66,55
+северная африка,ливии,default,Arabs: Libya,65,65
+великие равнины,кайова,default,Kiowa,51,51
+микронезия | полинезия,яп,default,Yap,46,44
+эскоалеуты,гренландия,default,West Greenland Eskimo,45,37
+бантуязычная африка,конго,default,Kongo,43,43
+калифорния,йокуц,default,Yokuts,34,29
+передняя азия,сирия,default,"Arabs: Palestine,Syria,Lebanon",33,32
+западная африка,коно,default,"Kpelle, Kono",30,28
+сз амазония,тукано,default,"Uanano,Tucano proper,Arapaso",18,15
+западная африка,мандинго,default,"Manden,Bamana,Malinke,Diula",15,15
+эскоалеуты,эскимосы,default,AsiaticEskimo,11,10
+китай | корея,яо,default,"Miao,Yao (South China)",9,9
+гондурас | панама,панама,default,Kuna,7,6
+мезоамерика,юкатана,default,"Yucatec, Itza",7,7
+бантуязычная африка,комо,default,"Boa,Komo,Nyanga",6,6
+западная сибирь,татары,default,Volga (Kazan) Tatars,6,6
+китай | корея,зао,default,"Meo,Dao,Man (Vietnam,Laos)",6,5
+мезоамерика,майя,default,"Yucatec, Itza",5,5
+меланезия,торрес,default,"Banks, Torres islands",5,5
+эскоалеуты,гренландии,default,West Greenland Eskimo,5,5
+микронезия | полинезия,каролины,default,Truk district,5,5
+средний запад,болотныекри,default,Swampy Cree (Eastern),5,5
+северная африка,ливия,default,Arabs: Libya,4,4
+бантуязычная африка,амбо,default,"Bemba,Kaonde,Lamba",3,3
+субарктика,танакросс,default,"Upper Tanana,Tanacross",3,3
+бантуязычная африка,пангва,default,"Konde,Matumbi,Pangwa",3,3
+северо-восток индии | тибет,тибет,default,Tibetans (U-Tsang),3,3
+западная африка,лелеми,default,"Akposo,Akebu,Santrokofi",3,3
+западная африка,мофу-гудур,learned,Biu-Mandara,40,25.8
+субарктика,кускоквим,learned,Kolchan,19,18.0
+иран | средняя азия,шах-наме,learned,Avesta; Pekhlevi texts,9,8.0
+южная амазония,mехинаку,learned,"Waura,Mehinaku",7,6.0
+бантуязычная африка,батанга,learned,"Fang,Bube,Bulu,Tanga",6,6.0
+меланезия,гебриды,learned,Central Vanuatu,5,4.0
+центральная амазония,место записи не известно,learned,"Katawishi,Manao etc.",5,3.0
+центральные анды,уамачуко,learned,Northern Peru: Sierra,5,4.2
+центральные анды,керо,learned,Northern Peru: Sierra,5,3.0
+северо-восток индии | тибет,чанг,learned,Northern Naga (Konyak etc.),4,3.0
+западная африка,сапа,learned,"Dan,Guro,Mano,Sapa,Ngere",3,3.0

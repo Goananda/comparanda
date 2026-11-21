@@ -32,7 +32,8 @@ const nm = o => (LANG === 'ru' ? o.name : o.name_en);
 const sh = o => (LANG === 'ru' ? o.short : o.short_en);
 const TX = {
   en: {
-    zoomIn: 'Zoom in', zoomOut: 'Zoom out', zoomReset: 'Show the whole world', openMotif: 'Open this motif in the atlas',
+    zoomIn: 'Zoom in', zoomOut: 'Zoom out', zoomReset: 'Show the whole world', openMotif: 'Click to open the motif in the atlas',
+    motifOther: 'No English text for this motif. In Russian:', motifNoDesc: 'The catalogue gives this motif no description.',
     navLabel: 'Sections', langLabel: 'Language', kLess: 'One cluster fewer', kMore: 'One cluster more',
     clMapLabel: 'World map: traditions coloured by cluster of motif similarity', clUmapLabel: 'Traditions in similarity space, UMAP projection',
     lowData: 'Fewer than 15 motifs; left out of the analysis',
@@ -56,7 +57,7 @@ const TX = {
     moUmapCap: n => `Shown are ${nf(n)} motifs recorded in at least five traditions. A motif is assigned to an area when that area accounts for at least 60% of its occurrence, adjusted for how much is recorded there. This is a UMAP projection; the axes mean nothing.`,
     moHas: 'motif recorded', moHasNot: 'motif not recorded', moTotal: n => (n === 1 ? 'motif in total' : 'motifs in total'),
     moMeta: (letter, isA, n, N) => `Catalogue section ${letter} (${isA ? 'cosmology and etiology' : 'adventure and tricksters'}) · recorded in ${nf(n)} of ${nf(N)} traditions · `,
-    moLink: 'motif list in the catalogue',
+    moLink: 'the motif page in the catalogue (in Russian)',
     moCor: 'compare with other motifs',
     moMapCap: id => `Blue dots: traditions where motif ${id} is recorded. Grey dots: the other traditions in the catalogue.`,
     moShare: 'Share of traditions with the motif in three macro-areas', moOf: (p, a, b) => `${p} · ${a} of ${b}`,
@@ -65,7 +66,8 @@ const TX = {
     moAll: n => `All ${nTrad(n)} with this motif`
   },
   ru: {
-    zoomIn: 'Приблизить', zoomOut: 'Отдалить', zoomReset: 'Показать весь мир', openMotif: 'Открыть карту мотива в атласе',
+    zoomIn: 'Приблизить', zoomOut: 'Отдалить', zoomReset: 'Показать весь мир', openMotif: 'Щелчок открывает мотив в атласе',
+    motifOther: 'Русского текста у этого мотива нет. По-английски:', motifNoDesc: 'В каталоге у этого мотива нет описания.',
     navLabel: 'Разделы', langLabel: 'Язык', kLess: 'На один кластер меньше', kMore: 'На один кластер больше',
     clMapLabel: 'Карта мира: традиции окрашены по кластерам сходства мотивов', clUmapLabel: 'Традиции в пространстве сходства, проекция UMAP',
     lowData: 'Меньше 15 мотивов, в расчёт не входила',
@@ -83,13 +85,13 @@ const TX = {
     axis: (i, neg, pos) => `Ось ${i}: ${neg} ↔ ${pos}. `,
     axCap: (v, ng, nmot) => `Ось объясняет ${v}% разброса. В расчёт вошли ${nTrad(ng)} с 15 и более мотивами этой группы и ${nf(nmot)} ${ruPl(nmot, 'мотив', 'мотива', 'мотивов')}. Значения нормированы так, что ±100 соответствует 97-му процентилю.`,
     axPole: 'Традиции у полюса: ',
-    km: 'км', moPh: 'код или слово: a36, moon, trickster',
+    km: 'км', moPh: 'код или слово: a36, луна, трикстер',
     wide: 'широкий ареал', moUmapLabel: 'Мотивы в пространстве сходства ареалов, проекция UMAP', moMapLabel: 'Карта мира: традиции, в которых записан выбранный мотив',
     moMostIn: name => 'чаще всего: ' + name,
     moUmapCap: n => `Показаны ${nf(n)} ${ruPl(n, 'мотив', 'мотива', 'мотивов')}, записанные хотя бы у пяти традиций. Мотив отнесён к области, если на неё приходится не меньше 60% его встречаемости с поправкой на число записей в области. Проекция UMAP, оси ничего не значат.`,
     moHas: 'мотив записан', moHasNot: 'мотив не записан', moTotal: n => ruPl(n, 'мотив всего', 'мотива всего', 'мотивов всего'),
     moMeta: (letter, isA, n, N) => `Раздел ${letter} каталога (${isA ? 'космология и этиология' : 'приключения и трикстеры'}) · записан у ${nf(n)} ${ruPl(n, 'традиции', 'традиций', 'традиций')} из ${nf(N)} · `,
-    moLink: 'список мотивов в каталоге',
+    moLink: 'страница мотива в каталоге',
     moCor: 'сравнить с другими мотивами',
     moMapCap: id => `Синие точки: традиции, где записан мотив ${id}. Серые: остальные традиции каталога.`,
     moShare: 'Доля традиций с мотивом в трёх больших областях', moOf: (p, a, b) => `${p} · ${a} из ${b}`,
@@ -135,7 +137,17 @@ const steps = (host, vars, titles) => { host.textContent = ''; vars.forEach((v, 
 
 const tipEl = $('#tip');
 const Tip = {
-  show(e, rows) { tipEl.textContent = ''; for (const r of rows) tipEl.append(r); tipEl.hidden = false; this.move(e); },
+  fill(rows, cls) { tipEl.className = cls || ''; tipEl.textContent = ''; for (const r of rows) tipEl.append(r); tipEl.hidden = false; },
+  show(e, rows, cls) { this.fill(rows, cls); this.move(e); },
+  anchor(el, x) {                   // above a list row so that the rows still to be read stay visible; below it when there is no room
+    const r = el.getBoundingClientRect(), w = tipEl.offsetWidth, hh = tipEl.offsetHeight, box = el.closest('.pkbox');
+    if (box) {                         // beside a drop-down list, so that the search field stays visible
+      const b = box.getBoundingClientRect(); let left = b.right + 8; if (left + w > innerWidth - 8) left = b.left - w - 8;
+      tipEl.style.left = Math.max(8, left) + 'px'; tipEl.style.top = Math.max(8, Math.min(r.top, innerHeight - hh - 8)) + 'px'; return;
+    }
+    let top = r.top - hh - 6; if (top < 52) top = r.bottom + 6;
+    tipEl.style.left = Math.max(8, Math.min(x + 16, innerWidth - w - 8)) + 'px'; tipEl.style.top = top + 'px';
+  },
   move(e) {
     const pad = 14, w = tipEl.offsetWidth, hh = tipEl.offsetHeight;
     let x = e.clientX + pad, y = e.clientY + pad;
@@ -227,8 +239,40 @@ class Plot {
 }
 
 let selectMotif = () => {}, openMotif = () => {}, openCor = () => {}, corSet = null;
-const motifBtn = (m, val, noScroll) => tAttr(h('button', { class: 'mref', type: 'button', onclick: () => openMotif(m) },
-  h('span', { class: 'code', text: M.id[m] }), h('span', { text: M.title[m] }), val ? h('span', { class: 'val', text: val }) : null), { title: 'openMotif' });
+// ---------- motif titles and descriptions in the page language (data/source/motifs.csv; the Russian version is a translation
+// of the English one wherever the catalogue has its own English text, see analysis/catalogue/scripts/motif_texts.py)
+const mT = m => (LANG === 'ru' && M.tru[m]) || M.title[m];
+const clip = (s, n) => (s.length > n ? s.slice(0, s.lastIndexOf(' ', n)) + '…' : s);
+const motifDesc = (m, n) => {           // rows for a tooltip or the atlas; n limits the length for tooltips
+  const ru = LANG === 'ru', own = ru ? M.ru[m] : M.desc[m], other = ru ? M.desc[m] : M.ru[m], cut = s => (n ? clip(s, n) : s);
+  if (own) return [h('div', { class: 'dd', text: cut(own) })];
+  if (other) return [h('div', { class: 'dn', text: t('motifOther') }), h('div', { class: 'dd', lang: ru ? 'en' : 'ru', text: cut(other) })];
+  return [h('div', { class: 'dn', text: t('motifNoDesc') })];
+};
+const motifTip = (m, hint) => [tipTitle(M.id[m] + ' · ' + mT(m)), ...motifDesc(m, 520), hint ? h('div', { class: 'dh', text: t('openMotif') }) : null].filter(Boolean);
+let tipFor = null;                      // the element with data-m whose description is on screen
+const tipDrop = () => { if (tipFor) { tipFor = null; Tip.hide(); } };
+document.addEventListener('pointerover', e => {
+  if (e.pointerType === 'touch') return;
+  const el = e.target.closest ? e.target.closest('[data-m]') : null;
+  if (el && el !== tipFor) { tipFor = el; Tip.fill(motifTip(+el.dataset.m, el.dataset.open === '1'), 'wide'); Tip.anchor(el, e.clientX); }
+});
+document.addEventListener('pointermove', e => { if (tipFor && e.pointerType !== 'touch') Tip.anchor(tipFor, e.clientX); });
+document.addEventListener('pointerout', e => { if (tipFor && !(e.relatedTarget && tipFor.contains(e.relatedTarget))) tipDrop(); });
+document.addEventListener('focusin', e => {
+  const el = e.target.closest ? e.target.closest('button[data-m]') : null;
+  if (!el || !el.matches(':focus-visible')) return;
+  tipFor = el; Tip.fill(motifTip(+el.dataset.m, el.dataset.open === '1'), 'wide'); Tip.anchor(el, el.getBoundingClientRect().left);
+});
+document.addEventListener('focusout', tipDrop);
+document.addEventListener('click', tipDrop, true);
+document.addEventListener('scroll', tipDrop, { capture: true, passive: true });
+document.addEventListener('keydown', e => { if (e.key === 'Escape') tipDrop(); });
+const motifBtn = (m, val, noScroll) => {
+  const b = h('button', { class: 'mref', type: 'button', onclick: () => openMotif(m) },
+    h('span', { class: 'code', text: M.id[m] }), h('span', { text: mT(m) }), val ? h('span', { class: 'val', text: val }) : null);
+  b.dataset.m = m; b.dataset.open = '1'; return b;
+};
 const segInit = (host, cb) => {
   host.addEventListener('click', e => { const b = e.target.closest('button'); if (!b) return; cb(b.dataset.v); });
   return v => { for (const b of host.querySelectorAll('button')) b.setAttribute('aria-pressed', String(b.dataset.v === String(v))); };
@@ -241,12 +285,12 @@ const GEOPATH = d3.geoPath(PROJ);
 const arcPath = (a, b) => GEOPATH({ type: 'LineString', coordinates: [[G.lon[a], G.lat[a]], [G.lon[b], G.lat[b]]] });
 const leafOf = g => { const j = keptPos[g]; return j < 0 ? null : nodes[LEAF[j]]; };
 const chip = cls => { const i = h('i', { class: 'chip ' + cls }); return i; };
-// motif search by code or by a word of the title
-const MIDX = []; for (let m = 0; m < NM; m++) if (mDf[m] > 0) MIDX.push({ m, id: M.id[m], t: M.title[m].toLowerCase() });
+// motif search by code or by a word of the title in either language
+const MIDX = []; for (let m = 0; m < NM; m++) if (mDf[m] > 0) MIDX.push({ m, id: M.id[m], t: M.title[m].toLowerCase(), r: M.tru[m].toLowerCase().replace(/ё/g, 'е') });
 const motifSearch = (q, lim = 8) => {
-  q = q.trim().toLowerCase(); if (!q) return [];
+  q = q.trim().toLowerCase().replace(/ё/g, 'е'); if (!q) return [];
   const ex = [], pre = [], sub = [];
-  for (const o of MIDX) { if (o.id === q) ex.push(o); else if (o.id.startsWith(q)) pre.push(o); else if (o.t.includes(q)) sub.push(o); }
+  for (const o of MIDX) { if (o.id === q) ex.push(o); else if (o.id.startsWith(q)) pre.push(o); else if (o.t.includes(q) || o.r.includes(q)) sub.push(o); }
   pre.sort((a, b) => a.id.length - b.id.length || a.id.localeCompare(b.id)); sub.sort((a, b) => mDf[b.m] - mDf[a.m]);
   return ex.concat(pre, sub).slice(0, lim);
 };
@@ -283,7 +327,7 @@ function picker(inp, o) {
 }
 const MALL = MIDX.slice().sort((x, y) => x.id.localeCompare(y.id, 'en', { numeric: true }));     // catalogue order: a1, a2, ... a10
 const motifItems = q => (q.trim() ? motifSearch(q, 400) : MALL);
-const motifRow = o => h('div', { class: 'mref' }, h('span', { class: 'code', text: o.id }), h('span', { text: M.title[o.m] }), h('span', { class: 'val', text: nf(mDf[o.m]) }));
+const motifRow = o => { const r = h('div', { class: 'mref' }, h('span', { class: 'code', text: o.id }), h('span', { text: mT(o.m) }), h('span', { class: 'val', text: nf(mDf[o.m]) })); r.dataset.m = o.m; return r; };
 
 // ============================================================ 0. home: the cluster map at eight clusters, without controls
 function initHome() {
@@ -438,12 +482,12 @@ function initAxes(saved) {
     en: {
       A: [
         { pos: 'western and central Eurasia', neg: 'South America, Mesoamerica, Oceania, North America', note: 'The positive pole gathers the cosmological motifs of European and Near Eastern tales and legends. Africa, southern Asia and Siberia sit near zero.' },
-        { pos: 'Africa, South America, southern Asia, Oceania', neg: 'Siberia and North America', note: 'Southern pole: the origin of death (the shed skin, the muddled message), the rainbow serpent, spots on the Moon. Northern pole: the earth-diver. The picture is close to the contrast between the Indo-Pacific and Continental Eurasian complexes in Berezkin’s work.' },
+        { pos: 'Africa, South America, southern Asia, Oceania', neg: 'Siberia and North America', note: 'Southern pole: the origin of death (the shed skin, the muddled message, the chameleon as messenger) and the rainbow serpent. Northern pole: the earth-diver. The picture is close to the contrast between the Indo-Pacific and Continental Eurasian complexes in Berezkin’s work.' },
         { pos: 'Africa, southern and eastern Asia', neg: 'South America', note: 'African and Asian pole: death through a falsified message, the chameleon as messenger, the immortal Moon (motif a36). Amazonian pole: the incestuous Moon, the sky of birds, animal lovers.' },
-        { pos: 'western North America', neg: 'Siberia', note: 'Within the northern world, Siberia (Ursa Major as an ungulate, the Milky Way as a snowshoe track) separates from western North America, where death is tied to Coyote.' }
+        { pos: 'Sub-Saharan Africa', neg: 'Mesoamerica, southern and eastern Asia', note: 'African pole: death brought by the chameleon and the falsified message. Opposite pole: several suns that burn the earth, the primeval couple of siblings, the four supports of the world; these motifs link East and Southeast Asia with Mesoamerica.' }
       ],
       B: [
-        { pos: 'western and central Eurasia', neg: 'the Americas', note: 'The Eurasian stock of folktales against the New World. This axis is tied more than the others to how well a tradition is documented (correlation with the log number of motifs: 0.69), so part of the contrast reflects the volume of records.' },
+        { pos: 'western and central Eurasia', neg: 'the Americas', note: 'The Eurasian stock of folktales against the New World. This axis is tied more than the others to how well a tradition is documented (correlation with the log number of motifs: 0.68), so part of the contrast reflects the volume of records.' },
         { pos: 'Sub-Saharan Africa', neg: 'North America, Siberia, Europe', note: 'African pole: the hare as trickster, the hyena as the loser, the tar baby.' },
         { pos: 'South America and Mesoamerica', neg: 'North America and Siberia', note: 'South American pole: the woman among jaguars, the children of a murdered mother. North American pole: the hoodwinked dancers, the raven as trickster.' },
         { pos: 'the Plains and western North America', neg: 'the Arctic and Siberia', note: 'Trickster episodes of the Plains (the bungling host) against the Raven cycle of the Arctic.' }
@@ -452,12 +496,12 @@ function initAxes(saved) {
     ru: {
       A: [
         { pos: 'запад и центр Евразии', neg: 'Южная Америка, Мезоамерика, Океания, Северная Америка', note: 'Положительный полюс собирают космологические мотивы европейских и ближневосточных сказок и легенд. Африка, юг Азии и Сибирь лежат около нуля.' },
-        { pos: 'Африка, Южная Америка, юг Азии, Океания', neg: 'Сибирь и Северная Америка', note: 'Южный полюс: происхождение смерти (сброшенная кожа, перепутанная весть), радужный змей, пятна на Луне. Северный полюс: ныряльщик за землёй. Картина близка к противопоставлению индо-тихоокеанского и континентально-евразийского комплексов у Берёзкина.' },
+        { pos: 'Африка, Южная Америка, юг Азии, Океания', neg: 'Сибирь и Северная Америка', note: 'Южный полюс: происхождение смерти (сброшенная кожа, перепутанная весть, хамелеон-вестник) и радужный змей. Северный полюс: ныряльщик за землёй. Картина близка к противопоставлению индо-тихоокеанского и континентально-евразийского комплексов у Берёзкина.' },
         { pos: 'Африка, юг и восток Азии', neg: 'Южная Америка', note: 'Африкано-азиатский полюс: смерть из-за ложной вести, хамелеон-вестник, бессмертная Луна (мотив a36). Амазонский полюс: инцест Луны, небо птиц, любовники-животные.' },
-        { pos: 'запад Северной Америки', neg: 'Сибирь', note: 'Внутри северного мира Сибирь (Большая Медведица как копытное, Млечный Путь как лыжня) отделяется от запада Северной Америки, где смерть связана с Койотом.' }
+        { pos: 'Африка южнее Сахары', neg: 'Мезоамерика, юг и восток Азии', note: 'Африканский полюс: смерть из-за хамелеона и ложной вести. Противоположный полюс: несколько солнц, сжигающих землю, первая пара из брата и сестры, четыре опоры мира; эти мотивы связывают Восточную и Юго-Восточную Азию с Мезоамерикой.' }
       ],
       B: [
-        { pos: 'запад и центр Евразии', neg: 'Америка', note: 'Сказочный фонд Евразии против Нового Света. Эта ось сильнее других связана с изученностью традиции (корреляция с логарифмом числа мотивов 0,69), поэтому часть контраста отражает объём записей.' },
+        { pos: 'запад и центр Евразии', neg: 'Америка', note: 'Сказочный фонд Евразии против Нового Света. Эта ось сильнее других связана с изученностью традиции (корреляция с логарифмом числа мотивов 0,68), поэтому часть контраста отражает объём записей.' },
         { pos: 'Африка южнее Сахары', neg: 'Северная Америка, Сибирь, Европа', note: 'Африканский полюс: трикстер-заяц, гиена-неудачница, смоляное чучело.' },
         { pos: 'Южная Америка и Мезоамерика', neg: 'Северная Америка и Сибирь', note: 'Южноамериканский полюс: женщина у ягуаров, дети убитой матери. Североамериканский: обманутые танцоры, трикстер-ворон.' },
         { pos: 'Равнины и запад Северной Америки', neg: 'Арктика и Сибирь', note: 'Трикстерские эпизоды Равнин (неудачное подражание хозяину) против арктического цикла Ворона.' }
@@ -505,7 +549,7 @@ function initMotifs(saved) {
   const place = p => { for (const d of umPts) { d.x = PAD + d.nx * (p.o.W - 2 * PAD); d.y = PAD + (1 - d.ny) * (p.o.H - 2 * PAD); } };
   const homeName = i => (i < 3 ? sh(REGN[i]) : t('wide'));
   const um = new Plot($('#moUmap'), { W: 600, H: 480, pixel: w => Math.max(320, Math.min(560, w * 0.86)), rPx: 2.5, hitPx: 12,
-    hover: (d, e, mv) => { if (!d) return Tip.hide(); if (mv) return Tip.move(e); Tip.show(e, [tipTitle(M.id[d.m] + ' · ' + M.title[d.m]), tipLine(null, nTrad(mDf[d.m])), tipLine(null, d.home < 3 ? t('moMostIn', homeName(d.home)) : t('wide'))]); },
+    hover: (d, e, mv) => { if (!d) return Tip.hide(); if (mv) return Tip.move(e); Tip.show(e, [...motifTip(d.m), h('div', { class: 'dh', text: nTrad(mDf[d.m]) + ' · ' + (d.home < 3 ? t('moMostIn', homeName(d.home)) : t('wide')) })], 'wide'); },
     click: d => selectMotif(d.m, false), resize: p => { place(p); p.applyScale(); ring(); } });
   const selRing = um.over.append('circle').attr('class', 'sel-ring').attr('display', 'none');
   const ring = () => { const j = atlasPos[st.m]; if (j < 0) return selRing.attr('display', 'none'); const d = umPts[j]; selRing.attr('display', null).attr('cx', d.x).attr('cy', d.y).attr('r', 8); };
@@ -531,9 +575,9 @@ function initMotifs(saved) {
     map.restyle(d => (has[d.g] ? { cls: 'on', z: 1, f: 1.2 } : { cls: 'nul', z: 0, f: 0.55 }));
     ring();
     const head = $('#moHead'); head.textContent = '';
-    head.append(h('div', { class: 'idline' }, h('span', { class: 'bigcode', text: M.id[m] }), h('span', { class: 'ttl', text: M.title[m] })),
-      h('p', { class: 'desc', text: (M.desc && M.desc[m]) || '' }),
-      h('p', { class: 'meta' }, t('moMeta', M.id[m][0].toUpperCase(), mIsA[m], mDf[m], NG), h('a', { href: 'https://www.ruthenia.ru/folklore/berezkin/eng.html', text: t('moLink') }), ' · ',
+    head.append(h('div', { class: 'idline' }, h('span', { class: 'bigcode', text: M.id[m] }), h('span', { class: 'ttl', text: mT(m) })),
+      h('div', { class: 'desc' }, ...motifDesc(m)),
+      h('p', { class: 'meta' }, t('moMeta', M.id[m][0].toUpperCase(), mIsA[m], mDf[m], NG), h('a', { href: `https://www.ruthenia.ru/folklore/berezkin/${M.id[m]}.html`, text: t('moLink') }), ' · ',
         h('a', { href: '#correlations', text: t('moCor'), onclick: e => { e.preventDefault(); e.stopPropagation(); openCor('m', M.id[m]); } })));
     $('#moMapCap').textContent = t('moMapCap', M.id[m]);
     const side = $('#moSide'); side.textContent = '';

@@ -53,7 +53,7 @@ for k in range(2, 13):
 pd.DataFrame(rows).to_csv(f'{out}/cluster_membership.csv', index=False)
 
 # ---- motif summary
-S = pd.DataFrame({'motif_id': M.motif_id, 'title': M.title, 'section': M.letter.str.upper(),
+S = pd.DataFrame({'motif_id': M.motif_id, 'title': M.title, 'title_ru': M.title_ru, 'section': M.letter.str.upper(),
                   'category': np.where(isA, 'cosmology_etiology', 'adventure_trickster'), 'n_traditions': X.sum(0)})
 A = D['atlas']; am = A['m']; regs = [nodes[i]['name_en'] for i in A['regs']]
 S['in_analysis'] = 0; S.loc[am, 'in_analysis'] = 1

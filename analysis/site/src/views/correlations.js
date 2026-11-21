@@ -15,7 +15,7 @@ Object.assign(TX.en, {
 });
 Object.assign(TX.ru, {
   crLabelM: 'Карта мира: традиции, в которых записаны выбранные мотивы', crLabelT: 'Карта мира: корреляция каждой традиции с выбранной',
-  crFirst: { m: 'Первый мотив', t: 'Первая традиция' }, crSecond: { m: 'Второй мотив', t: 'Вторая традиция' }, crPh: { m: 'код или слово: c6, moon', t: 'начните вводить название' },
+  crFirst: { m: 'Первый мотив', t: 'Первая традиция' }, crSecond: { m: 'Второй мотив', t: 'Вторая традиция' }, crPh: { m: 'код или слово: c6, луна', t: 'начните вводить название' },
   crTop: { m: 'Самые близкие мотивы', t: 'Самые близкие традиции' }, crSub: { m: 'корреляция, общие традиции', t: 'корреляция, общие мотивы' },
   crPick: 'Щёлкните по строке, чтобы сделать её вторым объектом и сравнить два.', crNone: 'Ни один другой мотив не делит с этим три и более традиции.',
   crR: 'Корреляция', crBoth: 'оба', crOnly: 'только ', crRemove: 'Убрать второй объект', crSwap: 'Поменять первый и второй местами',
@@ -73,7 +73,8 @@ function initCorrelations(saved) {
     const box = $('#crHead'), mode = st.mode, { a, b } = st[mode]; box.textContent = ''; if (a == null) return;
     const line = (x, cls, second) => {
       const row = h('div', { class: 'crsel' }, h('i', { class: 'chip ' + cls }));
-      if (mode === 'm') row.append(h('span', { class: 'bigcode', text: M.id[x] }), h('span', { class: 'ttl', text: M.title[x] }), h('span', { class: 'meta' }, t('crMotMeta', mDf[x], NG) + ' · ',
+      if (mode === 'm') row.dataset.m = x;
+      if (mode === 'm') row.append(h('span', { class: 'bigcode', text: M.id[x] }), h('span', { class: 'ttl', text: mT(x) }), h('span', { class: 'meta' }, t('crMotMeta', mDf[x], NG) + ' · ',
         h('a', { href: '#motifs', text: t('crAtlas'), onclick: e => { e.preventDefault(); e.stopPropagation(); openMotif(x); } })));
       else { const lf = leafOf(x); row.append(h('span', { class: 'ttl', text: G.name[x] }), h('span', { class: 'meta', text: t('crTrMeta', G.n[x]) + (lf ? ' · ' + nm(lf) : '') })); }
       if (second) row.append(tAttr(h('button', { class: 'btn sq sm', type: 'button', text: '×', onclick: () => { st[mode].b = null; render(); } }), { title: 'crRemove', aria: 'crRemove' }),
@@ -112,8 +113,8 @@ function initCorrelations(saved) {
     box.append(h('h3', null, t('crTop')[mode] + ' ', h('span', { class: 'sub', text: t('crSub')[mode] })));
     if (mode === 'm') {
       const top = topMotifs(a); if (!top.length) { box.append(h('p', { class: 'fine', text: t('crNone') })); return; }
-      top.forEach((o, i) => ol.append(h('li', null, h('button', { class: 'rrow crrow' + (o.id === b ? ' sel' : ''), type: 'button', onclick: () => { st.m.b = o.id; render(); } },
-        h('span', { class: 'rk', text: String(i + 1) }), h('span', { class: 'code', text: M.id[o.id] }), h('span', { text: M.title[o.id] }), h('span', { class: 'v', text: fr(o.r) }), h('span', { class: 'km', text: nf(o.n) })))));
+      top.forEach((o, i) => ol.append(h('li', null, h('button', { class: 'rrow crrow' + (o.id === b ? ' sel' : ''), type: 'button', 'data-m': o.id, onclick: () => { st.m.b = o.id; render(); } },
+        h('span', { class: 'rk', text: String(i + 1) }), h('span', { class: 'code', text: M.id[o.id] }), h('span', { text: mT(o.id) }), h('span', { class: 'v', text: fr(o.r) }), h('span', { class: 'km', text: nf(o.n) })))));
     } else {
       d3.range(NG).filter(g => g !== a).sort((x, y) => cur.c.r[y] - cur.c.r[x]).slice(0, 20).forEach((g, i) => {
         const lf = leafOf(g), row = h('button', { class: 'rrow' + (g === b ? ' sel' : ''), type: 'button', onclick: () => { st.t.b = g; render(); } },

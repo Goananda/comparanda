@@ -1,831 +1,874 @@
 merge,child_a,child_b,height,n_traditions
-#1,Catalonia,Portuguese,0.087,2
-#2,Estonians,Lithuanians,0.114,2
-#3,Byelorussians,Russians,0.121,2
-#4,Spanish,#1,0.122,3
-#5,Italians (continental),#4,0.128,4
-#6,"Norvegians, Faroe islanders",Swedes,0.131,2
-#7,Azerbaijan,Kurd,0.131,2
-#8,Labrador Eskimo,West Greenland Eskimo,0.131,2
-#9,Czech,Germans,0.132,2
-#10,French,Ireland,0.142,2
-#11,Poles,Slovenians,0.145,2
-#12,Albanians,Turks,0.147,2
-#13,Latvians,Slovakians,0.148,2
-#14,Mari,Udmurt,0.148,2
-#15,Baffin Land Eskimo,Polar Eskimo,0.15,2
-#16,Algeria Arabs,Kabyle,0.15,2
-#17,Setu,Vepsians,0.15,2
-#18,Montagnais,Naskapi,0.155,2
-#19,Diegueno,"Yuma,Mohave,Maricopa",0.158,2
-#20,Abaza (Abazins),Kumyk,0.159,2
-#21,Iglulik,Netsilik,0.16,2
-#22,Arabs: Iraq,"Arabs: Palestine,Syria,Lebanon",0.161,2
-#23,Finns,#2,0.161,3
-#24,#9,#11,0.164,4
-#25,Chuvash,#14,0.17,3
-#26,"Adyghe, Kabardin",Ossetians,0.17,2
-#27,Ukrainians,#3,0.173,3
-#28,Arabs: Egypt,Morocco Arabs,0.174,2
-#29,"Dutch, Flemish, Frisians",#10,0.176,3
-#30,"Chinantec,Mazatec","Mixtec,Trique",0.177,2
-#31,Baikal Evenki,Western Evenki,0.18,2
-#32,Kazakh,Kirghiz,0.18,2
-#33,Bretagne,Romansh,0.18,2
-#34,Danes,#6,0.181,3
-#35,Turkmen,Uyghur,0.183,2
-#36,Mordvins,#25,0.183,4
-#37,#8,#15,0.185,4
-#38,"Sardinia, Corsica",#5,0.191,5
-#39,Basque,#33,0.192,3
-#40,Croatians,Hungarians,0.193,2
-#41,Tajik,Uzbek,0.193,2
-#42,Bulgarians,Romanians,0.196,2
-#43,Northern Ojibwa,Swampy Cree (Western),0.196,2
-#44,Haida,Tsimshian,0.2,2
-#45,England,Scotland,0.2,2
-#46,Dargin (Dargwa),Laks,0.2,2
-#47,Abkhaz,Ingush,0.202,2
-#48,Tunisia Arabs,Yemen,0.202,2
-#49,Halmahera,Sangir Islands,0.204,2
-#50,"Avar,Andi,Akhvakh","Lezgians,Kiurin; Archin",0.204,2
-#51,Mongols (Khalkha),Tuvinians,0.208,2
-#52,#22,#48,0.209,4
-#53,#18,#43,0.211,4
-#54,Karelians,#17,0.211,3
-#55,"Shughni,Rushani,Khufi,Bartangi","Wahki,Ishkashimi,Munji",0.211,2
-#56,Arapaho,Blackfoot,0.212,2
-#57,Inland Tlingit,Tagish,0.215,2
-#58,"Maliseet,Passamaquoddy",Micmac,0.217,2
-#59,Kraho,"Ramkokamekra,Apaniekra",0.217,2
-#60,Kumaoni (Central Pahari),Oriya,0.22,2
-#61,Caribou,#37,0.221,5
-#62,Maltese,Sicilia,0.222,2
-#63,Georgians,#26,0.225,3
-#64,Shavante,Sherente,0.226,2
-#65,Pashto,Persians,0.227,2
-#66,Arabs: Libya,#28,0.228,3
-#67,Trio,"Wayampi, Emerillon",0.228,2
-#68,Tabasaran; Aghul,#50,0.23,3
-#69,Baluch,Yazguliami,0.234,2
-#70,Lushootseed,Upper Chinook,0.234,2
-#71,Huastec,Puebla & Huasteca Nahua,0.235,2
-#72,Kwakiutl,"Nootka,Makah",0.238,2
-#73,"Kanjobal,Chuj,Mocho","Mam, Ixil",0.239,2
-#74,Ojibwa (Eastern),Ojibwa (Western),0.239,2
-#75,Evens (Lamuts),Yukaghir,0.24,2
-#76,Eest Greenland Eskimo,#61,0.241,6
-#77,"Karachays, Balkar",Nogai,0.241,2
-#78,Hanty,Tundra Nenets,0.241,2
-#79,Aramaic (Syrians),#52,0.242,5
-#80,"Luri, Bakhtiari",#7,0.242,3
-#81,"Malawi,Wenda,Tumbuka,Nsenga","Tonga, Ndebele",0.244,2
-#82,"Hindi, Chhattisgarhi",Sinhalese,0.244,2
-#83,Tlingit,#44,0.244,3
-#84,Mocovi,Toba,0.247,2
-#85,Southern Sel'kup,#78,0.248,3
-#86,Serbs,#42,0.249,3
-#87,Bengali,Tamil,0.25,2
-#88,Tutchone,"Upper Tanana,Tanacross",0.25,2
-#89,"Kechua: South Peru, Bolivia","Pasco,Junin,Huancavelica dep.",0.251,2
-#90,#13,#40,0.252,4
-#91,"Baniwa, Bare, Piapoco","Yucuna, Kabiyari",0.255,2
-#92,Crow,Kiowa,0.256,2
-#93,Livonians,Sorbs,0.258,2
-#94,Kashmiri,Punjabi,0.26,2
-#95,Kara Kalpak,#35,0.26,3
-#96,Thompson,#70,0.26,3
-#97,Dena'ina,Tanana,0.26,2
-#98,"Altai-Kiji, Telengit",Buryat,0.26,2
-#99,Chiricahua Apache,Jicarilla Apache,0.265,2
-#100,Negidals,Oroch,0.266,2
-#101,Highland Tajik,Yaghnobi,0.266,2
-#102,Aguaruna,"Shuar,Achuar,Huambiza",0.267,2
-#103,Muisca,Yukpa,0.268,2
-#104,"Lassik,Catho,Mattole",Yuki,0.269,2
-#105,Tenetehara,Urubu-Kaapor,0.27,2
-#106,Kannada; Kuruba,Marathi,0.27,2
-#107,#21,#76,0.271,8
-#108,"Barasana,Taibano,Makuna","Witoto,Ocaina",0.271,2
-#109,Bashkir,Volga (Kazan) Tatars,0.274,2
-#110,#29,#45,0.274,5
-#111,"Baiga,Bhuiya,Bhumiya","Muria,Maria,Pardhan",0.275,2
-#112,"Akan,Ashanti,Akwapim,Tvi","Baule, Nzema, Agni",0.276,2
-#113,Popoluca,"Totonac, Tepehua",0.276,2
-#114,Northern Paiute,"Western Shoshoni,Gosiute",0.276,2
-#115,Xhosa,"Zulu,Swasi",0.277,2
-#116,Plains Ojibwa,Swampy Cree (Eastern),0.277,2
-#117,Bering Strait Inupiat,North Alaskan Inupiat,0.278,2
-#118,Chorote,Makka,0.279,2
-#119,Khakas,Shor,0.279,2
-#120,"Desana,Siriano,Tatuyo,Bara",#91,0.28,3
-#121,"Kalapalo, Kuikuro",Kamaiura,0.28,2
-#122,Eastern Keres,Hopi,0.281,2
-#123,#16,#66,0.282,5
-#124,#24,#34,0.282,7
-#125,Hausa,Northern Gur (Oti-Volta),0.283,2
-#126,"Ket, Yug",Northern Sel'kup,0.283,2
-#127,Maidu,Wintu,0.284,2
-#128,Stavropol Turkmen,#20,0.285,3
-#129,Lipan Apache,#99,0.287,3
-#130,Armenians,#46,0.287,3
-#131,Northern Peru: Sierra,#89,0.288,3
-#132,"Siona,Coreguaje",Yagua,0.29,2
-#133,Chugach,Eyak,0.291,2
-#134,"Eastern Sami, incl. Skolts",Komi,0.291,2
-#135,Ponape district,"Santa-Cruz, Reef islands",0.292,2
-#136,Sakata,"Yambasa, Banen",0.293,2
-#137,Nez Perce,Western Sahaptin,0.293,2
-#138,#23,#27,0.293,6
-#139,Cubeo,"Uanano,Tucano proper,Arapaso",0.294,2
-#140,#39,#110,0.294,8
-#141,Iowa,Santee,0.295,2
-#142,Aragon,#140,0.295,9
-#143,"Bondo,Didayi,Gutob",Sora,0.296,2
-#144,"Chehalis, Cowlitz",#96,0.296,4
-#145,Darkhad,Oirat,0.297,2
-#146,Chorti,"Quiche,Pocomam",0.297,2
-#147,Tats,#41,0.298,3
-#148,"Rutul, Tsahur",#68,0.299,4
-#149,"Zapotec,Chatino",#30,0.3,3
-#150,"Karina, Galibi",Warao,0.3,2
-#151,"Comox,Pentlatch","Halcomelem,Sechelt,Squamish",0.301,2
-#152,"Shasta,Chimariko",Takelma,0.302,2
-#153,Cofan,"Napo,Kanelo",0.303,2
-#154,"Manden,Bamana,Malinke,Diula",Songhai,0.304,2
-#155,Saudia,#79,0.304,6
-#156,"Cahuilla, Cupeno",#19,0.305,3
-#157,Bukhara Arabs,#101,0.306,3
-#158,Greeks (modern),#62,0.306,3
-#159,Iranxe,Paresi,0.308,2
-#160,Lillooet,Quinault,0.308,2
-#161,Assamese,Konkani,0.309,2
-#162,Gros Ventre,#56,0.309,3
-#163,Ila,"Lozi,Rotse,Lui,Subia",0.309,2
-#164,"Kalispel,Coeur d'Alene",Shuswap,0.31,2
-#165,Kolchan,Koyukon,0.311,2
-#166,Sindhi,#94,0.311,3
-#167,Makuxi,Wapishana,0.312,2
-#168,Crimea Tatars,#32,0.312,3
-#169,#59,#64,0.313,4
-#170,Marshal Islands,#135,0.314,3
-#171,"Gogo,Zaramo,Kaguru","Nyaturu,Isanzu,Nilamba",0.315,2
-#172,Sarsi,#162,0.316,4
-#173,Macedonians,#86,0.317,4
-#174,Wotians,#54,0.317,4
-#175,Far East Evenki,#75,0.32,3
-#176,Arikara,Pawnee,0.321,2
-#177,Kamba,Kikuyu,0.322,2
-#178,Oraon (Kurukh),"Santali,Turi",0.322,2
-#179,Karok,Yurok,0.323,2
-#180,"Alabama,Koasati","Creek, Seminole",0.324,2
-#181,Coast Miwok,Yana,0.324,2
-#182,Gagauz,#109,0.324,3
-#183,Hawaii,Tuamotu,0.325,2
-#184,Central Australia,Western Australia,0.325,2
-#185,Sym Evenki,#31,0.326,3
-#186,#82,#87,0.326,4
-#187,Aleut,Kodiak,0.326,2
-#188,Amuesha,Machiguenga,0.326,2
-#189,Central Yupiq,Ingalik,0.328,2
-#190,"Maori,Moriori","Tahiti, Society islands",0.329,2
-#191,"Fulbe,Wolof,Serer","Tenda, Biafada, Nalu",0.329,2
-#192,"Okanagon,Sanpoil",#164,0.33,3
-#193,Southern Paiute,Ute,0.333,2
-#194,Mansi,#85,0.333,4
-#195,Zoque,#73,0.334,3
-#196,Chechen,#47,0.335,3
-#197,Plains Cree,Western Wood Cree,0.336,2
-#198,"Niamwesi,Sumbwa","Sukuma,Gusii,Kumbi",0.336,2
-#199,Ceram,"Numfoor,Warope",0.337,2
-#200,Mongols (Inner Mongolia),#51,0.338,3
-#201,Aceh,Minahasa,0.338,2
-#202,Bella Coola,Carrier,0.338,2
-#203,Igbo; Isoko,Ijaw,0.339,2
-#204,Nanai,Udihe,0.339,2
-#205,Chipewyan,Kutchin,0.34,2
-#206,#55,#95,0.34,5
-#207,"Kete,Luba-Kasai,Kanioka",Songe,0.34,2
-#208,Sicuani,#108,0.342,3
-#209,"Heiltsuk,Oowekeeno",#83,0.343,4
-#210,"Burmese,Intha,Arakan",Viets,0.343,2
-#211,"Sotho, Tswana",#81,0.344,3
-#212,Krache; Ga,#112,0.344,3
-#213,Cook Islands southern,Tuvalu (Ellice),0.347,2
-#214,#104,#181,0.348,4
-#215,"Meo,Dao,Man (Vietnam,Laos)","Namuzi, Naxi; Pumi",0.348,2
-#216,"Rennel,Tikopia,Bellona,Futuna(Erronan)",Truk district,0.348,2
-#217,"Fox,Sauk,Kikapoo",Menomini,0.348,2
-#218,Lobi,"Mbum,Mundang",0.349,2
-#219,"Omaha, Ponka",Teton,0.35,2
-#220,Eastern Cree,Northern Saulteaux,0.35,2
-#221,Tillamook,#144,0.35,5
-#222,Apinaye,Cayapo,0.351,2
-#223,Kalmyk,#168,0.351,4
-#224,#38,#158,0.353,8
-#225,"Wayana, Aparai",#67,0.353,3
-#226,NorthernFoothillsYokuts,Salinan,0.353,2
-#227,Mataco,#118,0.355,3
-#228,Hixkaryana,Waiwai,0.355,2
-#229,Aimara,#131,0.356,4
-#230,"Kei,Tanimbar,Babar,Watubela",Roti,0.356,2
-#231,Navajo,#122,0.356,3
-#232,"Berber (Morocco,SW Algeria)",#123,0.356,6
-#233,"Ngonde,Safwa.Mkulwe,Kinga",Sandawe,0.357,2
-#234,Tzotzil,#113,0.357,3
-#235,"Mundari,Ho,Asur,Birhor",#111,0.358,3
-#236,Cocopa,#156,0.359,4
-#237,#63,#130,0.36,6
-#238,Natchez,#180,0.36,3
-#239,Algonkian proper,#116,0.362,3
-#240,Tseltal,#195,0.363,4
-#241,Sanema,Yanomamo,0.363,2
-#242,"Monguor,Shirongol",Tibetans: Amdo,0.364,2
-#243,Potawatomi,#74,0.365,3
-#244,Nganasan,#185,0.365,4
-#245,#98,#119,0.365,4
-#246,Alsea,Coos,0.365,2
-#247,"Dan,Guro,Mano,Sapa,Ngere",Kru,0.366,2
-#248,Dolgan,#100,0.368,3
-#249,Western Sami,#93,0.368,3
-#250,Sarikoli,#157,0.369,4
-#251,Bosnia Muslims,#173,0.371,5
-#252,#57,#88,0.371,4
-#253,"Kpelle, Kono",Southern Gur,0.372,2
-#254,Kalapuya,#152,0.372,3
-#255,Nivkh,#204,0.373,3
-#256,#80,#147,0.373,6
-#257,Oaxaca Mixe,#149,0.374,4
-#258,"Tiwa,Tewa,Towa",Western Keres,0.375,2
-#259,Sumer,"Ugarit, Phoenicia",0.375,2
-#260,Kayabi,Mundurucu,0.376,2
-#261,"Aka,Baka a.o.Western Pygmies","Luba,Bena,Tabwa",0.377,2
-#262,"Luiseno, Juaneno",#236,0.377,5
-#263,Mackenzie Delta Eskimo,Nunivak,0.377,2
-#264,Chinese folklore,Korea,0.378,2
-#265,"Cashinahua,Mayoruna",Shipibo-Conibo,0.379,2
-#266,Biu-Mandara,"Tiv,Jukun,Mbete,Wute,Ekoi",0.379,2
-#267,Pemon,Ticuna,0.379,2
-#268,Cherokee,"Choktaw,Chichasaw",0.379,2
-#269,Amhara,"Saho, Afar",0.38,2
-#270,Athna,#97,0.38,3
-#271,Tariana,#139,0.381,3
-#272,Arabs of Sudan,#232,0.381,7
-#273,"Slavey, Dogrib",Yellowknife,0.384,2
-#274,Hidatsa,Mandan,0.385,2
-#275,"Lengua, Sanapana",Terena,0.385,2
-#276,"Lahu,Sani,Hani,Nasu,Jino","Miao,Yao (South China)",0.386,2
-#277,Forest Nenets,#194,0.388,5
-#278,"Tsonga,Soli,Sala,Lenje","Yao, Macua",0.388,2
-#279,#92,#176,0.388,4
-#280,Five Nations Iroquois,Lenape,0.389,2
-#281,"Mbundu, Owambo","Rwanda,Shi,Rundi",0.389,2
-#282,Nepali; Tharu,#60,0.39,3
-#283,"Telugu, Chenchu",#106,0.39,3
-#284,Bororo,"Surui,Zoro,Arua,Cinta Larga",0.391,2
-#285,"Mingrelians, Laz",#196,0.392,4
-#286,Kamchadal,Kerek,0.392,2
-#287,Muslim Malay,Southern Luzon,0.393,2
-#288,"Abenaki,Penobscot",#58,0.395,3
-#289,Copper Eskimo,#107,0.396,9
-#290,"Quileute, Chemakum",#160,0.398,3
-#291,Palau,Yap,0.398,2
-#292,Locono,#150,0.399,3
-#293,#155,#272,0.399,13
-#294,Mentawai,"Toradja, Mori",0.4,2
-#295,"Ulithi, Ngulu",#170,0.401,4
-#296,Juruna,Shipaya,0.401,2
-#297,#71,#234,0.403,5
-#298,Kongo,"Mpongwe,Nkomi,Mindumu",0.405,2
-#299,Konds (Khonds),#143,0.405,3
-#300,Kachin,"Lisu, Lolo,Yi,Achang",0.406,2
-#301,"Bali, Lombok",Yava,0.406,2
-#302,Northern Shoshone,#114,0.407,3
-#303,Maritime Koryak (Alyutor),#286,0.408,3
-#304,"Tai,Zhuang,Nung,Kho","Tjam,Ede,Jarai",0.408,2
-#305,Han,Hare,0.409,2
-#306,Chulym Turks,"Kumandin,Chelkan,Tubalar",0.409,2
-#307,"Walapai,Havasupai,Yavapai",Western Apache,0.41,2
-#308,Sierra Miwok,#214,0.41,5
-#309,"Yoruba,Nupe,Bini",#247,0.411,3
-#310,Chiriguano,Guarani,0.412,2
-#311,Parintintin,#105,0.412,3
-#312,"Letuama,Ufaina,Yahuna",Waorani,0.413,2
-#313,Chamacoco,#227,0.414,4
-#314,"Duala,Basa,Kwiri","Fang,Bube,Bulu,Tanga",0.414,2
-#315,Aztec,"Yucatec, Itza",0.415,2
-#316,Daghur,Yogur,0.415,2
-#317,Tahltan,#252,0.416,5
-#318,#210,#264,0.416,4
-#319,AsiaticEskimo,Chukchi,0.417,2
-#320,Tuvinians South Altai,#200,0.417,4
-#321,Samoa,Tonga,0.417,2
-#322,North New Guinea Melanesians,Trans New Guinea East,0.419,2
-#323,Tofa,#245,0.42,5
-#324,"Dido,Khvarshi,Hunzib",#237,0.42,7
-#325,Uilta,#248,0.42,4
-#326,#72,#151,0.421,4
-#327,#90,#124,0.421,11
-#328,Shona,#211,0.423,4
-#329,Cheyenne,#219,0.424,3
-#330,Rajasthani,#282,0.425,4
-#331,Lima dep.,#229,0.426,5
-#332,#138,#174,0.426,10
-#333,"Akkad,Assyria,Babylon",#259,0.427,3
-#334,Carijona,#120,0.427,4
-#335,"Atayal,Sedeq,Saisiyat","Paiwan,Puyuma,Rukay",0.427,2
-#336,"Bemba,Kaonde,Lamba","Ganda,Nyoro,Haya",0.427,2
-#337,Achomavi,#127,0.427,3
-#338,Soninke,Western Sahara & Mauritania,0.428,2
-#339,Makiritare,#208,0.429,4
-#340,Yakut,#175,0.429,4
-#341,Trumai,#121,0.43,3
-#342,Kaska,#317,0.431,6
-#343,Gondi,#235,0.431,4
-#344,Marquesas,Niue,0.433,2
-#345,Papago,Pima,0.433,2
-#346,"Huron, Wyandot",Tuscarora,0.433,2
-#347,#53,#220,0.434,6
-#348,"Shan,Khampti,Ahom",Thai (Thailand),0.434,2
-#349,Wichita,#279,0.434,5
-#350,Nivakle,#313,0.434,5
-#351,#36,#134,0.438,6
-#352,Ewe,"Mende,Bandi,Loma",0.439,2
-#353,"Katawishi,Manao etc.",#311,0.44,4
-#354,#126,#277,0.44,7
-#355,Ayacucho dep.,Northern Peru: Costa,0.442,2
-#356,Arnham Land,SE Australia,0.443,2
-#357,"Chokwe,Luchazi",#261,0.443,3
-#358,Central Philippines,Mindanao,0.443,2
-#359,Tokelau,#213,0.444,3
-#360,Chemehuevi,Kawaiisu,0.444,2
-#361,Mai Huna (Coto),#132,0.444,3
-#362,#205,#305,0.444,4
-#363,Olcha,#255,0.446,4
-#364,Ami,"Bunun,Tsou,Kanabu",0.446,2
-#365,"Anuak, Shilluk",#154,0.446,3
-#366,"Boa,Komo,Nyanga","Kuba,Dengese,Bushoongo,Yansi",0.446,2
-#367,Fon,"Manjak,Balant,Papel,Felupe,Diola",0.447,2
-#368,Tzutujil,#146,0.448,3
-#369,Selknam,Yamana,0.449,2
-#370,Rikbaktsa,#284,0.449,3
-#371,#65,#256,0.452,8
-#372,#77,#128,0.453,5
-#373,Dungan,#316,0.453,3
-#374,Cora,Tlapanec; Popoloca,0.455,2
-#375,#186,#283,0.456,7
-#376,"Hupa,Chilula","Umpqua,Coquille,Tututni",0.457,2
-#377,Chacobo,Ese'ejja,0.458,2
-#378,"Gilbert,Nauru,Banaba",#190,0.459,3
-#379,Ancient Greece,Ancient Italy,0.46,2
-#380,Mangareva,#183,0.46,3
-#381,"Vai, Kone",#212,0.461,4
-#382,"Guaymi,Bocota","Otomi,Pame,Jonaz",0.462,2
-#383,Bari,Kuna,0.462,2
-#384,Dongxiang,Tibetans: Kham,0.463,2
-#385,Nuba,Somali,0.464,2
-#386,#137,#192,0.469,5
-#387,#117,#263,0.47,4
-#388,Winnebago,#141,0.471,3
-#389,Zuni,#231,0.471,4
-#390,"Ontong Java,Takuu,Nukumanu,Nukuria",Rotuma,0.471,2
-#391,Yuchi,#268,0.472,3
-#392,Kogi,"Paya,Sumu,Misquito",0.472,2
-#393,#300,#304,0.473,4
-#394,Lao,#348,0.473,3
-#395,Guayabero,Yaruro,0.474,2
-#396,Pomo,Wappo,0.475,2
-#397,#69,#250,0.476,6
-#398,"Mongo,Tetela,Kuba,Nkundu",#357,0.477,4
-#399,Senufo,#218,0.477,3
-#400,#217,#243,0.477,5
-#401,"Banhar,Moi,Sedang","Khmu, Puoc",0.478,2
-#402,"Katu, Bru",Palaung,0.478,2
-#403,"Waura,Mehinaku",#341,0.48,4
-#404,"Dhoba,Ahir,Halba,Lohar,etc.",Juang,0.484,2
-#405,Dholuo,"Efik, Ibibio, Ikom",0.485,2
-#406,"Osage, Kansa",Yankton,0.486,2
-#407,Chayahuita,Choco,0.488,2
-#408,Massim district,"N.Britain,N.Ireland",0.488,2
-#409,Batak; Gayo,#301,0.489,3
-#410,#280,#346,0.489,4
-#411,Enets,#325,0.491,5
-#412,#177,#328,0.492,6
-#413,Temne,Zaghawa,0.493,2
-#414,Oto,#329,0.494,4
-#415,Assiniboine,#197,0.495,3
-#416,Admiralty islands,Southern Solomons,0.497,2
-#417,Umotina,#222,0.497,3
-#418,Udin,#148,0.497,5
-#419,Guajiro,Tacana,0.498,2
-#420,Andoque,#334,0.499,5
-#421,"Chagga, Digo",#336,0.5,3
-#422,Comanche,Kiowa-Apache,0.501,2
-#423,Lower Chinook,#290,0.501,4
-#424,Pipil,#240,0.501,5
-#425,Karaja,Tapirape,0.502,2
-#426,Panamint,#360,0.503,3
-#427,"Chuvans, Markovo",#340,0.503,5
-#428,Chontal,Kekchi; Mopan,0.503,2
-#429,Tequstlatec,#382,0.504,3
-#430,#331,#355,0.504,7
-#431,Balahi,Gujarati,0.506,2
-#432,#84,#350,0.507,7
-#433,Malayali; Kannikaran,#178,0.508,3
-#434,Central Vanuatu,Southern Vanuatu,0.509,2
-#435,Ancient Egypt,"Hittite, Hurrit",0.51,2
-#436,#161,#330,0.51,6
-#437,"Kalenjin,Nande,Arusha",Masai,0.511,2
-#438,"Chin,Kuki,Lakher,Mizo,Lushei","Chin-Naga(Rengma,Ao,Angami etc",0.511,2
-#439,"Mehri,Jibbali,Harsusi",#269,0.512,3
-#440,#216,#321,0.512,4
-#441,#225,#353,0.512,7
-#442,Mescalero Apache,#129,0.514,4
-#443,Nambikwara,#159,0.516,3
-#444,Torricelli Papuans,#322,0.516,3
-#445,Monache,#226,0.516,3
-#446,Seri,#345,0.517,3
-#447,Harakmbet,Piro,0.517,2
-#448,"Nias,Simeulue","Timor,Leti,Lomblen",0.518,2
-#449,Comoros Islands,Sara,0.518,2
-#450,#344,#359,0.522,5
-#451,#199,#230,0.523,4
-#452,#249,#327,0.527,14
-#453,Japan,Northern Ryukyu; Awami Islands,0.527,2
-#454,#246,#254,0.528,5
-#455,Orinoco Caribs,#292,0.535,4
-#456,"Klallam,Lkungen",#423,0.536,5
-#457,#125,#253,0.536,4
-#458,Tubatulabal,#308,0.538,6
-#459,Huichol,#429,0.542,4
-#460,Hitchiti,#238,0.542,4
-#461,"India, literary sources",Tibetans (U-Tsang),0.542,2
-#462,Lingala,#136,0.542,3
-#463,Durango Nahua,"Yaqui,Mayo,Sinaloa",0.543,2
-#464,#239,#347,0.544,9
-#465,"Murut,Dusun,Tombonuvo,Bajau",#201,0.545,3
-#466,Kashubians,#332,0.545,11
-#467,#102,#153,0.545,4
-#468,#401,#402,0.545,4
-#469,#171,#281,0.547,4
-#470,Veracruz Nahuatl,#297,0.549,6
-#471,#166,#375,0.552,10
-#472,Ancient China,#276,0.554,3
-#473,Kutenai,#386,0.555,6
-#474,#165,#270,0.557,5
-#475,"Lavrung,Jiarong,Qiang",#215,0.557,3
-#476,Mustang,#373,0.557,4
-#477,"Garo,Bodo,Hami,Riga","Tawang,Miji,Aka,Sherdukpen",0.558,2
-#478,Svan,#285,0.563,5
-#479,"Banda,Gbaya,Ngbandi,Manja",#184,0.563,3
-#480,St.Lawrence Eskimo,#319,0.563,3
-#481,Chilcotin,#202,0.564,3
-#482,#306,#323,0.564,7
-#483,Kiliwa,#262,0.564,6
-#484,Colorado (Tsachila),"Mojo,Manasi,etc.",0.565,2
-#485,"Acoli,Alur,Lango",#298,0.567,3
-#486,Akawai,Mawe,0.571,2
-#487,"Konde,Matumbi,Pangwa",#233,0.571,3
-#488,#315,#470,0.571,8
-#489,#172,#274,0.571,6
-#490,Cashibo,#419,0.573,3
-#491,#312,#395,0.574,4
-#492,"Klamath, Modoc",#302,0.574,4
-#493,#242,#384,0.576,4
-#494,Chol,#424,0.581,6
-#495,Piaroa,#271,0.582,4
-#496,#396,#458,0.582,8
-#497,Reindeer Koryak,#303,0.582,4
-#498,#191,#365,0.582,5
-#499,Kapingamarangi,#295,0.585,5
-#500,Khwarezm Uzbek,#418,0.587,6
-#501,"Culina,Araua,Apurina",#447,0.587,3
-#502,"Abor,Gallong,Tani",#477,0.587,3
-#503,#390,#450,0.588,7
-#504,#349,#489,0.588,11
-#505,#193,#426,0.588,5
-#506,#368,#428,0.591,5
-#507,"Paez,Guambia",#392,0.593,3
-#508,#244,#354,0.595,11
-#509,Beaver,#273,0.596,3
-#510,#436,#471,0.597,16
-#511,#378,#380,0.598,6
-#512,Northern Naga (Konyak etc.),"Rawang, Anong, Drung",0.598,2
-#513,#145,#320,0.598,6
-#514,"Suya,Txukarramae",#370,0.599,4
-#515,Khmer,#394,0.6,4
-#516,Flores,"Semang,Senoi",0.601,2
-#517,"Bole, Tangale",#469,0.603,5
-#518,Sepik-Ramu Papuans,#444,0.603,4
-#519,#267,#407,0.603,4
-#520,Herrero,#115,0.604,3
-#521,Dogon,#367,0.605,3
-#522,#287,#358,0.605,4
-#523,"Alor, Solor",#335,0.606,3
-#524,#333,#435,0.61,5
-#525,Southern Australia,Trans New Guinea West,0.611,2
-#526,#12,#324,0.611,9
-#527,Wales,#142,0.613,10
-#528,#167,#228,0.613,4
-#529,Yokuts,#445,0.614,4
-#530,Cuiva,Urarina,0.615,2
-#531,"Banks, Torres islands",SE New Guinea Melanesians,0.616,2
-#532,"Itene,Wari,other Rondonia",#417,0.616,4
-#533,Astrakhan Tatars and Nogai,Siberian Tatars,0.621,2
-#534,Bakairi,#403,0.621,5
-#535,Bora,#339,0.622,5
-#536,"Kayan,Kenya,Bahau,""Klemantan""",Northern Luzon,0.624,2
-#537,Karen,#393,0.625,5
-#538,#376,#454,0.627,7
-#539,Cayapa (Chachi),"Kamsa, Ingano",0.627,2
-#540,#187,#387,0.631,6
-#541,Kharia,Mikir,0.632,2
-#542,#188,#377,0.632,4
-#543,#385,#439,0.633,5
-#544,Yaka,#314,0.634,3
-#545,Botocudo,Yabarana,0.636,2
-#546,Lacandon,"Rama,Guatuso",0.637,2
-#547,"Wa, Bulang",#512,0.639,3
-#548,#203,#352,0.64,4
-#549,Wiyot,#179,0.64,3
-#550,Fiji,#440,0.642,5
-#551,Chipaya,#430,0.644,8
-#552,#265,#467,0.644,6
-#553,Queensland,#356,0.649,3
-#554,Central Solomons,New Caledonia,0.65,2
-#555,Biloxi,Tunica,0.653,2
-#556,Ofaie,#532,0.656,5
-#557,Irakw,#437,0.657,3
-#558,#241,#535,0.658,7
-#559,#206,#397,0.662,11
-#560,Highland Ecuador,#490,0.662,4
-#561,#294,#465,0.663,5
-#562,Tupinamba,Yuracare,0.664,2
-#563,#296,#443,0.664,5
-#564,#405,#498,0.665,7
-#565,Ayoreo,#275,0.667,3
-#566,#372,#478,0.668,10
-#567,Khoikhoi,Tuareg,0.67,2
-#568,Chimila,#383,0.674,3
-#569,Bilin,Tunisia Berber,0.677,2
-#570,Soqotri,#293,0.679,14
-#571,#366,#398,0.68,6
-#572,Talysh,#500,0.68,7
-#573,Burusho,Dards,0.682,2
-#574,#408,#416,0.683,4
-#575,"Akposo,Akebu,Santrokofi","Nuer,Dinka",0.684,2
-#576,Malagasy,Swahili,0.685,2
-#577,Caddo,Tonkawa,0.688,2
-#578,Ngaju,#448,0.689,3
-#579,#406,#414,0.689,6
-#580,#310,#441,0.69,9
-#581,"Zande,Nzakara",#485,0.69,4
-#582,#163,#278,0.691,4
-#583,#391,#460,0.693,7
-#584,Andaman,Luzon Negritos,0.693,2
-#585,Kanamari,#501,0.694,4
-#586,"Balantak,Loinang,Banggai","Murle, Me'en, Didinga",0.695,2
-#587,#412,#520,0.696,9
-#588,#198,#421,0.699,5
-#589,Shawnee,#410,0.701,5
-#590,#374,#463,0.703,4
-#591,Evenki of China,Manchu,0.703,2
-#592,"Buka, Bougenville",Torres Strait Islands,0.706,2
-#593,Macu,#420,0.706,6
-#594,#189,#540,0.706,8
-#595,#503,#550,0.708,12
-#596,#207,#571,0.708,8
-#597,#266,#457,0.712,6
-#598,Dhanwar,"Toda,Kota,Pulaya,Nayar,Kadar",0.714,2
-#599,#309,#548,0.716,7
-#600,Serrano,#483,0.719,7
-#601,#364,#523,0.721,5
-#602,Khasi,#502,0.722,4
-#603,Kamchatka Evens,#411,0.722,6
-#604,"Okinawa,Miyako,Yaeyama",Warli,0.722,2
-#605,#531,#554,0.725,4
-#606,"Bugi, Macassar",#561,0.726,6
-#607,Kaxuyana,#425,0.733,3
-#608,#432,#565,0.733,10
-#609,Ottawa,#589,0.734,6
-#610,"Oromo,Konso,Sidamo",#575,0.735,3
-#611,#260,#563,0.736,7
-#612,#472,#537,0.738,8
-#613,#337,#496,0.738,11
-#614,#455,#528,0.743,8
-#615,#422,#442,0.743,6
-#616,Mon,#453,0.743,3
-#617,#558,#593,0.745,13
-#618,#438,#602,0.749,6
-#619,#291,#434,0.749,4
-#620,#381,#599,0.751,11
-#621,Avesta; Pekhlevi texts,Kafirs,0.752,2
-#622,#338,#399,0.753,5
-#623,"Bhil, Barela-Bhilala",#431,0.755,3
-#624,"Tupari,Makurap,Ajuru",#545,0.755,3
-#625,#487,#582,0.755,7
-#626,#362,#509,0.759,7
-#627,Eastern Shohone,#388,0.76,4
-#628,#318,#515,0.761,8
-#629,#409,#578,0.766,6
-#630,Ashaninca,Island Caribs,0.766,2
-#631,#258,#307,0.768,4
-#632,#221,#473,0.769,11
-#633,"Bribri,Cabecar","Kaingang, Xokleng",0.769,2
-#634,#103,#546,0.775,4
-#635,"Mangbetu,Lugbara,Madi",Mbuti & Efe Pigmies,0.78,2
-#636,#479,#553,0.785,6
-#637,Bushmen,Ohlone,0.786,2
-#638,Ainu,#363,0.788,5
-#639,#413,#564,0.789,9
-#640,#133,#474,0.79,7
-#641,Twana,Washo,0.795,2
-#642,#516,#584,0.796,4
-#643,#182,#526,0.796,12
-#644,"Moseten,Chimane",#519,0.797,5
-#645,"Ifaluk, Lamotrek, Satawal",#595,0.798,13
-#646,#507,#634,0.799,7
-#647,#299,#343,0.802,7
-#648,#557,#587,0.803,12
-#649,#530,#552,0.803,8
-#650,"Tigre, Tigrigna",#543,0.804,6
-#651,#169,#556,0.807,9
-#652,#209,#481,0.809,7
-#653,#486,#614,0.811,10
-#654,#224,#527,0.812,18
-#655,Ache,Palawan,0.814,2
-#656,#288,#400,0.815,8
-#657,#484,#560,0.817,6
-#658,#480,#497,0.818,7
-#659,"Kirati (Rai,Limbu,Newar)",Lepcha,0.818,2
-#660,Kitanemuk,"Li,Dong,Maonan",0.82,2
-#661,#427,#603,0.82,11
-#662,#605,#619,0.826,8
-#663,Jicaque,#459,0.833,5
-#664,Candoshi,#568,0.835,4
-#665,#544,#581,0.837,7
-#666,"Tarahumara,Warihio",Tarascan,0.837,2
-#667,#494,#506,0.842,11
-#668,#449,#610,0.843,5
-#669,#574,#592,0.848,6
-#670,Tsetsot,#342,0.856,7
-#671,#389,#631,0.859,8
-#672,Caduveo,#542,0.86,5
-#673,#379,#524,0.863,7
-#674,#525,#586,0.863,4
-#675,#351,#533,0.874,8
-#676,#566,#572,0.874,17
-#677,Atsugevi,#549,0.881,4
-#678,Catawba,"Miami, Illini",0.883,2
-#679,"Stieng,Chrau,Sre",#612,0.885,9
-#680,#433,#541,0.886,5
-#681,#446,#600,0.9,10
-#682,#468,#475,0.9,7
-#683,Flathead,#641,0.905,3
-#684,Chumash,#678,0.906,3
-#685,#371,#559,0.911,19
-#686,#361,#649,0.913,11
-#687,#49,#451,0.913,6
-#688,#567,#622,0.914,7
-#689,#522,#536,0.915,6
-#690,#644,#686,0.915,16
-#691,Omotic,#635,0.919,3
-#692,#569,#650,0.924,8
-#693,#598,#647,0.931,9
-#694,#518,#669,0.934,10
-#695,Tehuelche,#369,0.935,3
-#696,#521,#597,0.935,9
-#697,#579,#627,0.943,10
-#698,#462,#596,0.951,11
-#699,#514,#534,0.952,9
-#700,#326,#456,0.956,9
-#701,Minangkabau,#621,0.964,3
-#702,#415,#464,0.965,12
-#703,#633,#664,0.975,6
-#704,#223,#476,0.977,8
-#705,Hadza,#555,0.979,3
-#706,Mapuche,#551,0.983,9
-#707,Old Testament,#673,0.984,8
-#708,#461,#659,0.994,4
-#709,#562,#585,1.0,6
-#710,#482,#513,1.013,13
-#711,#495,#617,1.017,17
-#712,#539,#646,1.019,9
-#713,#511,#645,1.027,19
-#714,#517,#648,1.027,17
-#715,"Asurini,Paracana.",#655,1.034,3
-#716,#604,#689,1.046,8
-#717,#508,#661,1.048,22
-#718,Ingrians,#701,1.057,4
-#719,#493,#616,1.06,7
-#720,#404,#693,1.061,11
-#721,#639,#696,1.064,18
-#722,#590,#663,1.064,9
-#723,#630,#672,1.07,7
-#724,#492,#505,1.079,9
-#725,#679,#682,1.082,16
-#726,#538,#677,1.088,11
-#727,Loyalty,#694,1.096,11
-#728,#576,#692,1.1,10
-#729,#452,#466,1.107,25
-#730,#504,#577,1.109,13
-#731,#251,#643,1.11,17
-#732,#580,#607,1.121,12
-#733,#573,#708,1.128,6
-#734,#588,#665,1.13,12
-#735,#257,#722,1.15,13
-#736,#591,#638,1.156,7
-#737,#488,#667,1.158,19
-#738,#547,#618,1.161,9
-#739,#615,#671,1.178,14
-#740,#624,#703,1.197,9
-#741,#640,#670,1.201,14
-#742,#636,#637,1.205,8
-#743,#629,#687,1.209,12
-#744,Russkoye Ustye,#717,1.211,23
-#745,#611,#699,1.212,16
-#746,#666,#735,1.225,15
-#747,#623,#680,1.226,8
-#748,#642,#716,1.246,12
-#749,#529,#613,1.256,15
-#750,#628,#719,1.258,15
-#751,#732,#745,1.261,28
-#752,#491,#690,1.273,20
-#753,#583,#684,1.299,10
-#754,#674,#742,1.31,12
-#755,#709,#723,1.329,13
-#756,#632,#683,1.342,14
-#757,#657,#712,1.368,15
-#758,#499,#713,1.368,24
-#759,#625,#714,1.39,24
-#760,#707,#718,1.394,12
-#761,#662,#727,1.408,19
-#762,#698,#734,1.411,23
-#763,#660,#724,1.417,11
-#764,#697,#730,1.418,23
-#765,#720,#747,1.424,19
-#766,#668,#691,1.425,8
-#767,#656,#702,1.478,20
-#768,#704,#733,1.489,14
-#769,#601,#738,1.495,14
-#770,#652,#700,1.504,16
-#771,#695,#715,1.527,6
-#772,#653,#755,1.558,23
-#773,#688,#728,1.588,17
-#774,#740,#752,1.614,29
-#775,#705,#753,1.628,13
-#776,#606,#743,1.637,18
-#777,#676,#731,1.644,34
-#778,#626,#741,1.713,21
-#779,#609,#775,1.754,19
-#780,#736,#744,1.756,30
-#781,#748,#769,1.759,26
-#782,#594,#658,1.885,15
-#783,#725,#750,1.897,31
-#784,#754,#771,1.906,18
-#785,#654,#729,1.924,43
-#786,#726,#756,1.965,25
-#787,#685,#768,2.008,33
-#788,#620,#766,2.016,19
-#789,#711,#774,2.142,46
-#790,#737,#746,2.19,34
-#791,#751,#772,2.291,51
-#792,#675,#710,2.35,21
-#793,#721,#773,2.372,35
-#794,#739,#763,2.424,25
-#795,#777,#787,2.47,67
-#796,#289,#782,2.528,24
-#797,#510,#570,2.681,30
-#798,#757,#789,2.743,61
-#799,#760,#784,2.84,30
-#800,#759,#762,2.883,47
-#801,#608,#651,2.984,19
-#802,#758,#761,3.061,43
-#803,#681,#794,3.263,35
-#804,#770,#786,3.322,41
-#805,#765,#781,3.337,45
-#806,#788,#793,3.368,54
-#807,#706,#801,3.492,28
-#808,#749,#803,3.813,50
-#809,#792,#795,3.874,88
-#810,#799,#805,3.884,75
-#811,#767,#779,3.895,39
-#812,#764,#811,4.016,62
-#813,#776,#810,4.147,93
-#814,#778,#796,4.203,45
-#815,#800,#806,4.355,101
-#816,#797,#809,4.523,118
-#817,#798,#807,4.576,89
-#818,#791,#817,4.732,140
-#819,#783,#813,4.832,124
-#820,#804,#808,4.908,91
-#821,#780,#814,5.562,75
-#822,#785,#816,5.847,161
-#823,#812,#820,5.879,153
-#824,#802,#819,6.235,167
-#825,#790,#818,6.328,174
-#826,#821,#823,6.595,228
-#827,#815,#824,8.107,268
-#828,#825,#826,9.123,402
-#829,#827,#828,9.547,670
-#830,#822,#829,12.061,831
+#1,Algeria Arabs,Arabs: Egypt,0.0,2
+#2,"Arabs: Palestine,Syria,Lebanon",#1,0.0,3
+#3,Morocco Arabs,#2,0.0,4
+#4,Saudia,#3,0.0,5
+#5,Caribou,Iglulik,0.0,2
+#6,Labrador Eskimo,#5,0.0,3
+#7,Netsilik,#6,0.0,4
+#8,Polar Eskimo,#7,0.0,5
+#9,West Greenland Eskimo,#8,0.0,6
+#10,Catalonia,Portuguese,0.0,2
+#11,"Sardinia, Corsica",Sicilia,0.0,2
+#12,Spanish,#11,0.0,3
+#13,Mari,Udmurt,0.0,2
+#14,Baffin Land Eskimo,#9,0.0,7
+#15,#10,#12,0.0,5
+#16,Komi,#13,0.0,3
+#17,Bengali,Himachali (Western Pahari),0.001,2
+#18,Eest Greenland Eskimo,#14,0.001,8
+#19,Chuvash,#16,0.001,4
+#20,Eastern Keres,Hopi,0.001,2
+#21,Tunisia Arabs,#4,0.001,6
+#22,Ancient Greece,Ancient Italy,0.001,2
+#23,Italians (continental),#15,0.001,6
+#24,Northern Ojibwa,Swampy Cree (Western),0.002,2
+#25,Halmahera,Sangir Islands,0.002,2
+#26,Yemen,#21,0.002,7
+#27,Byelorussians,Russians,0.002,2
+#28,Montagnais,#24,0.002,3
+#29,Karelians,#27,0.003,3
+#30,"Ket, Yug",Tundra Nenets,0.003,2
+#31,"Hindi, Chhattisgarhi",Tamil,0.003,2
+#32,Aragon,Galicians,0.003,2
+#33,Hanty,Mansi,0.004,2
+#34,Naskapi,#28,0.004,4
+#35,"Chehalis, Cowlitz",Upper Chinook,0.004,2
+#36,Baikal Evenki,Western Evenki,0.004,2
+#37,French,Romansh,0.005,2
+#38,Bretagne,Upper Brittany,0.005,2
+#39,Diegueno,"Yuma,Mohave,Maricopa",0.005,2
+#40,#17,#31,0.005,4
+#41,Haida,Tsimshian,0.006,2
+#42,Northern Sel'kup,#30,0.006,3
+#43,Arikara,Crow,0.006,2
+#44,Lushootseed,#35,0.007,3
+#45,Blackfoot,Gros Ventre,0.007,2
+#46,Kraho,"Ramkokamekra,Apaniekra",0.007,2
+#47,Eastern Cree,#34,0.008,5
+#48,Ireland,Scotland,0.008,2
+#49,Sarsi,#45,0.008,3
+#50,Nganasan,#42,0.008,4
+#51,Walloons (incl. Picardy),#37,0.008,3
+#52,Khakas,Shor,0.009,2
+#53,Evens (Lamuts),Yukaghir,0.009,2
+#54,Setu,Vepsians,0.009,2
+#55,Aguaruna,"Shuar,Achuar,Huambiza",0.009,2
+#56,Chechen,Ingush,0.011,2
+#57,Southern Sel'kup,#33,0.011,3
+#58,Kabyle,#26,0.011,8
+#59,Chiricahua Apache,Jicarilla Apache,0.012,2
+#60,Popoluca,Veracruz Nahuatl,0.012,2
+#61,Arabs: Libya,"Berber (Morocco,SW Algeria)",0.012,2
+#62,Oriya,Sinhalese,0.013,2
+#63,Oirat,Tuvinians,0.013,2
+#64,"Maliseet,Passamaquoddy",Micmac,0.013,2
+#65,Arapaho,#43,0.013,3
+#66,England,#48,0.014,3
+#67,"Dutch, Flemish, Frisians","Norvegians, Faroe islanders",0.014,2
+#68,Czech,Germans,0.015,2
+#69,Algonkian proper,Swampy Cree (Eastern),0.015,2
+#70,Ukrainians,#29,0.015,4
+#71,#40,#62,0.015,6
+#72,Abaza (Abazins),Kumyk,0.015,2
+#73,Shuswap,Thompson,0.015,2
+#74,Abkhaz,"Karachays, Balkar",0.016,2
+#75,#38,#51,0.016,5
+#76,Northern Paiute,"Western Shoshoni,Gosiute",0.016,2
+#77,#58,#61,0.017,10
+#78,Far East Evenki,#53,0.017,3
+#79,"Akkad,Assyria,Babylon",Sumer,0.018,2
+#80,Lipan Apache,#59,0.019,3
+#81,Chorote,Makka,0.02,2
+#82,Kumaoni (Central Pahari),#71,0.022,7
+#83,Mongols (Khalkha),#63,0.022,3
+#84,Danes,Swedes,0.022,2
+#85,Bering Strait Inupiat,North Alaskan Inupiat,0.023,2
+#86,#56,#74,0.023,4
+#87,Baluch,Tajik,0.023,2
+#88,Sym Evenki,#78,0.024,4
+#89,"Bondo,Didayi,Gutob",Sora,0.024,2
+#90,"Lezgians,Kiurin; Archin",Tabasaran; Aghul,0.024,2
+#91,Slovenians,#68,0.024,3
+#92,Han,"Upper Tanana,Tanacross",0.025,2
+#93,#50,#57,0.026,7
+#94,Karok,Yurok,0.026,2
+#95,Poles,Slovakians,0.026,2
+#96,Bella Coola,"Heiltsuk,Oowekeeno",0.026,2
+#97,"Adyghe, Kabardin","Mingrelians, Laz",0.027,2
+#98,Cheyenne,#65,0.028,4
+#99,"Kalispel,Coeur d'Alene",Western Sahaptin,0.028,2
+#100,#54,#70,0.029,6
+#101,#47,#69,0.03,7
+#102,"Akan,Ashanti,Akwapim,Tvi",Krache; Ga,0.03,2
+#103,#23,#32,0.032,8
+#104,"Creek, Seminole",Natchez,0.032,2
+#105,Tlingit,#41,0.033,3
+#106,"Lassik,Catho,Mattole",Yuki,0.034,2
+#107,Enets,#36,0.034,3
+#108,Marathi,Rajasthani,0.034,2
+#109,Mataco,#81,0.034,3
+#110,Tutchone,#92,0.034,3
+#111,Aleut,Kodiak,0.035,2
+#112,#49,#98,0.035,7
+#113,Hausa,Northern Gur (Oti-Volta),0.038,2
+#114,Ossetians,#86,0.038,5
+#115,Marshal Islands,Ponape district,0.038,2
+#116,"Shughni,Rushani,Khufi,Bartangi","Wahki,Ishkashimi,Munji",0.039,2
+#117,Aimara,"Kechua: South Peru, Bolivia",0.041,2
+#118,#88,#107,0.044,7
+#119,Maidu,Wintu,0.044,2
+#120,Five Nations Iroquois,"Huron, Wyandot",0.044,2
+#121,"Kanjobal,Chuj,Mocho","Mam, Ixil",0.045,2
+#122,"Okanagon,Sanpoil",#99,0.045,3
+#123,#44,#73,0.045,5
+#124,"Fox,Sauk,Kikapoo",Menomini,0.046,2
+#125,Coast Miwok,#106,0.046,3
+#126,Mackenzie Delta Eskimo,Nunivak,0.046,2
+#127,Mordvins,#19,0.047,5
+#128,Turkmen,Uzbek,0.047,2
+#129,"Kumandin,Chelkan,Tubalar",#52,0.048,3
+#130,Punjabi,#82,0.048,8
+#131,Forest Nenets,#93,0.049,8
+#132,Bukhara Arabs,#87,0.049,3
+#133,Kiowa,#112,0.049,8
+#134,"Baiga,Bhuiya,Bhumiya","Muria,Maria,Pardhan",0.05,2
+#135,#66,#67,0.051,5
+#136,Oraon (Kurukh),"Santali,Turi",0.051,2
+#137,Toba,#109,0.052,4
+#138,Tokelau,Tuvalu (Ellice),0.052,2
+#139,Hidatsa,Mandan,0.052,2
+#140,Dolgan,Negidals,0.053,2
+#141,Kamaiura,Trumai,0.054,2
+#142,Highland Tajik,Yazguliami,0.055,2
+#143,Livonians,Sorbs,0.055,2
+#144,Zoque,#121,0.055,3
+#145,Pawnee,Wichita,0.056,2
+#146,Chorti,"Quiche,Pocomam",0.056,2
+#147,"Karina, Galibi",Warao,0.057,2
+#148,AsiaticEskimo,St.Lawrence Eskimo,0.057,2
+#149,Kutchin,#110,0.058,4
+#150,Tillamook,#123,0.059,6
+#151,"Alabama,Koasati",#104,0.06,3
+#152,Kannada; Kuruba,#108,0.062,3
+#153,Basque,#103,0.062,9
+#154,Kwakiutl,"Nootka,Makah",0.064,2
+#155,"Nanai, Olcha",Oroch,0.064,2
+#156,#85,#126,0.065,4
+#157,Kara Kalpak,Uyghur,0.065,2
+#158,Hungarians,#95,0.066,3
+#159,Locono,#147,0.066,3
+#160,Mescalero Apache,#80,0.067,4
+#161,Huastec,"Totonac, Tepehua",0.067,2
+#162,Arabs: Iraq,#77,0.068,11
+#163,Shavante,Sherente,0.068,2
+#164,"Hittite, Hurrit","Ugarit, Phoenicia",0.069,2
+#165,Buryat,Darkhad,0.069,2
+#166,"Luri, Bakhtiari",Persians,0.069,2
+#167,Ojibwa (Eastern),Plains Ojibwa,0.072,2
+#168,Estonians,Finns,0.072,2
+#169,"Baniwa, Bare, Piapoco","Desana,Siriano,Tatuyo,Bara",0.072,2
+#170,Yaghnobi,#128,0.074,3
+#171,Zuni,#20,0.075,3
+#172,Ojibwa (Western),#124,0.076,3
+#173,Pomo,#125,0.076,4
+#174,"Tiwa,Tewa,Towa",Western Keres,0.076,2
+#175,"Avar,Andi,Akhvakh",#72,0.077,3
+#176,"Banhar,Moi,Sedang","Katu, Bru",0.078,2
+#177,Puebla & Huasteca Nahua,#161,0.078,3
+#178,Western Sami,Wotians,0.078,2
+#179,Samoa,Tonga,0.079,2
+#180,Torricelli Papuans,Trans New Guinea East,0.081,2
+#181,"Abenaki,Penobscot",#64,0.081,3
+#182,Inland Tlingit,Tagish,0.081,2
+#183,"Meo,Dao,Man (Vietnam,Laos)","Namuzi, Naxi; Pumi",0.081,2
+#184,"Cahuilla, Cupeno","Luiseno, Juaneno",0.082,2
+#185,Bulgarians,Serbs,0.082,2
+#186,Coos,Kalapuya,0.083,2
+#187,Makuxi,Wapishana,0.083,2
+#188,#46,#163,0.086,4
+#189,Papago,Pima,0.087,2
+#190,Central Philippines,Mindanao,0.088,2
+#191,Dena'ina,Tanana,0.088,2
+#192,Hare,"Slavey, Dogrib",0.089,2
+#193,"Chinantec,Mazatec","Zapotec,Chatino",0.089,2
+#194,#143,#158,0.089,5
+#195,Tseltal,#144,0.09,4
+#196,Tenetehara,Urubu-Kaapor,0.09,2
+#197,Mangareva,Tuamotu,0.09,2
+#198,Hawaii,"Maori,Moriori",0.09,2
+#199,Azerbaijan,#132,0.091,4
+#200,Nez Perce,#122,0.092,4
+#201,"Sotho, Tswana",Xhosa,0.093,2
+#202,#75,#135,0.095,10
+#203,Sicuani,"Yucuna, Kabiyari",0.095,2
+#204,#97,#114,0.095,7
+#205,Kamchadal,Maritime Koryak (Alyutor),0.096,2
+#206,Chukchi,#148,0.096,3
+#207,#118,#131,0.096,15
+#208,Dargin (Dargwa),#90,0.097,3
+#209,Southern Paiute,Ute,0.098,2
+#210,"Mixtec,Trique",#193,0.1,3
+#211,Truk district,#115,0.1,3
+#212,#130,#152,0.101,11
+#213,Ngaju,"Nias,Simeulue",0.102,2
+#214,"Pasco,Junin,Huancavelica dep.",#117,0.103,3
+#215,"Burmese,Intha,Arakan",Lao,0.103,2
+#216,Koyukon,#191,0.103,3
+#217,Minahasa,Yava,0.104,2
+#218,Chol,Tzotzil,0.104,2
+#219,Central Yupiq,#111,0.104,3
+#220,"Kalapalo, Kuikuro",#141,0.105,3
+#221,"Malawi,Wenda,Tumbuka,Nsenga",Shona,0.106,2
+#222,Tuscarora,#120,0.107,3
+#223,Tuvinians South Altai,#83,0.108,4
+#224,"Atayal,Sedeq,Saisiyat","Paiwan,Puyuma,Rukay",0.108,2
+#225,#96,#105,0.109,5
+#226,Ingalik,#219,0.11,4
+#227,"Monguor,Shirongol",Tibetans: Amdo,0.113,2
+#228,"Mundari,Ho,Asur,Birhor",#136,0.113,3
+#229,"Tonga, Ndebele",#201,0.113,3
+#230,Kerek,#205,0.114,3
+#231,"Eastern Sami, incl. Skolts",#100,0.115,7
+#232,"Dhoba,Ahir,Halba,Lohar,etc.",#89,0.115,3
+#233,Mentawai,"Toradja, Mori",0.116,2
+#234,Alsea,#186,0.116,3
+#235,Kachin,"Miao,Yao (South China)",0.116,2
+#236,Chemehuevi,Kawaiisu,0.117,2
+#237,"Lisu, Lolo,Yi,Achang","Tai,Zhuang,Nung,Kho",0.117,2
+#238,Lillooet,Lower Chinook,0.117,2
+#239,Maltese,#153,0.118,10
+#240,#142,#199,0.118,6
+#241,#168,#178,0.119,4
+#242,Western Apache,#160,0.121,5
+#243,Sakata,"Yambasa, Banen",0.121,2
+#244,#79,#164,0.122,4
+#245,Kurd,Zaza,0.124,2
+#246,Mundurucu,Rikbaktsa,0.124,2
+#247,"Wayampi, Emerillon","Wayana, Aparai",0.125,2
+#248,"Bhil, Barela-Bhilala",Kokna (Kukna),0.127,2
+#249,#133,#145,0.127,10
+#250,Sarikoli,#116,0.127,3
+#251,Central Australia,SE Australia,0.128,2
+#252,"Tahiti, Society islands",#198,0.13,3
+#253,"Fulbe,Wolof,Serer","Tenda, Biafada, Nalu",0.13,2
+#254,Tariana,#169,0.131,3
+#255,Konds (Khonds),#232,0.132,4
+#256,Crimea Tatars,Laks,0.134,2
+#257,"Chokwe,Luchazi","Kete,Luba-Kasai,Kanioka",0.134,2
+#258,"Manden,Bamana,Malinke,Diula",#113,0.135,3
+#259,"Siona,Coreguaje",Yagua,0.135,2
+#260,Batak; Gayo,#233,0.135,3
+#261,Navajo,#171,0.135,4
+#262,Lithuanians,#231,0.135,8
+#263,Pipil,Tzutujil,0.136,2
+#264,Assiniboine,Winnebago,0.137,2
+#265,Andoque,"Witoto,Ocaina",0.137,2
+#266,"Waura,Mehinaku",#220,0.139,4
+#267,Athna,#149,0.139,5
+#268,Kapingamarangi,"Ulithi, Ngulu",0.139,2
+#269,Eyak,Tahltan,0.141,2
+#270,"Baule, Nzema, Agni",#102,0.142,3
+#271,Uilta,#140,0.142,3
+#272,Oaxaca Mixe,#210,0.142,4
+#273,"Ontong Java,Takuu,Nukumanu,Nukuria","Rennel,Tikopia,Bellona,Futuna(Erronan)",0.142,2
+#274,#138,#179,0.142,4
+#275,Cubeo,"Uanano,Tucano proper,Arapaso",0.144,2
+#276,Udihe,#155,0.144,3
+#277,"Bunun,Tsou,Kanabu",#224,0.146,3
+#278,Avesta; Pekhlevi texts,Scandinavians: early written sources,0.146,2
+#279,Takelma,"Umpqua,Coquille,Tututni",0.146,2
+#280,"Barasana,Taibano,Makuna",#203,0.146,3
+#281,Nogai,Stavropol Turkmen,0.15,2
+#282,Yana,#119,0.151,3
+#283,#84,#202,0.153,12
+#284,Arabs of Sudan,#162,0.154,12
+#285,Tats,#250,0.154,4
+#286,"Dan,Guro,Mano,Sapa,Ngere","Yoruba,Nupe,Bini",0.154,2
+#287,Cocopa,#184,0.154,3
+#288,"Bali, Lombok",#217,0.155,3
+#289,Northern Saulteaux,Western Wood Cree,0.156,2
+#290,"Gogo,Zaramo,Kaguru","Nyaturu,Isanzu,Nilamba",0.156,2
+#291,"Lahu,Sani,Hani,Nasu,Jino","Wa, Bulang",0.157,2
+#292,NorthernFoothillsYokuts,Salinan,0.157,2
+#293,Kashubians,#194,0.157,6
+#294,#211,#268,0.157,5
+#295,Copper Eskimo,#18,0.158,9
+#296,"Kpelle, Kono","Vai, Kone",0.158,2
+#297,Cherokee,Yuchi,0.159,2
+#298,#170,#240,0.159,9
+#299,Kamba,Kikuyu,0.16,2
+#300,Oto,Teton,0.161,2
+#301,Biu-Mandara,#253,0.163,3
+#302,"Zulu,Swasi",#229,0.164,4
+#303,Northern Peru: Costa,Northern Peru: Sierra,0.165,2
+#304,Sierra Miwok,Tubatulabal,0.166,2
+#305,Cook Islands southern,"Gilbert,Nauru,Banaba",0.167,2
+#306,Plains Cree,#172,0.17,4
+#307,"Khmu, Puoc",Palaung,0.17,2
+#308,Cofan,"Napo,Kanelo",0.171,2
+#309,#146,#195,0.172,6
+#310,Muslim Malay,Southern Luzon,0.173,2
+#311,#139,#249,0.173,12
+#312,Guarani,Tupinamba,0.176,2
+#313,Cora,"Tepecano,Tepehuan",0.178,2
+#314,Ila,"Lozi,Rotse,Lui,Subia",0.182,2
+#315,Xinca,#263,0.182,3
+#316,#22,#244,0.182,6
+#317,Apinaye,#188,0.184,5
+#318,"Bidayuh, Iban","Murut,Dusun,Tombonuvo,Bajau",0.185,2
+#319,"Rutul, Tsahur",Udin,0.185,2
+#320,"Yucatec, Itza",#218,0.185,3
+#321,Sanema,Yanomamo,0.188,2
+#322,"Letuama,Ufaina,Yahuna",#259,0.188,3
+#323,Kashmiri,#212,0.189,12
+#324,Chamacoco,Nivakle,0.189,2
+#325,Ayacucho dep.,#303,0.189,3
+#326,"Konde,Matumbi,Pangwa","Ngonde,Safwa.Mkulwe,Kinga",0.19,2
+#327,Salar,#227,0.19,3
+#328,"Omaha, Ponka",#300,0.19,3
+#329,Arnham Land,#251,0.191,3
+#330,#60,#177,0.195,5
+#331,Khmer,#215,0.195,3
+#332,#208,#319,0.196,5
+#333,Northern Shoshone,#76,0.197,3
+#334,"Hupa,Chilula",#94,0.199,3
+#335,Ami,#277,0.2,4
+#336,Karen,"Tjam,Ede,Jarai",0.202,2
+#337,"Aka,Baka a.o.Western Pygmies",#243,0.202,3
+#338,Trio,#247,0.203,3
+#339,#157,#285,0.205,6
+#340,Igbo; Isoko,Ijaw,0.206,2
+#341,Lima dep.,#214,0.206,4
+#342,Ewe,"Mende,Bandi,Loma",0.207,2
+#343,Kayabi,#246,0.207,3
+#344,Huichol,Tlapanec; Popoloca,0.209,2
+#345,"Tsonga,Soli,Sala,Lenje","Yao, Macua",0.213,2
+#346,Monache,#292,0.216,3
+#347,#101,#167,0.217,9
+#348,Potawatomi,#306,0.218,5
+#349,#175,#204,0.218,10
+#350,Southern Gur,Temne,0.219,2
+#351,Kru,#286,0.219,3
+#352,"Luba,Bena,Tabwa",#257,0.221,3
+#353,Latvians,#241,0.222,5
+#354,"Santa-Cruz, Reef islands",#294,0.226,6
+#355,#151,#297,0.228,5
+#356,Marquesas,#197,0.229,3
+#357,#270,#296,0.23,5
+#358,Iowa,Santee,0.23,2
+#359,Pashto,#166,0.231,3
+#360,Chipewyan,#192,0.232,3
+#361,"Bemba,Kaonde,Lamba",#326,0.232,3
+#362,#165,#223,0.234,6
+#363,#289,#347,0.234,11
+#364,Chacobo,Chiriguano,0.235,2
+#365,"Chuvans, Markovo",#271,0.235,4
+#366,"Fang,Bube,Bulu,Tanga","Mpongwe,Nkomi,Mindumu",0.237,2
+#367,Mocovi,#137,0.241,5
+#368,#309,#315,0.244,9
+#369,Chinese folklore,Viets,0.245,2
+#370,Makiritare,#322,0.246,4
+#371,Aztec,"Otomi,Pame,Jonaz",0.246,2
+#372,"Ganda,Nyoro,Haya","Kalenjin,Nande,Arusha",0.247,2
+#373,Iranxe,Paresi,0.249,2
+#374,#265,#280,0.251,5
+#375,#183,#235,0.253,4
+#376,Kaska,#267,0.253,6
+#377,Assamese,Malayali; Kannikaran,0.253,2
+#378,#91,#293,0.253,9
+#379,#307,#336,0.256,4
+#380,Lenape,#222,0.258,4
+#381,"Mbundu, Owambo","Rwanda,Shi,Rundi",0.261,2
+#382,Chontal,#320,0.263,4
+#383,#299,#302,0.264,6
+#384,Fon,"Manjak,Balant,Papel,Felupe,Diola",0.269,2
+#385,Wappo,#173,0.273,5
+#386,"Niamwesi,Sumbwa","Sukuma,Gusii,Kumbi",0.273,2
+#387,Parintintin,#196,0.274,3
+#388,#273,#274,0.274,6
+#389,Waiwai,#187,0.276,3
+#390,Kolchan,#216,0.277,4
+#391,Kirghiz,#281,0.277,3
+#392,"Mongo,Tetela,Kuba,Nkundu",#352,0.278,4
+#393,"Katawishi,Manao etc.","Surui,Zoro,Arua,Cinta Larga",0.278,2
+#394,"Efik, Ibibio, Ikom","Tiv,Jukun,Mbete,Wute,Ekoi",0.279,2
+#395,Niue,Rotuma,0.28,2
+#396,Songhai,#301,0.281,4
+#397,"Timor,Leti,Lomblen",#213,0.283,3
+#398,Western Australia,#329,0.283,4
+#399,"Kuba,Dengese,Bushoongo,Yansi",Songe,0.285,2
+#400,#221,#383,0.287,8
+#401,"Shan,Khampti,Ahom",Thai (Thailand),0.288,2
+#402,Shipaya,#343,0.29,4
+#403,Korea,Northern Ryukyu; Awami Islands,0.292,2
+#404,Kongo,#337,0.295,4
+#405,#258,#350,0.295,5
+#406,Chayahuita,Shipibo-Conibo,0.297,2
+#407,#174,#261,0.297,6
+#408,Achomavi,#282,0.299,4
+#409,Lobi,Senufo,0.3,2
+#410,#39,#287,0.304,5
+#411,#182,#376,0.305,8
+#412,Lampung; S. Sumatra Malay,#25,0.306,3
+#413,#330,#371,0.306,7
+#414,Cuiva,Guayabero,0.307,2
+#415,Korku,#248,0.309,3
+#416,Chipaya,#341,0.309,5
+#417,#150,#200,0.31,10
+#418,Massim district,North New Guinea Melanesians,0.31,2
+#419,Yaruro,#414,0.311,3
+#420,#314,#361,0.315,5
+#421,"Numfoor,Warope",Roti,0.316,2
+#422,Gondi,Kharia,0.316,2
+#423,Gagauz,Volga (Kazan) Tatars,0.317,2
+#424,Talysh,#332,0.317,6
+#425,Admiralty islands,"N.Britain,N.Ireland",0.319,2
+#426,Carrier,Chilcotin,0.32,2
+#427,#156,#226,0.322,8
+#428,#318,#397,0.323,5
+#429,#325,#416,0.324,8
+#430,Croatians,#378,0.325,10
+#431,Masai,#386,0.327,3
+#432,Sandawe,#345,0.329,3
+#433,Tofa,#129,0.329,4
+#434,#340,#342,0.33,4
+#435,Bororo,#266,0.334,5
+#436,#209,#236,0.337,4
+#437,Yankton,#328,0.338,4
+#438,Piro,#364,0.338,3
+#439,#55,#308,0.344,4
+#440,#245,#298,0.347,11
+#441,Central Solomons,Southern Vanuatu,0.347,2
+#442,Ticuna,#370,0.351,5
+#443,Ancient China,Manchu,0.351,2
+#444,Dholuo,Sara,0.354,2
+#445,Albanians,Turks,0.356,2
+#446,"Walapai,Havasupai,Yavapai",#242,0.358,6
+#447,"Chin,Kuki,Lakher,Mizo,Lushei","Chin-Naga(Rengma,Ao,Angami etc",0.358,2
+#448,#260,#310,0.359,5
+#449,#313,#344,0.364,4
+#450,#252,#356,0.367,6
+#451,Kiliwa,Seri,0.367,2
+#452,Zaparo,#312,0.367,3
+#453,Gola,#351,0.368,4
+#454,#304,#385,0.374,7
+#455,Flores,Sumba,0.375,2
+#456,Biloxi,Tunica,0.375,2
+#457,Cayapo,Umotina,0.378,2
+#458,Ceram,#428,0.382,6
+#459,#324,#367,0.383,7
+#460,#237,#375,0.384,6
+#461,#288,#412,0.385,6
+#462,#254,#275,0.386,5
+#463,"Choktaw,Chichasaw",Hitchiti,0.388,2
+#464,"Duala,Basa,Kwiri",#290,0.389,3
+#465,#234,#279,0.39,5
+#466,"Comox,Pentlatch","Halcomelem,Sechelt,Squamish",0.393,2
+#467,Kekchi; Mopan,#368,0.393,10
+#468,#207,#365,0.396,19
+#469,Macu,Mai Huna (Coto),0.397,2
+#470,#269,#390,0.397,6
+#471,Armenians,#256,0.402,3
+#472,Caddo,#437,0.406,5
+#473,#372,#400,0.406,10
+#474,Transylvanian Saxons,#262,0.409,9
+#475,Konkani,Nepali; Tharu,0.412,2
+#476,Bakairi,#435,0.412,6
+#477,Daghur,Mongols (Inner Mongolia),0.412,2
+#478,#394,#453,0.413,6
+#479,Choco,Tacana,0.414,2
+#480,Nivkh,#276,0.414,4
+#481,#278,#316,0.414,8
+#482,"Saho, Afar",Western Sahara & Mauritania,0.416,2
+#483,#127,#474,0.418,14
+#484,#176,#379,0.427,6
+#485,"Banks, Torres islands",#441,0.428,3
+#486,"Cashinahua,Mayoruna",Pemon,0.428,2
+#487,"Lengua, Sanapana",Terena,0.429,2
+#488,Bora,#419,0.431,4
+#489,Selknam,Yamana,0.433,2
+#490,"Culina,Araua,Apurina",#438,0.435,4
+#491,"Altai-Kiji, Telengit",#362,0.436,7
+#492,"Acoli,Alur,Lango","Zande,Nzakara",0.437,2
+#493,Ese'ejja,Tapirape,0.438,2
+#494,Yakut,#468,0.439,20
+#495,#388,#395,0.44,8
+#496,#469,#488,0.441,6
+#497,Karaja,"Suya,Txukarramae",0.442,2
+#498,#382,#467,0.442,14
+#499,Juruna,#402,0.447,5
+#500,Toto; Rabha,#401,0.447,3
+#501,"Buka, Bougenville",#418,0.447,3
+#502,"Garo,Bodo,Hami,Riga","Kirati (Rai,Limbu,Newar)",0.45,2
+#503,#239,#283,0.454,22
+#504,Dongxiang,Tibetans: Kham,0.456,2
+#505,"Bole, Tangale",#381,0.456,3
+#506,"Kei,Tanimbar,Babar,Watubela",#421,0.458,3
+#507,#134,#255,0.459,6
+#508,Harakmbet,Machiguenga,0.459,2
+#509,Aceh,#461,0.459,7
+#510,#424,#471,0.46,9
+#511,#238,#417,0.461,12
+#512,#305,#495,0.461,10
+#513,Nambikwara,#373,0.462,3
+#514,"Dido,Khvarshi,Hunzib","Urums, Rumei",0.465,2
+#515,Dogon,"Nuer,Dinka",0.467,2
+#516,Svan,#391,0.468,4
+#517,Beaver,Yellowknife,0.468,2
+#518,#189,#410,0.47,7
+#519,Lepcha,#447,0.472,3
+#520,#396,#405,0.481,9
+#521,#159,#338,0.485,6
+#522,Akawai,Orinoco Caribs,0.486,2
+#523,Kimberley Plateau,Queensland,0.487,2
+#524,#264,#348,0.49,7
+#525,Carijona,#321,0.49,3
+#526,"Kayan,Kenya,Bahau,""Klemantan""",Northern Luzon,0.49,2
+#527,SE New Guinea Melanesians,#501,0.495,4
+#528,"Anuak, Shilluk",#409,0.498,3
+#529,Minangkabau,"Sulu, Mapun",0.5,2
+#530,"Loyalty, New Caledonia",Palau,0.501,2
+#531,Kuna,Yukpa,0.504,2
+#532,#406,#442,0.504,7
+#533,Japan,#500,0.507,4
+#534,Mon,#331,0.516,4
+#535,Hixkaryana,#389,0.518,4
+#536,#154,#225,0.521,7
+#537,#392,#399,0.523,6
+#538,"Chagga, Digo",Yaka,0.524,2
+#539,#490,#493,0.527,6
+#540,Ottawa,#380,0.528,5
+#541,#190,#526,0.528,4
+#542,Mawe,#513,0.53,4
+#543,Yap,#354,0.533,7
+#544,Nawar (Zutt),Nyimang,0.544,2
+#545,Soqotri,#284,0.549,13
+#546,#426,#536,0.552,9
+#547,Northern Naga (Konyak etc.),"Rawang, Anong, Drung",0.552,2
+#548,"Alor, Solor",Yami,0.553,2
+#549,"Tupari,Makurap,Ajuru",Yabarana,0.554,2
+#550,#374,#462,0.555,10
+#551,#420,#473,0.555,15
+#552,#377,#475,0.555,4
+#553,#355,#463,0.557,7
+#554,#431,#505,0.557,6
+#555,Central Vanuatu,#425,0.559,3
+#556,#407,#446,0.562,12
+#557,Luzon Negritos,"Semang,Senoi",0.565,2
+#558,"Klamath, Modoc",#408,0.566,5
+#559,Kamakan,Ofaie,0.567,2
+#560,Sepik-Ramu Papuans,#180,0.568,3
+#561,"Quileute, Chemakum",Quinault,0.569,2
+#562,Bashkir,Georgians,0.573,2
+#563,Comanche,Kiowa-Apache,0.573,2
+#564,Tequstlatec,#272,0.574,5
+#565,Amhara,Somali,0.576,2
+#566,#393,#499,0.584,7
+#567,#404,#492,0.585,6
+#568,Soninke,Zaghawa,0.586,2
+#569,"Bari, Kakwa","Mangbetu,Lugbara,Madi",0.587,2
+#570,Durango Nahua,#449,0.592,5
+#571,"Guaymi,Bocota",Lacandon,0.593,2
+#572,Arabic written tradition,"Mehri,Jibbali,Harsusi",0.596,2
+#573,Colorado (Tsachila),#531,0.596,3
+#574,"Abor,Gallong,Tani","Tawang,Miji,Aka,Sherdukpen",0.597,2
+#575,#357,#434,0.6,9
+#576,Juang,#507,0.602,7
+#577,"Li,Dong,Maonan",#291,0.604,3
+#578,Mustang,Tibetans: Ladakh,0.608,2
+#579,"Shasta,Chimariko",#465,0.614,6
+#580,Panamint,Serrano,0.621,2
+#581,Khasi,"Stieng,Chrau,Sre",0.626,2
+#582,#349,#516,0.628,14
+#583,#327,#504,0.629,5
+#584,#369,#484,0.629,8
+#585,Burusho,Khwarezm Uzbek,0.631,2
+#586,Dards,#514,0.633,3
+#587,Amuesha,Guajiro,0.638,2
+#588,Kogi,"Paya,Sumu,Misquito",0.651,2
+#589,#452,#539,0.652,9
+#590,Ayoreo,#487,0.654,3
+#591,Fiji,"Ifaluk, Lamotrek, Satawal",0.657,2
+#592,#333,#436,0.657,7
+#593,"Paez,Guambia","Rama,Guatuso",0.658,2
+#594,#451,#518,0.659,9
+#595,Southern Solomons,#530,0.66,3
+#596,#411,#470,0.666,14
+#597,#366,#567,0.669,8
+#598,Balahi,#415,0.671,4
+#599,Greeks (modern),#185,0.679,3
+#600,"Okinawa,Miyako,Yaeyama",#335,0.683,5
+#601,#464,#551,0.688,18
+#602,#454,#558,0.69,12
+#603,Comoros Islands,Irakw,0.693,2
+#604,Island Caribs,Kaxuyana,0.699,2
+#605,Torres Strait Islands,#560,0.699,4
+#606,#398,#523,0.701,6
+#607,#311,#472,0.715,17
+#608,#508,#587,0.717,4
+#609,Tunisia Berber,#565,0.718,3
+#610,Ancient Egypt,#481,0.722,9
+#611,#339,#510,0.728,15
+#612,#384,#444,0.729,4
+#613,Herrero,Khoikhoi,0.732,2
+#614,Eastern Shohone,"Osage, Kansa",0.732,2
+#615,#413,#564,0.735,12
+#616,Sindhi,#323,0.738,13
+#617,#486,#525,0.745,5
+#618,#317,#457,0.751,7
+#619,Candoshi,#479,0.753,3
+#620,#353,#483,0.756,19
+#621,Kazakh,#586,0.76,4
+#622,"Klallam,Lkungen",#466,0.76,3
+#623,#432,#601,0.764,21
+#624,#547,#574,0.767,4
+#625,Aramaic (Syrians),#544,0.767,3
+#626,#448,#458,0.781,11
+#627,Ingrians,Old Testament,0.785,2
+#628,#387,#521,0.785,9
+#629,Cashibo,"Moseten,Chimane",0.785,2
+#630,"Fipa,Bende,Iramba","Murle, Me'en, Didinga",0.787,2
+#631,Romanians,Terek Cossacks,0.788,2
+#632,#359,#440,0.788,14
+#633,Bunak,#506,0.789,4
+#634,"Boa,Komo,Nyanga",#537,0.792,7
+#635,#548,#600,0.805,7
+#636,Urarina,#549,0.808,3
+#637,#512,#543,0.809,17
+#638,"Lavrung,Jiarong,Qiang",#403,0.812,3
+#639,Botocudo,Mura,0.817,2
+#640,"Bugi, Macassar",#557,0.823,3
+#641,Chulym Turks,#433,0.825,5
+#642,#439,#532,0.826,11
+#643,#476,#566,0.829,13
+#644,Southern Australia,#606,0.833,7
+#645,Astrakhan Tatars and Nogai,Siberian Tatars,0.836,2
+#646,Ijka,Jicaque,0.843,2
+#647,#569,#603,0.852,4
+#648,Kutenai,#511,0.854,13
+#649,Ache,Ashaninca,0.856,2
+#650,#522,#589,0.861,11
+#651,Wiyot,#334,0.862,4
+#652,"Kaingang, Xokleng",Puinave,0.863,2
+#653,"Yaqui,Mayo,Sinaloa",#570,0.865,6
+#654,Bari,Piaroa,0.882,2
+#655,#541,#640,0.887,7
+#656,"Mbum,Mundang",#528,0.891,4
+#657,#485,#595,0.893,6
+#658,Tsetsot,#517,0.903,3
+#659,"Akposo,Akebu,Santrokofi",#630,0.903,3
+#660,"Bribri,Cabecar",#629,0.906,3
+#661,Trans New Guinea West,#605,0.912,5
+#662,Byzantium,Kafirs,0.914,2
+#663,#363,#524,0.915,18
+#664,#496,#619,0.917,9
+#665,Cayapa (Chachi),"Kamsa, Ingano",0.917,2
+#666,Mikir,#502,0.921,3
+#667,"Asurini,Paracana.",#652,0.925,3
+#668,Kamchatka Evens,Russkoye Ustye,0.933,2
+#669,#478,#575,0.933,15
+#670,"Banda,Gbaya,Ngbandi,Manja",Mbuti & Efe Pigmies,0.935,2
+#671,Atsugevi,Ohlone,0.94,2
+#672,#538,#647,0.94,6
+#673,Chamorro,Sumbawa,0.947,2
+#674,Twana,Washo,0.954,2
+#675,#443,#624,0.961,6
+#676,Gujarati,"Telugu, Chenchu",0.969,2
+#677,#535,#650,0.971,15
+#678,#599,#631,0.973,5
+#679,"Itene,Wari,other Rondonia",#559,0.974,3
+#680,Yuracare,#608,0.984,5
+#681,#422,#576,1.002,9
+#682,#460,#577,1.003,9
+#683,"Miami, Illini",#614,1.007,3
+#684,#477,#491,1.008,9
+#685,#497,#643,1.01,15
+#686,"Toda,Kota,Pulaya,Nayar,Kadar",#666,1.021,4
+#687,"Tigre, Tigrigna",#609,1.032,4
+#688,#593,#660,1.033,5
+#689,Chugach,#596,1.034,15
+#690,#346,#602,1.036,15
+#691,#604,#639,1.039,4
+#692,#649,#654,1.041,4
+#693,"Balantak,Loinang,Banggai",#673,1.051,3
+#694,Dungan,#578,1.068,3
+#695,Marubo,#636,1.078,4
+#696,Flathead,#674,1.083,3
+#697,Kanamari,#691,1.095,5
+#698,Lingala,#659,1.1,4
+#699,#519,#584,1.102,11
+#700,Lunda,Palawan,1.121,2
+#701,Chumash,Yokuts,1.122,2
+#702,#613,#672,1.139,8
+#703,#480,#494,1.141,24
+#704,#554,#623,1.148,27
+#705,#617,#642,1.152,16
+#706,#206,#230,1.152,6
+#707,#562,#621,1.164,6
+#708,#459,#590,1.165,10
+#709,#527,#661,1.174,9
+#710,#612,#656,1.181,8
+#711,Bosnia Muslims,Macedonians,1.182,2
+#712,#360,#689,1.184,18
+#713,Warli,#635,1.185,8
+#714,#358,#607,1.188,19
+#715,#423,#445,1.193,4
+#716,Highland Ecuador,#571,1.194,3
+#717,Caduveo,#667,1.2,4
+#718,#450,#591,1.225,8
+#719,#509,#633,1.247,11
+#720,#455,#655,1.248,9
+#721,#498,#615,1.25,26
+#722,Chimila,#692,1.261,5
+#723,#515,#710,1.273,10
+#724,#597,#634,1.276,15
+#725,#580,#592,1.285,9
+#726,Bilin,Swahili,1.291,2
+#727,Catawba,Shawnee,1.298,2
+#728,Mapuche,Vilela,1.313,2
+#729,#550,#705,1.319,26
+#730,Tibetans (U-Tsang),#583,1.327,6
+#731,#533,#699,1.327,15
+#732,#628,#677,1.333,24
+#733,Ainu,Evenki of China,1.342,2
+#734,#588,#665,1.357,4
+#735,#542,#685,1.363,19
+#736,Waorani,#722,1.366,6
+#737,#529,#693,1.366,5
+#738,#545,#572,1.372,15
+#739,Kitanemuk,#701,1.386,3
+#740,#626,#719,1.389,22
+#741,#579,#651,1.4,10
+#742,#695,#697,1.435,9
+#743,#555,#657,1.461,9
+#744,"Oromo,Konso,Sidamo",#568,1.506,3
+#745,#688,#736,1.511,11
+#746,#598,#681,1.542,13
+#747,Nuba,#687,1.544,5
+#748,#611,#632,1.574,29
+#749,#610,#627,1.588,11
+#750,"Mojo,Manasi,etc.",#728,1.595,3
+#751,#534,#638,1.606,7
+#752,#573,#664,1.623,12
+#753,#561,#648,1.631,15
+#754,Tonkawa,#456,1.634,3
+#755,#520,#669,1.672,24
+#756,Tarascan,#646,1.679,3
+#757,Dhanwar,Nicobar,1.679,2
+#758,Tuareg,#698,1.682,5
+#759,#552,#616,1.692,17
+#760,#637,#718,1.695,25
+#761,#618,#679,1.701,10
+#762,Wales,#430,1.713,11
+#763,#540,#553,1.717,12
+#764,Bushmen,Omotic,1.721,2
+#765,Qwapaw,#727,1.722,3
+#766,#582,#707,1.749,20
+#767,"Parachi, Ormuri",#747,1.778,6
+#768,#581,#686,1.802,6
+#769,#668,#703,1.833,26
+#770,Kalmyk,#684,1.841,10
+#771,#489,#750,1.842,5
+#772,#563,#683,1.85,5
+#773,#295,#427,1.873,17
+#774,Andaman,Easter Island,1.875,2
+#775,Yogur,#694,1.896,4
+#776,Tehuelche,#671,1.905,3
+#777,#503,#762,1.918,33
+#778,Hadza,"Tarahumara,Warihio",1.919,2
+#779,#716,#734,1.997,7
+#780,Maldives,#676,1.999,3
+#781,#482,#726,2.014,4
+#782,#723,#755,2.019,34
+#783,#682,#731,2.138,24
+#784,#670,#764,2.152,4
+#785,#680,#742,2.178,14
+#786,#585,#625,2.186,5
+#787,#717,#745,2.215,15
+#788,#696,#739,2.218,6
+#789,"India, literary sources",#730,2.243,7
+#790,#658,#712,2.336,21
+#791,#713,#720,2.352,17
+#792,#754,#765,2.367,6
+#793,#653,#721,2.486,32
+#794,#733,#757,2.497,4
+#795,#228,#746,2.503,16
+#796,#181,#763,2.528,15
+#797,#700,#774,2.53,4
+#798,Cyprus Greeks,#645,2.537,3
+#799,#771,#778,2.544,7
+#800,#702,#724,2.604,23
+#801,#729,#752,2.617,38
+#802,Reindeer Koryak,#706,2.62,7
+#803,#732,#735,2.757,43
+#804,#556,#725,2.8,21
+#805,#748,#766,2.898,49
+#806,#641,#770,3.009,15
+#807,Malagasy,#781,3.072,5
+#808,#675,#768,3.114,12
+#809,#737,#791,3.142,22
+#810,#690,#741,3.145,25
+#811,#711,#715,3.17,6
+#812,#429,#756,3.224,11
+#813,#786,#805,3.349,54
+#814,#772,#788,3.413,11
+#815,#704,#800,3.466,50
+#816,#744,#758,3.549,8
+#817,#620,#678,3.593,24
+#818,#773,#802,3.77,24
+#819,#794,#797,3.908,8
+#820,#662,#780,3.913,5
+#821,#785,#787,4.009,29
+#822,#792,#796,4.062,21
+#823,#751,#789,4.191,14
+#824,#775,#820,4.307,9
+#825,#740,#809,4.455,44
+#826,#622,#753,4.551,18
+#827,#709,#743,4.59,18
+#828,#594,#776,4.62,12
+#829,#777,#817,4.72,57
+#830,#783,#808,4.82,36
+#831,#546,#790,4.83,30
+#832,#767,#798,5.249,9
+#833,#761,#821,5.269,39
+#834,#644,#799,5.276,14
+#835,#804,#814,5.294,32
+#836,#782,#816,5.977,42
+#837,#784,#819,5.989,12
+#838,#663,#714,6.285,37
+#839,#779,#812,6.309,18
+#840,#807,#832,6.81,14
+#841,#815,#836,6.854,92
+#842,#810,#835,7.352,57
+#843,#811,#813,7.395,60
+#844,#801,#803,8.04,81
+#845,#749,#837,8.169,23
+#846,#708,#833,8.178,49
+#847,#834,#839,8.193,32
+#848,#818,#831,8.582,54
+#849,#828,#842,8.811,69
+#850,#760,#827,9.423,43
+#851,#822,#838,9.712,58
+#852,#795,#830,9.748,52
+#853,#826,#849,9.761,87
+#854,#806,#824,9.872,24
+#855,#823,#852,10.45,66
+#856,#738,#843,10.799,75
+#857,#759,#840,11.908,31
+#858,#825,#845,13.663,67
+#859,#844,#846,13.981,130
+#860,#793,#847,16.769,64
+#861,#854,#857,17.5,55
+#862,#855,#858,20.385,133
+#863,#851,#853,24.164,145
+#864,#850,#862,29.724,176
+#865,#769,#848,30.105,80
+#866,#856,#861,34.344,130
+#867,#859,#860,42.769,194
+#868,#863,#865,45.658,225
+#869,#829,#866,51.604,187
+#870,#841,#864,80.396,268
+#871,#867,#868,92.871,419
+#872,#870,#871,98.8,687
+#873,#869,#872,124.981,874
