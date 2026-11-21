@@ -431,7 +431,7 @@ svg.tree{cursor:crosshair}
     <span><span lang="en">Dot size grows with the weight. Traditions with a weight below 5% of the maximum are not shown.</span><span lang="ru">Размер точки растёт вместе с весом. Традиции с весом меньше 5% от максимума не показаны.</span></span>
   </div>
   <div class="grid3" id="nmfGrid"></div>
-  <p class="fine" style="margin-top:12px"><span lang="en">In six runs from random starting points, 9 or 10 of the 12 components were reproduced almost exactly (cosine with the main solution of at least 0.95); in every run one component had no close counterpart. Components are named after the region where the set is strongest.</span><span lang="ru">В шести запусках со случайной инициализацией 9 или 10 компонент из 12 воспроизвелись почти точно (косинус с основным решением не ниже 0,95); в каждом запуске у одной компоненты близкого соответствия не нашлось. Названия компонент даны по региону, где набор выражен сильнее всего.</span></p>
+  <p class="fine" style="margin-top:12px"><span lang="en">In six further runs from random starting points, two arrived at the same solution. In the other four, 9 of the 12 components were reproduced almost exactly (cosine with the main solution of at least 0.95), two more stayed recognisable (0.84–0.92), and one had no close counterpart. Components are named after the region where the set is strongest.</span><span lang="ru">В шести дополнительных запусках со случайной инициализацией два пришли к тому же решению. В четырёх остальных 9 компонент из 12 воспроизвелись почти точно (косинус с основным решением не ниже 0,95), ещё две остались узнаваемыми (0,84–0,92), а у одной близкого соответствия не нашлось. Названия компонент даны по региону, где набор выражен сильнее всего.</span></p>
 </section>
 
 <section id="axes" hidden>
@@ -468,7 +468,7 @@ svg.tree{cursor:crosshair}
     <div class="pole" id="axNeg"></div>
     <div class="pole" id="axPos"></div>
   </div>
-  <p class="fine" style="margin-top:14px;max-width:92ch"><span lang="en">Each axis explains between 1.3% and 4.8% of the variance. That is the usual order of magnitude for sparse presence-or-absence data, so the axes show tendencies; there are no sharp boundaries behind them.</span><span lang="ru">Каждая ось объясняет от 1,3 до 4,8% разброса. Для разреженных данных вида «мотив есть или нет» это обычный порядок величины, поэтому оси показывают тенденции, жёстких границ за ними нет.</span></p>
+  <p class="fine" style="margin-top:14px;max-width:92ch"><span lang="en">Each axis explains between 1.3% and 4.7% of the variance. That is the usual order of magnitude for sparse presence-or-absence data, so the axes show tendencies; there are no sharp boundaries behind them.</span><span lang="ru">Каждая ось объясняет от 1,3 до 4,7% разброса. Для разреженных данных вида «мотив есть или нет» это обычный порядок величины, поэтому оси показывают тенденции, жёстких границ за ними нет.</span></p>
 </section>
 
 <section id="motifs" hidden>
@@ -593,14 +593,14 @@ svg.tree{cursor:crosshair}
       <h3><span lang="en">Calculations</span><span lang="ru">Расчёты</span></h3>
       <ul>
         <li lang="en">A motif’s weight is ln(N / number of traditions with the motif). Rows are normalised and similarity is the cosine.</li>
-        <li lang="en">Clusters: 30 latent dimensions (LSA), then Ward’s method. A single tree of this kind changes when the sample of motifs changes: after resampling it agrees with the tree on all motifs at 0.41–0.80 on the adjusted Rand index. The page therefore shows a consensus. Motifs are resampled 1,200 times, each resample is clustered and cut at twenty levels, and the final tree is built by Ward’s method from how often two traditions fall into one cluster. Two independent halves of 600 resamples agree at 0.86–0.92.</li>
+        <li lang="en">Clusters: 30 latent dimensions (LSA), then Ward’s method. A single tree of this kind changes when the sample of motifs changes: after resampling it agrees with the tree on all motifs at 0.57–0.77 on the adjusted Rand index. The page therefore shows a consensus. Motifs are resampled 1,200 times, each resample is clustered and cut at twenty levels, and the final tree is built by Ward’s method from how often two traditions fall into one cluster. Two independent halves of 600 resamples agree at 0.99–1.00.</li>
         <li lang="en">Complexes: non-negative matrix factorisation into 12 components.</li>
         <li lang="en">Axes: principal components, separately for sections A–I (756 traditions, 924 motifs) and J–N (719 traditions, 1,504 motifs).</li>
         <li lang="en">Tree: the same consensus hierarchy drawn in full, with the join heights on a square-root scale.</li>
         <li lang="en">Correlations: the Pearson (phi) coefficient between two motifs over all 950 traditions, or between two traditions over the 3,334 motifs recorded at least once.</li>
         <li lang="en">Geographic neighbours are found by great-circle distance.</li>
         <li lang="ru">Вес мотива равен ln(N / число традиций с мотивом). Строки нормированы, сходство считается как косинус.</li>
-        <li lang="ru">Кластеры: 30 скрытых измерений (LSA), затем метод Уорда. Одно такое дерево заметно меняется при смене выборки мотивов: после перевыборки оно совпадает с деревом по всем мотивам на 0,41–0,80 по скорректированному индексу Рэнда. Поэтому на странице показано согласованное дерево. Мотивы перевыбираются 1 200 раз, каждая выборка кластеризуется и разрезается на двадцати уровнях, а итоговое дерево строится методом Уорда по тому, как часто две традиции попадают в один кластер. Две независимые половины по 600 перевыборок совпадают на 0,86–0,92.</li>
+        <li lang="ru">Кластеры: 30 скрытых измерений (LSA), затем метод Уорда. Одно такое дерево заметно меняется при смене выборки мотивов: после перевыборки оно совпадает с деревом по всем мотивам на 0,57–0,77 по скорректированному индексу Рэнда. Поэтому на странице показано согласованное дерево. Мотивы перевыбираются 1 200 раз, каждая выборка кластеризуется и разрезается на двадцати уровнях, а итоговое дерево строится методом Уорда по тому, как часто две традиции попадают в один кластер. Две независимые половины по 600 перевыборок совпадают на 0,99–1,00.</li>
         <li lang="ru">Комплексы: неотрицательное матричное разложение на 12 компонент.</li>
         <li lang="ru">Оси: главные компоненты, отдельно для разделов A–I (756 традиций, 924 мотива) и J–N (719 традиций, 1 504 мотива).</li>
         <li lang="ru">Дерево: та же согласованная иерархия, показанная целиком, высоты соединений в шкале квадратного корня.</li>

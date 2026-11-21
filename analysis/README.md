@@ -18,12 +18,12 @@ Run everything with `bash analysis/run_all.sh` from the repository root (about f
 Things to know:
 
 - Clusters and complexes use traditions with 15 or more motifs (874 of 950) and motifs recorded in at least five of them (3,102).
-- Why a consensus: one Ward tree on all motifs agrees with a tree on resampled motifs at only 0.41–0.80 (adjusted Rand index), and with the randomised decomposition used earlier it also depended on the random seed. Two independent consensus trees of 600 resamples agree at 0.86–0.92. `exploratory/consensus_conv.py` shows how the agreement grows with the number of resamples.
+- Why a consensus: one Ward tree on all motifs agrees with a tree on resampled motifs at only 0.57–0.77 (adjusted Rand index), and with the randomised decomposition used earlier it also depended on the random seed. Two independent consensus trees of 600 resamples agree at 0.99–1.00. `exploratory/consensus_conv.py` shows how the agreement grows with the number of resamples.
 - Cluster names are set in `export.py`, in English and Russian. A cluster is recognised by the anchor traditions it contains (twelve anchors, one per smallest cluster), so the names survive small shifts in membership. If the data change so much that a cluster holds an unforeseen set of anchors, the log of `export.py` flags it with `CHECK` and a name has to be added. Complexes are matched to those of the 2021 analysis by the correlation of their tradition weights (`reference/`).
 - The principal axes are computed separately for sections A–I and J–N, on traditions with 15 or more motifs of the group and motifs recorded in at least ten of them.
 - Pointing at a motif shows its description; the Atlas shows it in full. Titles and descriptions travel in `data/source/motifs.csv` in both languages (`title`, `description`, `title_ru`, `description_ru`) and are shown in the language of the page. [`data/README.md`](../data/README.md) explains how the two versions were put together. The texts add about 1.6 MB to `index.html`.
 - The Correlations tab computes its coefficients in the browser from the tradition–motif pairs embedded in the page.
-- `exploratory/` holds the trials and checks behind statements on the page: a comparison of methods for the axes, cluster membership, similarity between clusters, the contribution of pairs of regions to the far distance bands. They do not affect the build.
+- `exploratory/` holds the trials and checks behind statements on the page: a comparison of methods for the axes, cluster membership, similarity between clusters, the contribution of pairs of regions to the far distance bands, the reproducibility of the complexes from other random starting points (`nmf_runs.py`). They do not affect the build.
 
 ## Languages of the page
 
